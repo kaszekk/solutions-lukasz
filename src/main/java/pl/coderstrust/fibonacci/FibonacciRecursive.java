@@ -6,6 +6,6 @@ public class FibonacciRecursive {
     }
 
     public static long fibonacci(int fibonacciNumberInOrder) {
-
+        return 4L;
     }
 }
