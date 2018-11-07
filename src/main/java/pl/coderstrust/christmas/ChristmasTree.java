@@ -9,7 +9,7 @@ public class ChristmasTree {
         for (int i = 0; i < heightOfTree; i++) {
             printSpaces(heightOfTree - i);
             printAsterisks(2 * i + 1);
-            System.out.print("\n");
+            System.out.println();
         }
         printSpaces(heightOfTree - 1);
         printAsterisks(2);
@@ -24,7 +24,6 @@ public class ChristmasTree {
     private static void printSpaces(int numberOfSpaces) {
         for (int i = 0; i < numberOfSpaces; i++) {
             System.out.print(" ");
-
         }
     }
 }
