@@ -1,21 +1,33 @@
 package pl.coderstrust.foobar;
 
+import java.util.ArrayList;
+
 public class FooBar {
+    private static final ArrayList<String> stringOutput = new ArrayList<>();
+
     public static void main(String[] args) {
-        foobar();
+        for (String el : foobar()) {
+            System.out.print(el);
+        }
     }
 
-    private static void foobar() {
-        System.out.println(0);
+    private static ArrayList<String> foobar() {
+        stringOutput.add("0\n");
+        // System.out.println(0);
         for (int i = 1; i <= 100; i++) {
-            System.out.print(i + "\t");
+            stringOutput.add(i + "\t");
+            // System.out.print(i + "\t");
             if (i % 3 == 0) {
-                System.out.print("Foo");
+                stringOutput.add("Foo");
+                // System.out.print("Foo");
             }
             if (i % 5 == 0) {
-                System.out.print("Bar");
+                stringOutput.add("Bar");
+                // System.out.print("Bar");
             }
-            System.out.println();
+            stringOutput.add("\n");
+            //System.out.println();
         }
+        return stringOutput;
     }
 }
