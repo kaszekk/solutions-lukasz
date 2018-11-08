@@ -1,12 +1,6 @@
 package pl.coderstrust.sieve;
 
-import java.util.Arrays;
-
 public class SieveOfEratosthenes {
-    public static void main(String[] args) {
-        System.out.println(Arrays.toString(sieve(100)));
-    }
-
     public static int[] sieve(int maximumNumber) {
         int[] array = new int[maximumNumber + 1];
         for (int i = 2; i <= maximumNumber; i++) {
