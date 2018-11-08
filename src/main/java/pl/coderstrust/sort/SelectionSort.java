@@ -1,37 +1,22 @@
 package pl.coderstrust.sort;
 
-import java.util.Arrays;
-
 public class SelectionSort {
-    public static void main(String[] args) {
-        int[] array = {-7, 6, 7, 2, 3, 1, 0, 5, 12, -4, 9, 8};
-        for (int element : array) {
-            System.out.print(element + " ");
+    public static int[] sort(int[] intArray) {
+        int[] copyOfIntArray = new int[intArray.length];
+        for (int i = 0; i < intArray.length; i++) {
+            copyOfIntArray[i] = intArray[i];
         }
-        System.out.println();
-        System.out.println(Arrays.toString(sort(array)));
-        for (int element : array) {
-            System.out.print(element + " ");
-        }
-    }
-
-    public static int[] sort(int[] array) {
-
-        int[] copyOfArray = new int[array.length];
-        for (int i = 0; i < array.length; i++) {
-            copyOfArray[i] = array[i];
-        }
-        for (int j = 0; j < array.length; j++) {
+        for (int j = 0; j < intArray.length; j++) {
             int minimumElementIndex = j;
-            for (int i = j; i < array.length - 1; i++) {
-                if (copyOfArray[i + 1] < copyOfArray[minimumElementIndex]) {
+            for (int i = j; i < intArray.length - 1; i++) {
+                if (copyOfIntArray[i + 1] < copyOfIntArray[minimumElementIndex]) {
                     minimumElementIndex = i + 1;
                 }
             }
-            int temp = copyOfArray[minimumElementIndex];
-            copyOfArray[minimumElementIndex] = copyOfArray[j];
-            copyOfArray[j] = temp;
+            int temp = copyOfIntArray[minimumElementIndex];
+            copyOfIntArray[minimumElementIndex] = copyOfIntArray[j];
+            copyOfIntArray[j] = temp;
         }
-        return copyOfArray;
+        return copyOfIntArray;
     }
 }
