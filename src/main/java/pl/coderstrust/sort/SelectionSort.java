@@ -21,16 +21,15 @@ public class SelectionSort {
         for (int i = 0; i < array.length; i++) {
             copyOfArray[i] = array[i];
         }
-
         for (int j = 0; j < array.length; j++) {
-            int minIndex = j;
+            int minimumElementIndex = j;
             for (int i = j; i < array.length - 1; i++) {
-                if (copyOfArray[i + 1] < copyOfArray[minIndex]) {
-                    minIndex = i + 1;
+                if (copyOfArray[i + 1] < copyOfArray[minimumElementIndex]) {
+                    minimumElementIndex = i + 1;
                 }
             }
-            int temp = copyOfArray[minIndex];
-            copyOfArray[minIndex] = copyOfArray[j];
+            int temp = copyOfArray[minimumElementIndex];
+            copyOfArray[minimumElementIndex] = copyOfArray[j];
             copyOfArray[j] = temp;
         }
         return copyOfArray;
