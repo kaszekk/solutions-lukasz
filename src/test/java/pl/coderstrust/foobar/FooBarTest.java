@@ -1,7 +1,8 @@
 package pl.coderstrust.foobar;
 
-import org.junit.Assert;
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class FooBarTest {
     @Test
@@ -31,6 +32,6 @@ public class FooBarTest {
         String input = FooBar.foobar();
 
         // Then
-        Assert.assertEquals(expected, input);
+        assertEquals(expected, input);
     }
 }
