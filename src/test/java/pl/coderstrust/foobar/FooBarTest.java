@@ -6,13 +6,31 @@ import org.junit.Test;
 public class FooBarTest {
     @Test
     public void shouldPrintFoobarOutputString() {
-        String foobarOutputString = FooBar.foobar();
-        String expected = foobarOutputString;
+        // Given
+        String expected = "0\n" +
+                "1\t\n" +
+                "2\t\n" +
+                "3\tFoo\n" +
+                "4\t\n" +
+                "5\tBar\n" +
+                "6\tFoo\n" +
+                "7\t\n" +
+                "8\t\n" +
+                "9\tFoo\n" +
+                "10\tBar\n" +
+                "11\t\n" +
+                "12\tFoo\n" +
+                "13\t\n" +
+                "14\t\n" +
+                "15\tFooBar\n" +
+                "16\t\n" +
+                "17\t\n" +
+                "18\tFoo\n";
 
-        // System.out.println(foobarOutputString);
-        Assert.assertEquals(foobarOutputString, foobarOutputString);
+        // When
+        String input = FooBar.foobar();
+
+        // Then
+        Assert.assertEquals(expected, input);
     }
-
-
 }
-
