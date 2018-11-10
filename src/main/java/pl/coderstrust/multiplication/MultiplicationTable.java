@@ -1,22 +1,26 @@
 package pl.coderstrust.multiplication;
 
+import java.util.ArrayList;
+
 public class MultiplicationTable {
     public static void main(String[] args) {
         printMultiplicationTable(12);
     }
 
-    private static void printMultiplicationTable(int size) {
-        System.out.printf("%4s", " ");
+    static ArrayList<String> printMultiplicationTable(int size) {
+        ArrayList<String> output = new ArrayList<>();
+        output.add(String.format("%4s", " "));
         for (int i = 1; i <= size; i++) {
-            System.out.printf("%4d", i);
+            output.add(String.format("%4d", i));
         }
         System.out.println();
         for (int row = 1; row <= size; row++) {
-            System.out.printf("%4d", row);
+            output.add(String.format("%4d", row));
             for (int col = 1; col <= size; col++) {
-                System.out.printf("%4d", row * col);
+                output.add(String.format("%4d", row * col));
             }
-            System.out.println();
+            output.add("\n");
         }
+        return output;
     }
 }
