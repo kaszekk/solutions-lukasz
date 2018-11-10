@@ -4,18 +4,18 @@ import java.util.ArrayList;
 
 public class FooBar {
     public static ArrayList<String> foobar() {
-        ArrayList<String> foobarResult = new ArrayList<>();
-        foobarResult.add("0\n");
+        ArrayList<String> result = new ArrayList<>();
+        result.add("0\n");
         for (int i = 1; i <= 100; i++) {
-            foobarResult.add(i + "\t");
+            result.add(i + "\t");
             if (i % 3 == 0) {
-                foobarResult.add("Foo");
+                result.add("Foo");
             }
             if (i % 5 == 0) {
-                foobarResult.add("Bar");
+                result.add("Bar");
             }
-            foobarResult.add("\n");
+            result.add("\n");
         }
-        return foobarResult;
+        return result;
     }
 }

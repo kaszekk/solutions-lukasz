@@ -2,7 +2,7 @@ package pl.coderstrust.foobar;
 
 import java.util.ArrayList;
 
-class FooBarTestPattern {
+class FooBarTestExpected {
     ArrayList<String> generate() {
         ArrayList<String> resultTestPattern = new ArrayList<>();
         resultTestPattern.add("0\n");

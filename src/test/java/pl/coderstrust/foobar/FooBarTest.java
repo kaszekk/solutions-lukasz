@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class FooBarTest {
     @Test
     public void shouldStoreFoobarOutputStringToArrayList() {
-        FooBarTestPattern testPattern = new FooBarTestPattern();
+        FooBarTestExpected testPattern = new FooBarTestExpected();
 
         // Given
         ArrayList<String> expected = testPattern.generate();
