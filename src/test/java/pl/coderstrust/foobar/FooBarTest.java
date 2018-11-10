@@ -7,11 +7,11 @@ import java.util.ArrayList;
 
 public class FooBarTest {
     @Test
-    public void shouldPrintFoobarOutputString() {
+    public void shouldStoreFoobarOutputStringToArrayList() {
         FooBarTestPattern testPattern = new FooBarTestPattern();
 
         // Given
-        ArrayList<String> expected = testPattern.generateTestPattern();
+        ArrayList<String> expected = testPattern.generate();
 
         // When
         ArrayList<String> input = FooBar.foobar();

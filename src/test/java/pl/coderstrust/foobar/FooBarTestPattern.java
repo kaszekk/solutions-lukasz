@@ -2,22 +2,20 @@ package pl.coderstrust.foobar;
 
 import java.util.ArrayList;
 
-final class FooBarTestPattern {
-
-      ArrayList<String> generateTestPattern() {
-        ArrayList<String> outputTestPattern = new ArrayList<>();
-
-        outputTestPattern.add("0\n");
-        for (int i = 1; i <= 10; i++) {
-            outputTestPattern.add(i + "\t");
+class FooBarTestPattern {
+    ArrayList<String> generate() {
+        ArrayList<String> resultTestPattern = new ArrayList<>();
+        resultTestPattern.add("0\n");
+        for (int i = 1; i <= 100; i++) {
+            resultTestPattern.add(i + "\t");
             if (i % 3 == 0) {
-                outputTestPattern.add("Foo");
+                resultTestPattern.add("Foo");
             }
             if (i % 5 == 0) {
-                outputTestPattern.add("Bar");
+                resultTestPattern.add("Bar");
             }
-            outputTestPattern.add("\n");
+            resultTestPattern.add("\n");
         }
-        return outputTestPattern;
+        return resultTestPattern;
     }
 }
