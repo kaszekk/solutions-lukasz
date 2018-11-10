@@ -5,7 +5,6 @@ public class SieveOfEratosthenes {
         int[] array = generateSequenceOfNumbers(maximumNumber);
         filterPrimes(maximumNumber, array);
         int[] primaryNumbersArray = new int[getPrimaryNumbersCount(array)];
-
         return getPrimesArray(array, primaryNumbersArray);
     }
 
