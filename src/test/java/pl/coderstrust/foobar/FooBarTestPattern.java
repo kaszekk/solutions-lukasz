@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 final class FooBarTestPattern {
 
-    public static ArrayList<String> generateTestPattern() {
+      ArrayList<String> generateTestPattern() {
         ArrayList<String> outputTestPattern = new ArrayList<>();
 
         outputTestPattern.add("0\n");
-        for (int i = 1; i <= 100; i++) {
+        for (int i = 1; i <= 10; i++) {
             outputTestPattern.add(i + "\t");
             if (i % 3 == 0) {
                 outputTestPattern.add("Foo");
