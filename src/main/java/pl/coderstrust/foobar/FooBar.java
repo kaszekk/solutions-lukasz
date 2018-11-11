@@ -4,14 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FooBar {
-    public static List<String> storeResult(int numberOfLines) {
-        if (numberOfLines < 0) {
+    public static List<String> getResult(int number) {
+        if (number < 0) {
             throw new IllegalArgumentException(" Number of lines must be greater or equal to zero");
         }
         StringBuilder item = new StringBuilder();
         List<String> result = new ArrayList<>();
-        for (int i = 0; i <= numberOfLines; i++) {
-            item.delete(0, item.length());
+        for (int i = 0; i <= number; i++) {
             item.append(String.format("%d", i));
             if (i % 3 == 0) {
                 item.append("Foo");
@@ -21,6 +20,7 @@ public class FooBar {
             }
             item.append("\n");
             result.add(item.toString());
+            item.delete(0, item.length());
         }
         return result;
     }
