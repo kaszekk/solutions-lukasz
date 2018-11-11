@@ -4,8 +4,7 @@ public class SieveOfEratosthenes {
     static int[] sieve(int maximumNumber) {
         int[] array = generateSequenceOfNumbers(maximumNumber);
         filterPrimes(maximumNumber, array);
-        int[] primaryNumbersArray = new int[getPrimaryNumbersCount(array)];
-        return getPrimesArray(array, primaryNumbersArray);
+        return getPrimesArray(array);
     }
 
     private static void filterPrimes(int maximumNumber, int[] array) {
@@ -16,7 +15,8 @@ public class SieveOfEratosthenes {
         }
     }
 
-    private static int[] getPrimesArray(int[] array, int[] primaryNumbersArray) {
+    private static int[] getPrimesArray(int[] array) {
+        int[] primaryNumbersArray = new int[getPrimaryNumbersCount(array)];
         for (int i = 0, j = 0; i < array.length; i++) {
             if (array[i] != 0) {
                 primaryNumbersArray[j++] = array[i];
