@@ -25,7 +25,7 @@ public class FooBarTest {
     }
 
     @Test
-    public void whenSizeNegativeShouldThrowIllegalArgumentException() {
+    public void shouldThrowIllegalArgumentException() {
         // Given
         int size = -1;
         String expected = "Number of lines must be greater or equal to zero";
