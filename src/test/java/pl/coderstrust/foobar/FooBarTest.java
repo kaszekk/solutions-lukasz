@@ -1,41 +1,36 @@
 package pl.coderstrust.foobar;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
 
 public class FooBarTest {
 
     @Test
     public void shouldReturnCorrectFooBarList() {
-            // Given
+        // Given
         int size = 6;
-        List<String> expected = (Arrays.asList("0FooBar\n", "1\n", "2\n", "3Foo\n", "4\n", "5Bar\n", "6Foo\n"));
+        List<String> expected = (Arrays.asList("0FooBar", "1", "2", "3Foo", "4", "5Bar", "6Foo"));
 
-            // When
+        // When
         List<String> input = FooBar.getResult(size);
 
-            // Then
+        // Then
         assertEquals(expected, input);
     }
 
-    @Test
-    public void whenNegativeSizeShouldThrowIllegalArgumentException() {
-            // Given
-        int size = -1;
-        String expected = "Number of lines must be greater or equal to zero";
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
 
-            // When
-        try {
-            FooBar.getResult(size);
-        } catch (IllegalArgumentException ex) {
-            // Then
-            assertThat(ex.getMessage(), is(expected));
-        }
+    @Test
+    public void shouldThrowExceptionForInvalidArgument() throws IllegalArgumentException {
+        thrown.expect(IllegalArgumentException.class);
+        thrown.expectMessage("Number of lines must be greater or equal to zero");
+        FooBar.getResult(-1);
     }
 }

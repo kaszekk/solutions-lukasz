@@ -11,14 +11,13 @@ public class FooBar {
         StringBuilder item = new StringBuilder();
         List<String> result = new ArrayList<>();
         for (int i = 0; i <= number; i++) {
-            item.append(String.format("%d", i));
+            item.append(i);
             if (i % 3 == 0) {
                 item.append("Foo");
             }
             if (i % 5 == 0) {
                 item.append("Bar");
             }
-            item.append("\n");
             result.add(item.toString());
             item.delete(0, item.length());
         }
