@@ -6,7 +6,7 @@ import java.util.List;
 public class FooBar {
     public static List<String> getResult(int number) {
         if (number < 0) {
-            throw new IllegalArgumentException(" Number of lines must be greater or equal to zero");
+            throw new IllegalArgumentException("Number of lines must be greater or equal to zero");
         }
         StringBuilder item = new StringBuilder();
         List<String> result = new ArrayList<>();
