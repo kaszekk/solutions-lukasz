@@ -1,26 +1,35 @@
 package pl.coderstrust.multiplication;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MultiplicationTable {
     public static void main(String[] args) {
-        printMultiplicationTable(12);
+        System.out.print(getResult(1));
     }
 
-    static ArrayList<String> printMultiplicationTable(int size) {
-        ArrayList<String> output = new ArrayList<>();
-        output.add(String.format("%4s", " "));
+    static List<String> getResult(int size) throws IllegalArgumentException {
+        if (size < 0) {
+            throw new IllegalArgumentException("Multiplication table size cannot be negative");
+        }
+        List<String> result = new ArrayList<>();
+        StringBuilder item = new StringBuilder();
+        item.append(String.format("%5s", " "));
         for (int i = 1; i <= size; i++) {
-            output.add(String.format("%4d", i));
+            item.append(String.format("%4d", i));
         }
-        System.out.println();
+        item.append("\n");
+        result.add(item.toString());
+        item.delete(0, item.length());
         for (int row = 1; row <= size; row++) {
-            output.add(String.format("%4d", row));
+            item.append(String.format("%4d", row));
             for (int col = 1; col <= size; col++) {
-                output.add(String.format("%4d", row * col));
+                item.append(String.format("%4d", row * col));
             }
-            output.add("\n");
+            item.append("\n");
+            result.add(item.toString());
+            item.delete(0, item.length());
         }
-        return output;
+        return result;
     }
 }
