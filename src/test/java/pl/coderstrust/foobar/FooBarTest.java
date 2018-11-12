@@ -13,24 +13,24 @@ public class FooBarTest {
 
     @Test
     public void shouldReturnCorrectFooBarList() {
-        // Given
+            // Given
         int size = 6;
         List<String> expected = (Arrays.asList("0FooBar\n", "1\n", "2\n", "3Foo\n", "4\n", "5Bar\n", "6Foo\n"));
 
-        // When
+            // When
         List<String> input = FooBar.getResult(size);
 
-        // Then
+            // Then
         assertEquals(expected, input);
     }
 
     @Test
-    public void shouldThrowIllegalArgumentException() {
-        // Given
+    public void whenNegativeSizeShouldThrowIllegalArgumentException() {
+            // Given
         int size = -1;
         String expected = "Number of lines must be greater or equal to zero";
 
-        // When
+            // When
         try {
             FooBar.getResult(size);
         } catch (IllegalArgumentException ex) {
