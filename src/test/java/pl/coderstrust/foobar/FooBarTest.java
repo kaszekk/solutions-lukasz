@@ -10,7 +10,6 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 public class FooBarTest {
-
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
