@@ -11,6 +11,9 @@ import static org.junit.Assert.assertEquals;
 
 public class FooBarTest {
 
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
+
     @Test
     public void shouldReturnCorrectFooBarList() {
         // Given
@@ -24,11 +27,8 @@ public class FooBarTest {
         assertEquals(expected, input);
     }
 
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
-
     @Test
-    public void shouldThrowExceptionForInvalidArgument() throws IllegalArgumentException {
+    public void shouldThrowExceptionForInvalidArgument() {
         thrown.expect(IllegalArgumentException.class);
         thrown.expectMessage("Number of lines must be greater or equal to zero");
         FooBar.getResult(-1);
