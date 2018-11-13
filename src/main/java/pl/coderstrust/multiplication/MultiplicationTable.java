@@ -5,7 +5,7 @@ import java.util.List;
 
 public class MultiplicationTable {
     public static void main(String[] args) {
-        System.out.print(getResult(1));
+        System.out.print(getResult(0));
     }
 
     static List<String> getResult(int size) throws IllegalArgumentException {
@@ -14,19 +14,19 @@ public class MultiplicationTable {
         }
         List<String> result = new ArrayList<>();
         StringBuilder item = new StringBuilder();
-        item.append(String.format("%5s", " "));
+        // item.append(String.format("%4s", " "));
         for (int i = 1; i <= size; i++) {
-            item.append(String.format("%4d", i));
+            item.append(i);
         }
-        item.append("\n");
+        // item.append("\n");
         result.add(item.toString());
         item.delete(0, item.length());
         for (int row = 1; row <= size; row++) {
-            item.append(String.format("%4d", row));
+            item.append(row);
             for (int col = 1; col <= size; col++) {
-                item.append(String.format("%4d", row * col));
+                item.append(row * col);
             }
-            item.append("\n");
+            // item.append("\n");
             result.add(item.toString());
             item.delete(0, item.length());
         }
