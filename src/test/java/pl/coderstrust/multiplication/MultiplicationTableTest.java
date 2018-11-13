@@ -1,33 +1,36 @@
 package pl.coderstrust.multiplication;
 
 import junitparams.Parameters;
+import org.junit.Assert;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.List;
 
 import static junit.framework.TestCase.assertEquals;
+import static org.hamcrest.CoreMatchers.is;
 
 //import org.junit.Test;
 
-
+@RunWith(Parameterized.class)
 public class MultiplicationTableTest {
     @Test
     @Parameters(method = "getExpectedParameters")
-    public void shouldCalculateMultiplicationTable(int size, Object expected) {
+    public static void shouldCalculateMultiplicationTable(int size, Object expected) {
         // When
-        //  List<String> input = MultiplicationTable.getResult(size);
+        List<String> input = MultiplicationTable.getResult(size);
         // Then
         assertEquals(expected, MultiplicationTable.getResult(size));
-        // Assert.assertThat(input, is(expected));
+        Assert.assertThat(input, is(expected));
     }
 
-    public Object[] getExpectedParameters() {
+    public static Object[] getExpectedParameters() {
         return new Object[]{
-                new Object[]{0, new ArrayList<>(Arrays.asList(""))},
-                new Object[]{1, new ArrayList<>(Arrays.asList("1", "11"))},
-                new Object[]{2, new ArrayList<>(Arrays.asList("12", "112", "224"))},
-                new Object[]{4, new ArrayList<>(Arrays.asList("1234", "11234", "22468", "336912", "4481216"))}};
+                new Object[]{0, ""},
+                new Object[]{1, "1", "11"},
+                new Object[]{2, "12", "112", "224"},
+                new Object[]{4, "1234", "11234", "22468", "336912", "4481216"}};
     }
 }
 
