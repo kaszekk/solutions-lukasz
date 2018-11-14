@@ -8,7 +8,7 @@ public class ChristmasTree {
         System.out.println(getResult(3));
     }
 
-    public static List getResult(int heightOfTree) {
+    public static List<String> getResult(int heightOfTree) {
         if (heightOfTree < 0) {
             throw new IllegalArgumentException("Argument cannot be negative");
         }
