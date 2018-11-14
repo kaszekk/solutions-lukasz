@@ -31,18 +31,21 @@ public class MultiplicationTableTest {
     public static Object[] getExpectedParameters() {
         return new Object[]{
                 new Object[]{0, new ArrayList<>(Arrays.asList("    "))},
-                new Object[]{1, new ArrayList<>(Arrays.asList("       1",
-                                                              "   1   1"))},
+                new Object[]{1, new ArrayList<>(Arrays.asList(
+                        "       1",
+                        "   1   1"))},
 
-                new Object[]{2, new ArrayList<>(Arrays.asList("       1   2",
-                                                              "   1   1   2",
-                                                              "   2   2   4"))},
+                new Object[]{2, new ArrayList<>(Arrays.asList(
+                        "       1   2",
+                        "   1   1   2",
+                        "   2   2   4"))},
 
-                new Object[]{4, new ArrayList<>(Arrays.asList("       1   2   3   4",
-                                                              "   1   1   2   3   4",
-                                                              "   2   2   4   6   8",
-                                                              "   3   3   6   9  12",
-                                                              "   4   4   8  12  16"))}
+                new Object[]{4, new ArrayList<>(Arrays.asList(
+                        "       1   2   3   4",
+                        "   1   1   2   3   4",
+                        "   2   2   4   6   8",
+                        "   3   3   6   9  12",
+                        "   4   4   8  12  16"))}
         };
     }
 
