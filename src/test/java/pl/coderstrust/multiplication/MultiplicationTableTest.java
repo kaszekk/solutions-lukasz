@@ -2,7 +2,6 @@ package pl.coderstrust.multiplication;
 
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
-import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -13,6 +12,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 
 @RunWith(JUnitParamsRunner.class)
 public class MultiplicationTableTest {
@@ -21,14 +21,14 @@ public class MultiplicationTableTest {
 
     @Test
     @Parameters(method = "getExpectedParameters")
-    public static void shouldReturnCorrectMultiplicationTableList(int size, Object expected) {
+    public void shouldReturnCorrectMultiplicationTableList(int size, Object expected) {
         // When
         List<String> input = MultiplicationTable.getResult(size);
         // Then
-        Assert.assertThat(input, is(expected));
+        assertThat(input, is(expected));
     }
 
-    public static Object[] getExpectedParameters() {
+    private Object[] getExpectedParameters() {
         return new Object[]{
                 new Object[]{0, new ArrayList<>(Arrays.asList("    "))},
                 new Object[]{1, new ArrayList<>(Arrays.asList(
