@@ -1,29 +1,42 @@
 package pl.coderstrust.christmas;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ChristmasTree {
     public static void main(String[] args) {
-        printChristmasTree(8);
+        System.out.println(getResult(3));
     }
 
-    public static void printChristmasTree(int heightOfTree) {
+    public static List getResult(int heightOfTree) {
+        if (heightOfTree < 0) {
+            throw new IllegalArgumentException("Argument cannot be negative");
+        }
+        List<String> ChristmasTreeRow = new ArrayList<>();
+        StringBuilder christmasTreeItem = new StringBuilder();
         for (int i = 0; i < heightOfTree; i++) {
-            printSpaces(heightOfTree - i);
-            printAsterisks(2 * i + 1);
-            System.out.println();
+            christmasTreeItem.append(spaces(heightOfTree - i)).append(asterisks(2 * i + 1));
+            ChristmasTreeRow.add(christmasTreeItem.toString());
+            christmasTreeItem.delete(0, christmasTreeItem.length());
         }
-        printSpaces(heightOfTree - 1);
-        printAsterisks(2);
+        christmasTreeItem.append(spaces(heightOfTree - 1)).append(asterisks(2));
+        ChristmasTreeRow.add(christmasTreeItem.toString());
+        return ChristmasTreeRow;
     }
 
-    private static void printAsterisks(int numberOfAsterisks) {
+    private static String asterisks(int numberOfAsterisks) {
+        StringBuilder asterisks = new StringBuilder();
         for (int i = 0; i < numberOfAsterisks; i++) {
-            System.out.print("*");
+            asterisks.append("*");
         }
+        return asterisks.toString();
     }
 
-    private static void printSpaces(int numberOfSpaces) {
+    private static String spaces(int numberOfSpaces) {
+        StringBuilder spaces = new StringBuilder();
         for (int i = 0; i < numberOfSpaces; i++) {
-            System.out.print(" ");
+            spaces.append(" ");
         }
+        return spaces.toString();
     }
 }
