@@ -3,7 +3,7 @@ package pl.coderstrust.isThatFibonacci;
 import java.util.HashMap;
 
 public class FibonacciChecker {
-    /*public static void main(String[] args) {
+  /*  public static void main(String[] args) {
         for (long i = 0; i <= 1000; i++) {
             if (fibonacciChecker(i)) {
                 System.out.println(i + " is Fibo");
