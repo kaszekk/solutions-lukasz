@@ -2,11 +2,14 @@ package pl.coderstrust.multiplication;
 
 public class MultiplicationTable {
     public static void main(String[] args) {
-        int size = 4;
+        int size = 12;
         printMultiplicationTable(getFormattedStringOutput(getMultiplicationTableValues(size)));
     }
 
     static int[][] getMultiplicationTableValues(int size) {
+        if (size < 0) {
+            throw new IllegalArgumentException("Argument cannot be negative");
+        }
         int[][] multiplicationTable = new int[size + 1][size + 1];
         for (int row = 1; row <= size; row++) {
             for (int col = 1; col <= size; col++) {
@@ -18,20 +21,20 @@ public class MultiplicationTable {
 
     static String[] getFormattedStringOutput(int[][] table) {
         String[] formattedTableRow = new String[table.length];
-        StringBuilder buildedTableRow = new StringBuilder();
+        StringBuilder beingBuiltTableRow = new StringBuilder();
         addTopAndLeftBorders(table);
-        buildedTableRow.append((String.format("%4s", " ")));
+        beingBuiltTableRow.append((String.format("%4s", " ")));
         for (int col = 1; col < formattedTableRow.length; col++) {
-            buildedTableRow.append(String.format("%4s", +table[0][col]));
+            beingBuiltTableRow.append(String.format("%4s", +table[0][col]));
         }
-        formattedTableRow[0] = buildedTableRow.toString();
+        formattedTableRow[0] = beingBuiltTableRow.toString();
         for (int row = 1; row < table.length; row++) {
             {
-                buildedTableRow.delete(0, buildedTableRow.length());
+                beingBuiltTableRow.delete(0, beingBuiltTableRow.length());
                 for (int col = 0; col < table.length; col++) {
-                    buildedTableRow.append(String.format("%4s", +table[row][col]));
+                    beingBuiltTableRow.append(String.format("%4s", +table[row][col]));
                 }
-                formattedTableRow[row] = buildedTableRow.toString();
+                formattedTableRow[row] = beingBuiltTableRow.toString();
             }
         }
         return formattedTableRow;
@@ -44,11 +47,9 @@ public class MultiplicationTable {
     }
 
     private static void addTopAndLeftBorders(int[][] table) {
-        int[][] topAndLeftBorderedTable = new int[table.length][table.length];
-        System.arraycopy(table, 0, topAndLeftBorderedTable, 0, table.length);
-        for (int col = 0; col < topAndLeftBorderedTable.length; col++) {
-            topAndLeftBorderedTable[0][col] = col;
-            topAndLeftBorderedTable[col][0] = col;
+        for (int col = 0; col < table.length; col++) {
+            table[0][col] = col;
+            table[col][0] = col;
         }
     }
 }

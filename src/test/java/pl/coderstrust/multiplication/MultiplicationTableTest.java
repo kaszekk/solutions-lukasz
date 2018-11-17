@@ -1,54 +1,62 @@
 package pl.coderstrust.multiplication;
 
-import junitparams.JUnitParamsRunner;
-import junitparams.Parameters;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
-import org.junit.runner.RunWith;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
-@RunWith(JUnitParamsRunner.class)
-public class MultiplicationTableTest {
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
+import java.util.stream.Stream;
 
-    @Test
-    @Parameters(method = "getExpectedParameters")
-    public void shouldReturnCorrectMultiplicationTableList(int size, Object expected) {
-        // When
-        //List<String> input = MultiplicationTable.getResult(size);
-        // Then
-        // assertThat(input, is(expected));
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static pl.coderstrust.multiplication.MultiplicationTable.getMultiplicationTableValues;
+
+@DisplayName("Should pass the method parameters provided by the multiplicationProvider() method")
+class MethodSourceExampleTest {
+
+    @DisplayName("Should calculate the correct multiplication")
+    @ParameterizedTest(name = "{index} => a={0}, b={1}, a*b={2}")
+    @MethodSource("multiplicationProvider")
+    void shouldCalculateMultiplication(int a, int b, int c) {
+
+        //Given
+        int size = 4;
+        int expected = c;
+
+        //When
+        int[][] input = getMultiplicationTableValues(size);
+
+        //Then
+        assertThat(input[a][b], is(expected));
     }
 
-    private Object[] getExpectedParameters() {
-        return new Object[]{
-                new Object[]{0, new ArrayList<>(Arrays.asList("    "))},
-                new Object[]{1, new ArrayList<>(Arrays.asList(
-                        "       1",
-                        "   1   1"))},
-
-                new Object[]{2, new ArrayList<>(Arrays.asList(
-                        "       1   2",
-                        "   1   1   2",
-                        "   2   2   4"))},
-
-                new Object[]{4, new ArrayList<>(Arrays.asList(
-                        "       1   2   3   4",
-                        "   1   1   2   3   4",
-                        "   2   2   4   6   8",
-                        "   3   3   6   9  12",
-                        "   4   4   8  12  16"))}
-        };
+    private static Stream<Arguments> multiplicationProvider() {
+        return Stream.of(
+                Arguments.of(0, 0, 0),
+                Arguments.of(4, 0, 0),
+                Arguments.of(1, 1, 1),
+                Arguments.of(2, 1, 2),
+                Arguments.of(3, 2, 6),
+                Arguments.of(3, 4, 12),
+                Arguments.of(4, 4, 16),
+                Arguments.of(4, 3, 12),
+                Arguments.of(2, 2, 4),
+                Arguments.of(3, 3, 9)
+        );
     }
 
-    @Test
-    public void shouldThrowExceptionForInvalidArgument() {
-        thrown.expect(IllegalArgumentException.class);
-        thrown.expectMessage("Size argument cannot be negative");
-        //  MultiplicationTable.getResult(-1);
+    class ExceptionTesting {
+        //  @Test
+        public void shouldThrowIllegalArgumentExceptionForNegativeSize() {
+            assertThrows(IllegalArgumentException.class,
+                    () -> {
+                        //int size = -1;
+                        getMultiplicationTableValues(-1);
+                        //do whatever you want to do here
+                        //ex : objectName.thisMethodShoulThrowNullPointerExceptionForNullParameter(null);
+                    });
+        }
     }
 }
