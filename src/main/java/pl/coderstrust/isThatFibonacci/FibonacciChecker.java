@@ -14,6 +14,9 @@ public class FibonacciChecker {
     private static HashMap<Long, Boolean> cache = new HashMap<>();
 
     public static boolean fibonacciChecker(Long number) {
+        if (number < 0) {
+            throw new IllegalArgumentException("Argument cannot be negative");
+        }
 
         if (cache.containsKey(number)) {
             return cache.get(number);
