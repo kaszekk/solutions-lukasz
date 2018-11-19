@@ -2,7 +2,7 @@ package pl.coderstrust.multiplication;
 
 public class MultiplicationTable {
     public static void main(String[] args) {
-        int size = 2;
+        int size = 4;
         printMultiplicationTable(getFormattedStringOutput(getMultiplicationTableValues(size)));
     }
 
