@@ -20,15 +20,15 @@ public class ChristmasTreeTest {
     public ExpectedException thrown = ExpectedException.none();
 
     @Test
-    @Parameters(method = "getExpectedParameters")
-    public void shouldReturnCorrectMultiplicationTableList(int size, Object expected) {
+    @Parameters(method = "getExpectedChristmasTreeParameters")
+    public void shouldReturnCorrectChristmasTreeFormattedOutputInList(int size, Object expected) {
         // When
         List<String> input = ChristmasTree.getResult(size);
         // Then
         assertThat(input, is(expected));
     }
 
-    private Object[] getExpectedParameters() {
+    private Object[] getExpectedChristmasTreeParameters() {
         return new Object[]{
                 new Object[]{0, new ArrayList<>(Arrays.asList("**"))},
                 new Object[]{1, new ArrayList<>(Arrays.asList(
@@ -48,7 +48,7 @@ public class ChristmasTreeTest {
     }
 
     @Test
-    public void shouldThrowExceptionForInvalidArgument() {
+    public void shouldThrowExceptionForNegativeSize() {
         thrown.expect(IllegalArgumentException.class);
         thrown.expectMessage("Argument cannot be negative");
         ChristmasTree.getResult(-1);

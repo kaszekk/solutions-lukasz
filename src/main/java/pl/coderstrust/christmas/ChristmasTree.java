@@ -15,16 +15,16 @@ public class ChristmasTree {
         List<String> ChristmasTreeRow = new ArrayList<>();
         StringBuilder christmasTreeItem = new StringBuilder();
         for (int i = 0; i < heightOfTree; i++) {
-            christmasTreeItem.append(spaces(heightOfTree - i)).append(asterisks(2 * i + 1));
+            christmasTreeItem.append(includeSpaces(heightOfTree - i)).append(includeAsterisks(2 * i + 1));
             ChristmasTreeRow.add(christmasTreeItem.toString());
             christmasTreeItem.delete(0, christmasTreeItem.length());
         }
-        christmasTreeItem.append(spaces(heightOfTree - 1)).append(asterisks(2));
+        christmasTreeItem.append(includeSpaces(heightOfTree - 1)).append(includeAsterisks(2));
         ChristmasTreeRow.add(christmasTreeItem.toString());
         return ChristmasTreeRow;
     }
 
-    private static String asterisks(int numberOfAsterisks) {
+    private static String includeAsterisks(int numberOfAsterisks) {
         StringBuilder asterisks = new StringBuilder();
         for (int i = 0; i < numberOfAsterisks; i++) {
             asterisks.append("*");
@@ -32,7 +32,7 @@ public class ChristmasTree {
         return asterisks.toString();
     }
 
-    private static String spaces(int numberOfSpaces) {
+    private static String includeSpaces(int numberOfSpaces) {
         StringBuilder spaces = new StringBuilder();
         for (int i = 0; i < numberOfSpaces; i++) {
             spaces.append(" ");
