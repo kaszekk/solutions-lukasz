@@ -48,6 +48,24 @@ public class ChristmasTreeTest {
     }
 
     @Test
+    @Parameters(method = "getExpectedChristmasTreeNumberOfRowsForGivenSize")
+    public void shouldProvideExpectedChristmasTreeNumberOfRowsForGivenSize(int size, Object expected) {
+        // When
+        int input = ChristmasTree.getResult(size).size();
+        // Then
+        assertThat(input, is(expected));
+    }
+
+    private Object[] getExpectedChristmasTreeNumberOfRowsForGivenSize() {
+        return new Object[]{
+                new Object[]{0, 1},
+                new Object[]{1, 2},
+                new Object[]{6, 7},
+                new Object[]{12, 13}
+        };
+    }
+
+    @Test
     public void shouldThrowExceptionForNegativeSize() {
         thrown.expect(IllegalArgumentException.class);
         thrown.expectMessage("Argument cannot be negative");
