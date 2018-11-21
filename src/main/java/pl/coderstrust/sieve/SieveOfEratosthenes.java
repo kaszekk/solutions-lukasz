@@ -1,7 +1,7 @@
 package pl.coderstrust.sieve;
 
 public class SieveOfEratosthenes {
-    private static int notPrime = 0;
+    final private static int NOT_PRIME = 0;
 
     static int[] sieve(int maximumNumber) {
         int[] array = generateSequenceOfNumbers(maximumNumber);
@@ -12,7 +12,7 @@ public class SieveOfEratosthenes {
     private static void filterPrimes(int maximumNumber, int[] array) {
         for (int multiplicator = 2; multiplicator <= maximumNumber; multiplicator++) {
             for (int sieveNumber = 2; sieveNumber * multiplicator <= maximumNumber; sieveNumber++) {
-                array[sieveNumber * multiplicator] = notPrime;
+                array[sieveNumber * multiplicator] = NOT_PRIME;
             }
         }
     }
@@ -20,7 +20,7 @@ public class SieveOfEratosthenes {
     private static int[] getPrimesArray(int[] array) {
         int[] primaryNumbersArray = new int[getPrimaryNumbersCount(array)];
         for (int i = 0, j = 0; i < array.length; i++) {
-            if (array[i] != notPrime) {
+            if (array[i] != NOT_PRIME) {
                 primaryNumbersArray[j++] = array[i];
             }
         }
@@ -30,7 +30,7 @@ public class SieveOfEratosthenes {
     private static int getPrimaryNumbersCount(int[] array) {
         int primaryNumbersCounter = 0;
         for (int element : array) {
-            if (element != notPrime) {
+            if (element != NOT_PRIME) {
                 primaryNumbersCounter++;
             }
         }
