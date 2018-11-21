@@ -20,7 +20,7 @@ public class ChristmasTreeTest {
     public ExpectedException thrown = ExpectedException.none();
 
     @Test
-    @Parameters(method = "getExpectedChristmasTreeParameters")
+    @Parameters(method = "paramsForChristmasTreeFormat")
     public void shouldReturnCorrectChristmasTreeFormattedOutputInList(int size, Object expected) {
         // When
         List<String> input = ChristmasTree.getResult(size);
@@ -28,7 +28,7 @@ public class ChristmasTreeTest {
         assertThat(input, is(expected));
     }
 
-    private Object[] getExpectedChristmasTreeParameters() {
+    private Object[] paramsForChristmasTreeFormat() {
         return new Object[]{
                 new Object[]{0, new ArrayList<>(Arrays.asList("**"))},
                 new Object[]{1, new ArrayList<>(Arrays.asList(
@@ -48,15 +48,17 @@ public class ChristmasTreeTest {
     }
 
     @Test
-    @Parameters(method = "getExpectedChristmasTreeNumberOfRowsForGivenSize")
-    public void shouldProvideExpectedChristmasTreeNumberOfRowsForGivenSize(int size, Object expected) {
+    @Parameters(method = "paramsForChristmasTreeNumberOfRowsForGivenSize")
+    public void shouldReturnExpectedChristmasTreeNumberOfRowsForGivenSize(int size, Object expected) {
+
         // When
         int input = ChristmasTree.getResult(size).size();
+
         // Then
         assertThat(input, is(expected));
     }
 
-    private Object[] getExpectedChristmasTreeNumberOfRowsForGivenSize() {
+    private Object[] paramsForChristmasTreeNumberOfRowsForGivenSize() {
         return new Object[]{
                 new Object[]{0, 1},
                 new Object[]{1, 2},
