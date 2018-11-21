@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static pl.coderstrust.multiplication.MultiplicationTable.getFormattedStringOutput;
+import static pl.coderstrust.multiplication.MultiplicationTable.getFormattedOutput;
 import static pl.coderstrust.multiplication.MultiplicationTable.getMultiplicationTableValues;
 
 @DisplayName("MultiplicationTable test ")
@@ -53,7 +53,7 @@ class MultiplicationTest {
     void shouldReturnCorrectlyFormattedMultiplicationTableForGivenSize(int size, String[] expected) {
 
         //When
-        String[] input = getFormattedStringOutput(getMultiplicationTableValues(size));
+        String[] input = getFormattedOutput(getMultiplicationTableValues(size));
 
         //Then
         assertThat(input, is(expected));
