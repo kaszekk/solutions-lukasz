@@ -17,8 +17,8 @@ import static pl.coderstrust.multiplication.MultiplicationTable.getMultiplicatio
 @DisplayName("MultiplicationTable test ")
 class MultiplicationTest {
 
-    @DisplayName("Should calculate the correct multiplicationTable")
-    @ParameterizedTest(name = "{index} => a={0},   b={1},   c=a*b={2}")
+    @DisplayName("Should calculate the correct multiplicationTable values a * b = expected")
+    @ParameterizedTest(name = "{index} => a={0},   b={1},   expected={2}")
     @MethodSource("paramsForMultiplicationTableValues")
     void shouldReturnCorrectMultiplicationResult(int a, int b, int expected) {
 
@@ -48,7 +48,7 @@ class MultiplicationTest {
     }
 
     @DisplayName("Should return correctly formatted MultiplicationTable for given size")
-    @ParameterizedTest(name = "{index} => size={0},   output={1}")
+    @ParameterizedTest(name = "{index} => size={0},   expected={1}")
     @MethodSource("paramsForMultiplicationTableFormattedOutput")
     void shouldReturnCorrectlyFormattedMultiplicationTableForGivenSize(int size, String[] expected) {
 
