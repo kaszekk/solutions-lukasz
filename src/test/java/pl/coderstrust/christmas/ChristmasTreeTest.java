@@ -49,7 +49,7 @@ public class ChristmasTreeTest {
 
     @Test
     @Parameters(method = "paramsForChristmasTreeNumberOfRowsForGivenSize")
-    public void shouldReturnExpectedChristmasTreeNumberOfRowsForGivenSize(int size, Object expected) {
+    public void shouldReturnChristmasTreeNumberOfRowsForGivenSize(int size, Object expected) {
 
         // When
         int input = ChristmasTree.getResult(size).size();
