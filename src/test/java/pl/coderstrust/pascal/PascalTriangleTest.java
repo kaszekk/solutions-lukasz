@@ -17,10 +17,8 @@ import static pl.coderstrust.pascal.PascalTriangle.getFormattedOutput;
 @DisplayName("PascalTriangle test ")
 class PascalTriangleTest {
 
-
-    @DisplayName("Should calculate the correct values for given [row][column] of Pascal Triangle")
+    @DisplayName("Should calculate the correct values for given [row] [column] of Pascal Triangle")
     @ParameterizedTest(name = "{index} => row={0}, col={1}, expected={2}")
-
     @MethodSource("parametersForPascalTriangleValues")
     void shouldReturnCorrectPascalTriangleValueForGivenRowAndColumn(int row, int col, int expected) {
 
@@ -33,7 +31,6 @@ class PascalTriangleTest {
         //Then
         assertThat(input[row][col], is(expected));
     }
-
 
     private static Stream<Arguments> parametersForPascalTriangleValues() {
         return Stream.of(
@@ -50,9 +47,9 @@ class PascalTriangleTest {
     }
 
     @DisplayName("Should return correctly formatted PascalTriangle for given numberOfRows")
-    @ParameterizedTest(name = "{index} => size={0}, output={1}")
+    @ParameterizedTest(name = "{index} => numberOfRows={0}, expected={1}")
     @MethodSource("parametersForPascalTriangleFormattedOutput")
-    void shouldReturnCorrectlyFormattedMultiplicationTableForGivenSize(int numberOfRows, String[] expected) {
+    void shouldReturnCorrectlyPascalTriangleForGivenSize(int numberOfRows, String[] expected) {
 
         //When
 
