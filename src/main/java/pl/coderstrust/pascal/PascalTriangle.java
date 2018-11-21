@@ -2,10 +2,13 @@ package pl.coderstrust.pascal;
 
 public class PascalTriangle {
     public static void main(String[] args) {
-        printPascalTriangle(5);
+        printPascalTriangle(0);
     }
 
-    private static int[][] calculateValues(int numberOfRows) {
+    static int[][] calculateValues(int numberOfRows) {
+        if (numberOfRows <= 0) {
+            throw new IllegalArgumentException("Argument must be a positive integer");
+        }
         int[][] triangleValues = new int[numberOfRows][];
         createRightSizedArraysForSubsequentRowsOfTriangle(numberOfRows, triangleValues);
         for (int row = 0; row < numberOfRows; row++) {
@@ -18,21 +21,31 @@ public class PascalTriangle {
         return triangleValues;
     }
 
-    private static void createRightSizedArraysForSubsequentRowsOfTriangle(int numberOfRows, int[][] triangleValues) {
-        for (int i = 0; i < numberOfRows; i++) {
-            triangleValues[i] = new int[i + 1];
+    static String[] getFormattedOutput(int[][] values) {
+        String[] formattedOutput = new String[values.length];
+        StringBuilder sb = new StringBuilder();
+        for (int row = 0; row < values.length; row++) {
+            final int rowIndentation = (values.length - row) * 2;
+            sb.append(String.format("%" + rowIndentation + "s", ""));
+            for (int col = 0; col < values[row].length; col++) {
+                sb.append(String.format("%4d", values[row][col]));
+            }
+            formattedOutput[row] = sb.toString();
+            sb.delete(0, sb.length());
         }
+        return formattedOutput;
     }
 
     private static void printPascalTriangle(int numberOfRows) {
-        int[][] triangleValues = calculateValues(numberOfRows);
-        for (int row = 0; row < triangleValues.length; row++) {
-            final int rowIndentation = (numberOfRows - row) * 2;
-            System.out.format("%" + rowIndentation + "s", "");
-            for (int col = 0; col < triangleValues[row].length; col++) {
-                System.out.format("%4d", triangleValues[row][col]);
-            }
-            System.out.println();
+        String[] formattedOutput = getFormattedOutput(calculateValues(numberOfRows));
+        for (String element : formattedOutput) {
+            System.out.println(element);
+        }
+    }
+
+    private static void createRightSizedArraysForSubsequentRowsOfTriangle(int numberOfRows, int[][] triangleValues) {
+        for (int i = 0; i < numberOfRows; i++) {
+            triangleValues[i] = new int[i + 1];
         }
     }
 }
