@@ -15,17 +15,20 @@ import static pl.coderstrust.isThatFibonacci.FibonacciChecker.fibonacciChecker;
 class FibonacciCheckerTest {
 
     @ParameterizedTest
-    @MethodSource("getFiboParameters")
-    void testWithSimpleMethodSource(long n, boolean isFibonacci) {
+    @MethodSource("paramsForFibonacciChecker")
+    void shouldReturnTrueIfGivenNumberIsFibonacci(long n, boolean isFibonacci) {
+
         //Given
+        boolean expected = isFibonacci;
+
+        //When
         boolean input = fibonacciChecker(n);
 
-        boolean expected = isFibonacci;
         //Then
         assertThat(input, is(expected));
     }
 
-    private static Stream<Arguments> getFiboParameters() {
+    private static Stream<Arguments> paramsForFibonacciChecker() {
         return Stream.of(
                 Arguments.of(1, true),
                 Arguments.of(2, true),
@@ -38,15 +41,10 @@ class FibonacciCheckerTest {
     }
 
     @Test
-    public void whenExceptionThrown_thenAssertionSucceeds() {
+    void shouldThrowIllegalArgumentExceptionForNegativeArgument() {
         long n = -1;
-        String expected = "Argument cannot be negative";
-        String actual;
-        assertThrows(IllegalArgumentException.class, () -> {
+        Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
             fibonacciChecker(n);
-            IllegalArgumentException ex;
-            assertThat(ex.getLocalizedMessage());
-            ///;
         });
     }
 }
