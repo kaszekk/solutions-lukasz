@@ -19,11 +19,11 @@ class MultiplicationTest {
 
     @DisplayName("Should calculate the correct multiplicationTable")
     @ParameterizedTest(name = "{index} => a={0},   b={1},   c=a*b={2}")
-    @MethodSource("provideExpectedMultiplicationValuesForGivenNumbers")
+    @MethodSource("paramsForMultiplicationTableValues")
     void shouldReturnCorrectMultiplicationResult(int a, int b, int expected) {
 
         //Given
-        int size = 12;
+        int size = a >= b ? a : b;
 
         //When
         int[][] input = getMultiplicationTableValues(size);
@@ -32,7 +32,7 @@ class MultiplicationTest {
         assertThat(input[a][b], is(expected));
     }
 
-    private static Stream<Arguments> provideExpectedMultiplicationValuesForGivenNumbers() {
+    private static Stream<Arguments> paramsForMultiplicationTableValues() {
         return Stream.of(
                 Arguments.of(0, 0, 0),
                 Arguments.of(4, 0, 0),
@@ -49,7 +49,7 @@ class MultiplicationTest {
 
     @DisplayName("Should return correctly formatted MultiplicationTable for given size")
     @ParameterizedTest(name = "{index} => size={0},   output={1}")
-    @MethodSource("provideExpectedMultiplicationTableFormattedOutputForGivenSize")
+    @MethodSource("paramsForMultiplicationTableFormattedOutput")
     void shouldReturnCorrectlyFormattedMultiplicationTableForGivenSize(int size, String[] expected) {
 
         //When
@@ -59,7 +59,7 @@ class MultiplicationTest {
         assertThat(input, is(expected));
     }
 
-    private static Stream<Object> provideExpectedMultiplicationTableFormattedOutputForGivenSize() {
+    private static Stream<Object> paramsForMultiplicationTableFormattedOutput() {
         return Stream.of(
                 Arguments.of(0,
                         new String[]{"    "}),

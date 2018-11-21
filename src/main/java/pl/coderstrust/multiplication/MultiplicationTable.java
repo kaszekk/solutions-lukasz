@@ -21,20 +21,20 @@ public class MultiplicationTable {
 
     static String[] getFormattedStringOutput(int[][] table) {
         String[] formattedTableRow = new String[table.length];
-        StringBuilder beingBuiltTableRow = new StringBuilder();
+        StringBuilder tableRowBuilder = new StringBuilder();
         addTopAndLeftBorders(table);
-        beingBuiltTableRow.append((String.format("%4s", " ")));
+        tableRowBuilder.append((String.format("%4s", " ")));
         for (int col = 1; col < formattedTableRow.length; col++) {
-            beingBuiltTableRow.append(String.format("%4s", +table[0][col]));
+            tableRowBuilder.append(String.format("%4s", +table[0][col]));
         }
-        formattedTableRow[0] = beingBuiltTableRow.toString();
+        formattedTableRow[0] = tableRowBuilder.toString();
         for (int row = 1; row < table.length; row++) {
             {
-                beingBuiltTableRow.delete(0, beingBuiltTableRow.length());
+                tableRowBuilder.delete(0, tableRowBuilder.length());
                 for (int col = 0; col < table.length; col++) {
-                    beingBuiltTableRow.append(String.format("%4s", +table[row][col]));
+                    tableRowBuilder.append(String.format("%4s", +table[row][col]));
                 }
-                formattedTableRow[row] = beingBuiltTableRow.toString();
+                formattedTableRow[row] = tableRowBuilder.toString();
             }
         }
         return formattedTableRow;
