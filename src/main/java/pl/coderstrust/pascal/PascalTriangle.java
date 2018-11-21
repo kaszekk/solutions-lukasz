@@ -11,6 +11,11 @@ public class PascalTriangle {
         }
         int[][] triangleValues = new int[numberOfRows][];
         createRightSizedArraysForSubsequentRowsOfTriangle(numberOfRows, triangleValues);
+        calculateAndSaveValues(numberOfRows, triangleValues);
+        return triangleValues;
+    }
+
+    private static void calculateAndSaveValues(int numberOfRows, int[][] triangleValues) {
         for (int row = 0; row < numberOfRows; row++) {
             int value = 1;
             for (int col = 0; col <= triangleValues[row].length - 1; col++) {
@@ -18,7 +23,6 @@ public class PascalTriangle {
                 value = value * (row - col) / (col + 1);
             }
         }
-        return triangleValues;
     }
 
     static String[] getFormattedOutput(int[][] values) {

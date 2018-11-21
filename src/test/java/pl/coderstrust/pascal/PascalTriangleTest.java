@@ -21,11 +21,11 @@ class PascalTriangleTest {
     @DisplayName("Should calculate the correct values for given [row][column] of Pascal Triangle")
     @ParameterizedTest(name = "{index} => row={0}, col={1}, expected={2}")
 
-    @MethodSource("provideExpectedPascalTriangleValuesForGivenRowAndColumn")
+    @MethodSource("parametersForPascalTriangleValues")
     void shouldReturnCorrectPascalTriangleValueForGivenRowAndColumn(int row, int col, int expected) {
 
         //Given
-        int numberOfRows = 12;
+        int numberOfRows = row + 1;
 
         //When
         int[][] input = calculateValues(numberOfRows);
@@ -35,7 +35,7 @@ class PascalTriangleTest {
     }
 
 
-    private static Stream<Arguments> provideExpectedPascalTriangleValuesForGivenRowAndColumn() {
+    private static Stream<Arguments> parametersForPascalTriangleValues() {
         return Stream.of(
                 Arguments.of(0, 0, 1),
                 Arguments.of(4, 0, 1),
@@ -51,7 +51,7 @@ class PascalTriangleTest {
 
     @DisplayName("Should return correctly formatted PascalTriangle for given numberOfRows")
     @ParameterizedTest(name = "{index} => size={0}, output={1}")
-    @MethodSource("provideExpectedMultiplicationTableFormattedOutputForGivenSize")
+    @MethodSource("parametersForPascalTriangleFormattedOutput")
     void shouldReturnCorrectlyFormattedMultiplicationTableForGivenSize(int numberOfRows, String[] expected) {
 
         //When
@@ -63,7 +63,7 @@ class PascalTriangleTest {
         assertThat(input, is(expected));
     }
 
-    private static Stream<Object> provideExpectedMultiplicationTableFormattedOutputForGivenSize() {
+    private static Stream<Object> parametersForPascalTriangleFormattedOutput() {
         return Stream.of(
                 Arguments.of(1,
                         new String[]{"     1"}),
@@ -89,4 +89,3 @@ class PascalTriangleTest {
                 });
     }
 }
-
