@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static pl.coderstrust.pascal.PascalTriangle.calculateValues;
+import static pl.coderstrust.pascal.PascalTriangle.getCalculatedValues;
 import static pl.coderstrust.pascal.PascalTriangle.getFormattedOutput;
 
 @DisplayName("PascalTriangle test ")
@@ -26,7 +26,7 @@ class PascalTriangleTest {
         int numberOfRows = row + 1;
 
         //When
-        int[][] input = calculateValues(numberOfRows);
+        int[][] input = getCalculatedValues(numberOfRows);
 
         //Then
         assertThat(input[row][col], is(expected));
@@ -53,7 +53,7 @@ class PascalTriangleTest {
 
         //When
 
-        String[] input = getFormattedOutput(calculateValues(numberOfRows));
+        String[] input = getFormattedOutput(getCalculatedValues(numberOfRows));
 
         //Then
 
@@ -82,7 +82,7 @@ class PascalTriangleTest {
         assertThrows(IllegalArgumentException.class,
                 () -> {
                     int numberOfRows = -1;
-                    calculateValues(numberOfRows);
+                    getCalculatedValues(numberOfRows);
                 });
     }
 }
