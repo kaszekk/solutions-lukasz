@@ -10,19 +10,18 @@ import java.util.stream.Stream;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static pl.coderstrust.isThatFibonacci.FibonacciChecker.fibonacciChecker;
 
 class FibonacciCheckerTest {
 
     @ParameterizedTest
     @MethodSource("paramsForFibonacciChecker")
     void shouldReturnTrueIfGivenNumberIsFibonacci(long n, boolean isFibonacci) {
-
+        FibonacciChecker fibCheck = new FibonacciChecker();
         //Given
         boolean expected = isFibonacci;
 
         //When
-        boolean input = fibonacciChecker(n);
+        boolean input = fibCheck.fibonacciChecker(n);
 
         //Then
         assertThat(input, is(expected));
@@ -43,8 +42,9 @@ class FibonacciCheckerTest {
     @Test
     void shouldThrowIllegalArgumentExceptionForNegativeArgument() {
         long n = -1;
+        FibonacciChecker fibCheck = new FibonacciChecker();
         Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
-            fibonacciChecker(n);
+            fibCheck.fibonacciChecker(n);
         });
     }
 }

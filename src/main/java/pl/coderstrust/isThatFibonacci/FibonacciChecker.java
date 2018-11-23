@@ -4,9 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FibonacciChecker {
-    private static Map<Long, Boolean> cache = new HashMap<>();
+    private Map<Long, Boolean> cache = new HashMap<>();
 
-    public static boolean fibonacciChecker(Long number) {
+    boolean fibonacciChecker(Long number) {
         if (number < 0) {
             throw new IllegalArgumentException("Argument cannot be negative");
         }
@@ -21,7 +21,7 @@ public class FibonacciChecker {
         }
     }
 
-    private static boolean isPerfectSquare(long number) {
+    private boolean isPerfectSquare(long number) {
         double sqrt = Math.sqrt(number);
         return sqrt == (long) sqrt;
     }
