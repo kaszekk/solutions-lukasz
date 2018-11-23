@@ -21,7 +21,7 @@ class FibonacciCheckerTest {
         boolean expected = isFibonacci;
 
         //When
-        boolean input = fibCheck.fibonacciChecker(n);
+        boolean input = fibCheck.isFibonacciNumber(n);
 
         //Then
         assertThat(input, is(expected));
@@ -43,8 +43,6 @@ class FibonacciCheckerTest {
     void shouldThrowIllegalArgumentExceptionForNegativeArgument() {
         long n = -1;
         FibonacciChecker fibCheck = new FibonacciChecker();
-        Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
-            fibCheck.fibonacciChecker(n);
-        });
+        assertThrows(IllegalArgumentException.class, () -> fibCheck.isFibonacciNumber(n));
     }
 }

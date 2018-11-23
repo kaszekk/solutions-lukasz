@@ -6,19 +6,18 @@ import java.util.Map;
 public class FibonacciChecker {
     private Map<Long, Boolean> cache = new HashMap<>();
 
-    boolean fibonacciChecker(Long number) {
+    boolean isFibonacciNumber(long number) {
         if (number < 0) {
-            throw new IllegalArgumentException("Argument cannot be negative");
+            throw new IllegalArgumentException("Number cannot be negative");
         }
         if (cache.containsKey(number)) {
             return cache.get(number);
-        } else if ((isPerfectSquare(5 * number * number - 4) | isPerfectSquare(5 * number * number + 4))) {
-            cache.put(number, true);
-            return true;
-        } else {
-            cache.put(number, false);
-            return false;
         }
+        long formula1 = 5 * number * number - 4;
+        long formula2 = 5 * number * number + 4;
+        boolean isFibonacci = isPerfectSquare(formula1) || isPerfectSquare(formula2);
+        cache.put(number, isFibonacci);
+        return isFibonacci;
     }
 
     private boolean isPerfectSquare(long number) {
