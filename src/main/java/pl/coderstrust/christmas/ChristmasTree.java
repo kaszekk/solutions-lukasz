@@ -5,7 +5,8 @@ import java.util.List;
 
 public class ChristmasTree {
     public static void main(String[] args) {
-        System.out.println(getResult(3));
+        System.out.println(getResult(5));
+        printChristmasTree(5);
     }
 
     public static List<String> getResult(int heightOfTree) {
@@ -38,5 +39,12 @@ public class ChristmasTree {
             spaces.append(" ");
         }
         return spaces.toString();
+    }
+
+    private static void printChristmasTree(int numberOfRows) {
+        List<String> christmasOutput = getResult(numberOfRows);
+        for (String element : christmasOutput) {
+            System.out.println(element);
+        }
     }
 }
