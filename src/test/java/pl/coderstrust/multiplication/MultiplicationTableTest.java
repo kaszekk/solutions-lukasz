@@ -10,12 +10,45 @@ import java.util.stream.Stream;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static pl.coderstrust.multiplication.MultiplicationTable.getFormattedOutput;
 import static pl.coderstrust.multiplication.MultiplicationTable.getMultiplicationTableValues;
 
 @DisplayName("MultiplicationTable test ")
 class MultiplicationTest {
+    @DisplayName("Should return multiplication result as int [][] of correct dimensions ")
+    @ParameterizedTest(name = "{index} => a={0},   b={1},   expected_a={2},     expected_b={2} ")
+    @MethodSource("paramsForAreDimensionsCorrect")
+    void shouldReturnMultiplicationTableResultAsArrayOfArrayOfCorrectDimensions(int a, int b, int expected_a, int expected_b) {
+
+        //Given
+        int size = a >= b ? a : b;
+        int[][] returned = getMultiplicationTableValues(size);
+        int resultDimension_a = returned.length - 1;
+        int resultDimension_b = returned[b].length - 1;
+
+        //When
+        boolean areDimensionsCorrect = (resultDimension_a == expected_a) && (resultDimension_b == expected_b);
+
+        //Then
+        assertTrue(areDimensionsCorrect);
+    }
+
+    private static Stream<Arguments> paramsForAreDimensionsCorrect() {
+        return Stream.of(
+                Arguments.of(0, 0, 0, 0),
+                Arguments.of(4, 0, 4, 4),
+                Arguments.of(1, 1, 1, 1),
+                Arguments.of(2, 1, 2, 2),
+                Arguments.of(3, 2, 3, 3),
+                Arguments.of(3, 4, 4, 4),
+                Arguments.of(4, 4, 4, 4),
+                Arguments.of(4, 3, 4, 4),
+                Arguments.of(2, 2, 2, 2),
+                Arguments.of(3, 3, 3, 3)
+        );
+    }
 
     @DisplayName("Should calculate the correct multiplicationTable values a * b = expected")
     @ParameterizedTest(name = "{index} => a={0},   b={1},   expected={2}")
@@ -26,10 +59,10 @@ class MultiplicationTest {
         int size = a >= b ? a : b;
 
         //When
-        int[][] input = getMultiplicationTableValues(size);
+        int[][] result = getMultiplicationTableValues(size);
 
         //Then
-        assertThat(input[a][b], is(expected));
+        assertThat(result[a][b], is(expected));
     }
 
     private static Stream<Arguments> paramsForMultiplicationTableValues() {
@@ -53,10 +86,10 @@ class MultiplicationTest {
     void shouldReturnCorrectlyFormattedMultiplicationTableForGivenSize(int size, String[] expected) {
 
         //When
-        String[] input = getFormattedOutput(getMultiplicationTableValues(size));
+        String[] result = getFormattedOutput(getMultiplicationTableValues(size));
 
         //Then
-        assertThat(input, is(expected));
+        assertThat(result, is(expected));
     }
 
     private static Stream<Object> paramsForMultiplicationTableFormattedOutput() {

@@ -40,7 +40,7 @@ public class MultiplicationTable {
         return formattedTableRow;
     }
 
-    static void printMultiplicationTable(String[] table) {
+    private static void printMultiplicationTable(String[] table) {
         for (String element : table) {
             System.out.println(element);
         }
