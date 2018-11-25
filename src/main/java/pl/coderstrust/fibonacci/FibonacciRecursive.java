@@ -2,7 +2,7 @@ package pl.coderstrust.fibonacci;
 
 public class FibonacciRecursive {
     static long fibonacci(int fibonacciNumberInOrder) {
-        if (fibonacciNumberInOrder < 0) {
+        if (fibonacciNumberInOrder <= 0) {
             throw new IllegalArgumentException("fibonacciNumberInOrder argument must be greater than zero");
         }
         if (fibonacciNumberInOrder <= 2) {
