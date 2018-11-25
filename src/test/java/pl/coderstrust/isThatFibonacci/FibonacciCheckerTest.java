@@ -13,11 +13,11 @@ class FibonacciCheckerTest {
 
     @ParameterizedTest
     @MethodSource("paramsForFibonacciNumber")
-    void shouldReturnTrueForFibonacciNumber(long n, boolean isFibonacci) {
+    void shouldReturnTrueForFibonacciNumber(long number) {
         FibonacciChecker fibCheck = new FibonacciChecker();
 
         //When
-        boolean actual = fibCheck.isFibonacciNumber(n);
+        boolean actual = fibCheck.isFibonacciNumber(number);
 
         //Then
         assertTrue(actual);
@@ -25,25 +25,25 @@ class FibonacciCheckerTest {
 
     private static Stream<Arguments> paramsForFibonacciNumber() {
         return Stream.of(
-                Arguments.of(0, true),
-                Arguments.of(1, true),
-                Arguments.of(2, true),
-                Arguments.of(3, true),
-                Arguments.of(5, true),
-                Arguments.of(13, true),
-                Arguments.of(21, true),
-                Arguments.of(34, true),
-                Arguments.of(10946, true)
+                Arguments.of(0),
+                Arguments.of(1),
+                Arguments.of(2),
+                Arguments.of(3),
+                Arguments.of(5),
+                Arguments.of(13),
+                Arguments.of(21),
+                Arguments.of(34),
+                Arguments.of(10946)
         );
     }
 
     @ParameterizedTest
     @MethodSource("paramsForNonFibonacciNumber")
-    void shouldReturnFalseForNonFibonacciNumber(long n, boolean isFibonacci) {
+    void shouldReturnFalseForNonFibonacciNumber(long number) {
         FibonacciChecker fibCheck = new FibonacciChecker();
 
         //When
-        boolean actual = fibCheck.isFibonacciNumber(n);
+        boolean actual = fibCheck.isFibonacciNumber(number);
 
         //Then
         assertFalse(actual);
@@ -51,20 +51,20 @@ class FibonacciCheckerTest {
 
     private static Stream<Arguments> paramsForNonFibonacciNumber() {
         return Stream.of(
-                Arguments.of(4, false),
-                Arguments.of(6, false),
-                Arguments.of(10, false),
-                Arguments.of(15, false),
-                Arguments.of(4180, false),
-                Arguments.of(9180, false),
-                Arguments.of(10947, false)
+                Arguments.of(4),
+                Arguments.of(6),
+                Arguments.of(10),
+                Arguments.of(15),
+                Arguments.of(4180),
+                Arguments.of(9180),
+                Arguments.of(10947)
         );
     }
 
     @Test
     void shouldThrowIllegalArgumentExceptionForNegativeArgument() {
-        long n = -1;
+        long number = -1;
         FibonacciChecker fibCheck = new FibonacciChecker();
-        assertThrows(IllegalArgumentException.class, () -> fibCheck.isFibonacciNumber(n));
+        assertThrows(IllegalArgumentException.class, () -> fibCheck.isFibonacciNumber(number));
     }
 }
