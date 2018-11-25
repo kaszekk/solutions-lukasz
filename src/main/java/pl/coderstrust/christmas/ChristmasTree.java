@@ -5,27 +5,29 @@ import java.util.List;
 
 public class ChristmasTree {
     public static void main(String[] args) {
-        System.out.println(getResult(5));
+        System.out.println(getChristmasTree(5));
         printChristmasTree(5);
     }
 
-    public static List<String> getResult(int heightOfTree) {
+    public static List<String> getChristmasTree(int heightOfTree) {
         if (heightOfTree < 0) {
-            throw new IllegalArgumentException("Argument cannot be negative");
+            throw new IllegalArgumentException("Height of tree cannot be negative");
         }
-        List<String> ChristmasTreeRow = new ArrayList<>();
+        List<String> christmasTree = new ArrayList<>();
         StringBuilder christmasTreeItem = new StringBuilder();
         for (int i = 0; i < heightOfTree; i++) {
-            christmasTreeItem.append(includeSpaces(heightOfTree - i)).append(includeAsterisks(2 * i + 1));
-            ChristmasTreeRow.add(christmasTreeItem.toString());
+            christmasTreeItem.append(getSpaces(heightOfTree - i));
+            christmasTreeItem.append(getAsterisks(2 * i + 1));
+            christmasTree.add(christmasTreeItem.toString());
             christmasTreeItem.delete(0, christmasTreeItem.length());
         }
-        christmasTreeItem.append(includeSpaces(heightOfTree - 1)).append(includeAsterisks(2));
-        ChristmasTreeRow.add(christmasTreeItem.toString());
-        return ChristmasTreeRow;
+        christmasTreeItem.append(getSpaces(heightOfTree - 1));
+        christmasTreeItem.append(getAsterisks(2));
+        christmasTree.add(christmasTreeItem.toString());
+        return christmasTree;
     }
 
-    private static String includeAsterisks(int numberOfAsterisks) {
+    private static String getAsterisks(int numberOfAsterisks) {
         StringBuilder asterisks = new StringBuilder();
         for (int i = 0; i < numberOfAsterisks; i++) {
             asterisks.append("*");
@@ -33,7 +35,7 @@ public class ChristmasTree {
         return asterisks.toString();
     }
 
-    private static String includeSpaces(int numberOfSpaces) {
+    private static String getSpaces(int numberOfSpaces) {
         StringBuilder spaces = new StringBuilder();
         for (int i = 0; i < numberOfSpaces; i++) {
             spaces.append(" ");
@@ -42,7 +44,7 @@ public class ChristmasTree {
     }
 
     private static void printChristmasTree(int numberOfRows) {
-        List<String> christmasOutput = getResult(numberOfRows);
+        List<String> christmasOutput = getChristmasTree(numberOfRows);
         for (String element : christmasOutput) {
             System.out.println(element);
         }

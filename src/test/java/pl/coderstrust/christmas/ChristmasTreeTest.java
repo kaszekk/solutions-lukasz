@@ -23,7 +23,7 @@ public class ChristmasTreeTest {
     @Parameters(method = "paramsForChristmasTreeFormat")
     public void shouldReturnCorrectChristmasTreeFormattedOutputInList(int size, Object expected) {
         // When
-        List<String> input = ChristmasTree.getResult(size);
+        List<String> input = ChristmasTree.getChristmasTree(size);
         // Then
         assertThat(input, is(expected));
     }
@@ -48,29 +48,9 @@ public class ChristmasTreeTest {
     }
 
     @Test
-    @Parameters(method = "paramsForChristmasTreeNumberOfRowsForGivenSize")
-    public void shouldReturnChristmasTreeNumberOfRowsForGivenSize(int size, Object expected) {
-
-        // When
-        int input = ChristmasTree.getResult(size).size();
-
-        // Then
-        assertThat(input, is(expected));
-    }
-
-    private Object[] paramsForChristmasTreeNumberOfRowsForGivenSize() {
-        return new Object[]{
-                new Object[]{0, 1},
-                new Object[]{1, 2},
-                new Object[]{6, 7},
-                new Object[]{12, 13}
-        };
-    }
-
-    @Test
     public void shouldThrowExceptionForNegativeSize() {
         thrown.expect(IllegalArgumentException.class);
-        thrown.expectMessage("Argument cannot be negative");
-        ChristmasTree.getResult(-1);
+        thrown.expectMessage("Height of tree cannot be negative");
+        ChristmasTree.getChristmasTree(-1);
     }
 }
