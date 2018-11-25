@@ -7,7 +7,6 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,30 +19,31 @@ public class ChristmasTreeTest {
     public ExpectedException thrown = ExpectedException.none();
 
     @Test
-    @Parameters(method = "paramsForChristmasTreeFormat")
-    public void shouldReturnCorrectChristmasTreeFormattedOutputInList(int size, Object expected) {
+    @Parameters(method = "correctChristmasTreeArguments")
+    public void shouldReturnCorrectChristmasTree(int size, List<String> expected) {
         // When
         List<String> input = ChristmasTree.getChristmasTree(size);
+
         // Then
         assertThat(input, is(expected));
     }
 
-    private Object[] paramsForChristmasTreeFormat() {
+    private Object[] correctChristmasTreeArguments() {
         return new Object[]{
-                new Object[]{0, new ArrayList<>(Arrays.asList("**"))},
-                new Object[]{1, new ArrayList<>(Arrays.asList(
+                new Object[]{0, Arrays.asList("**")},
+                new Object[]{1, Arrays.asList(
                         " *",
-                        "**"))},
-                new Object[]{2, new ArrayList<>(Arrays.asList(
+                        "**")},
+                new Object[]{2, Arrays.asList(
                         "  *",
                         " ***",
-                        " **"))},
-                new Object[]{4, new ArrayList<>(Arrays.asList(
+                        " **")},
+                new Object[]{4, Arrays.asList(
                         "    *",
                         "   ***",
                         "  *****",
                         " *******",
-                        "   **"))}
+                        "   **")}
         };
     }
 
