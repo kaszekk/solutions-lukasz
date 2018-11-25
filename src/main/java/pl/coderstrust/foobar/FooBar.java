@@ -1,21 +1,26 @@
 package pl.coderstrust.foobar;
 
-public class FooBar {
-    public static void main(String[] args) {
-        foobar();
-    }
+import java.util.ArrayList;
+import java.util.List;
 
-    private static void foobar() {
-        System.out.println(0);
-        for (int i = 1; i <= 100; i++) {
-            System.out.print(i + "\t");
+public class FooBar {
+    public static List<String> getResult(int number) {
+        if (number < 0) {
+            throw new IllegalArgumentException("Number of lines must be greater or equal to zero");
+        }
+        StringBuilder item = new StringBuilder();
+        List<String> result = new ArrayList<>();
+        for (int i = 0; i <= number; i++) {
+            item.append(i);
             if (i % 3 == 0) {
-                System.out.print("Foo");
+                item.append("Foo");
             }
             if (i % 5 == 0) {
-                System.out.print("Bar");
+                item.append("Bar");
             }
-            System.out.println();
+            result.add(item.toString());
+            item.delete(0, item.length());
         }
+        return result;
     }
 }
