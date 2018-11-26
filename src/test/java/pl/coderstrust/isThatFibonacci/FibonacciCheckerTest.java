@@ -14,10 +14,10 @@ class FibonacciCheckerTest {
     @ParameterizedTest
     @MethodSource("paramsForFibonacciNumber")
     void shouldReturnTrueForFibonacciNumber(long number) {
-        FibonacciChecker fibCheck = new FibonacciChecker();
+        FibonacciChecker fibonacciChecker = new FibonacciChecker();
 
         //When
-        boolean actual = fibCheck.isFibonacciNumber(number);
+        boolean actual = fibonacciChecker.isFibonacciNumber(number);
 
         //Then
         assertTrue(actual);
@@ -40,10 +40,10 @@ class FibonacciCheckerTest {
     @ParameterizedTest
     @MethodSource("paramsForNonFibonacciNumber")
     void shouldReturnFalseForNonFibonacciNumber(long number) {
-        FibonacciChecker fibCheck = new FibonacciChecker();
+        FibonacciChecker fibonacciChecker = new FibonacciChecker();
 
         //When
-        boolean actual = fibCheck.isFibonacciNumber(number);
+        boolean actual = fibonacciChecker.isFibonacciNumber(number);
 
         //Then
         assertFalse(actual);
