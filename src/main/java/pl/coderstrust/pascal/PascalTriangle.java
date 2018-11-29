@@ -17,6 +17,7 @@ public class PascalTriangle {
 
     static String[] getFormattedOutput(int[][] values) {
         String[] formattedOutput = new String[values.length];
+        
         StringBuilder sb = new StringBuilder();
         for (int row = 0; row < values.length; row++) {
             final int rowIndentation = (values.length - row) * 2;
