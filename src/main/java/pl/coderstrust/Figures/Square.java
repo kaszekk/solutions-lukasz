@@ -4,7 +4,7 @@ public class Square extends Rectangle implements Figure {
     private double a;
 
     public Square(double a) {
-        super(a,a);
+        super(a, a);
         this.a = a;
     }
 
@@ -15,6 +15,6 @@ public class Square extends Rectangle implements Figure {
 
     @Override
     public double calculateArea() {
-        return a*a;
+        return a * a;
     }
 }
