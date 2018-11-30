@@ -7,7 +7,7 @@ public class PascalTriangle {
 
     static int[][] getCalculatedValues(int numberOfRows) {
         if (numberOfRows <= 0) {
-            throw new IllegalArgumentException("Argument must be a positive integer");
+            throw new IllegalArgumentException("Number of rows must be greater than zero");
         }
         int[][] triangleValues = new int[numberOfRows][];
         createRightSizedArraysForSubsequentRowsOfTriangle(numberOfRows, triangleValues);
@@ -15,7 +15,7 @@ public class PascalTriangle {
         return triangleValues;
     }
 
-    static String[] getFormattedOutput(int[][] values) {
+    static String[] getFormattedOutput(int[][] values) {    ////
         String[] formattedOutput = new String[values.length];
         
         StringBuilder sb = new StringBuilder();
@@ -38,13 +38,13 @@ public class PascalTriangle {
         }
     }
 
-    private static void createRightSizedArraysForSubsequentRowsOfTriangle(int numberOfRows, int[][] triangleValues) {
+    private static void createRightSizedArraysForSubsequentRowsOfTriangle(int numberOfRows, int[][] triangleValues) {   //////
         for (int i = 0; i < numberOfRows; i++) {
             triangleValues[i] = new int[i + 1];
         }
     }
 
-    private static void calculateAndSaveValues(int numberOfRows, int[][] triangleValues) {
+    private static void calculateAndSaveValues(int numberOfRows, int[][] triangleValues) {    ////////
         for (int row = 0; row < numberOfRows; row++) {
             int value = 1;
             for (int col = 0; col <= triangleValues[row].length - 1; col++) {
