@@ -86,7 +86,7 @@ class MultiplicationTest {
 
     @DisplayName("Should return correctly formatted MultiplicationTable for given size")
     @ParameterizedTest(name = "{index} => size={0},   expected={1}")
-    @MethodSource("paramsForMultiplicationTableFormattedOutput")
+    @MethodSource("paramsForTestFormatOfMultiplicationTable")
     void testFormatOfMultiplicationTable(int size, String[] expected) {
 
         //When
@@ -96,7 +96,7 @@ class MultiplicationTest {
         assertArrayEquals(expected, result);
     }
 
-    private static Stream<Object> paramsForMultiplicationTableFormattedOutput() {
+    private static Stream<Object> paramsForTestFormatOfMultiplicationTable() {
         return
                 Stream.of
                         (
