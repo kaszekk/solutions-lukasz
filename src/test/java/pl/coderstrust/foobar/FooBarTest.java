@@ -27,7 +27,7 @@ public class FooBarTest {
 
     @DisplayName("Should throw exception for negative size")
     @Test
-    void shouldThrowExceptionForInvalidArgument() {
+    void shouldThrowExceptionForNegativeSize() {
         assertThrows(IllegalArgumentException.class,
                 () -> {
                     FooBar.getResult(-1);
