@@ -37,7 +37,8 @@ class MultiplicationTest {
     }
 
     private static Stream<Arguments> paramsForTestMultiplicationTableDimensions() {
-        return Stream.of(
+        return
+            Stream.of(
                 Arguments.of(0, 4, 4, 4),
                 Arguments.of(1, 4, 4, 4),
                 Arguments.of(2, 4, 4, 4),
@@ -100,7 +101,7 @@ class MultiplicationTest {
                 Arguments.of(2,
                         new String[]
                                 {"       1   2",
-           "   1   1   2",
+                                        "   1   1   2",
                                         "   2   2   4"}),
                 Arguments.of(4,
                         new String[]
