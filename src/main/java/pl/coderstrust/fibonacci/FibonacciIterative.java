@@ -5,13 +5,16 @@ public class FibonacciIterative {
         if (fibonacciNumberInOrder <= 0) {
             throw new IllegalArgumentException("fibonacciNumberInOrder argument must be greater than zero");
         }
-        long fibonacciNumber = 1;
-        long previousFibonacciNumber = 1;
-        for (int i = 2; i <= fibonacciNumberInOrder; i++) {
-            long temp = fibonacciNumber;
-            fibonacciNumber += previousFibonacciNumber;
-            previousFibonacciNumber = temp;
+        long[] fib = {1, 1, 2};
+        if (fibonacciNumberInOrder <= 2) {
+            return fib[fibonacciNumberInOrder - 1];
         }
-        return fibonacciNumber;
+        for (int i = 4; i <= fibonacciNumberInOrder; i++) {
+            fib[0] = fib[2];
+            fib[2] += fib[1];
+            fib[1] = fib[0];
+            fib[0] = fib[2] - fib[1];
+        }
+        return fib[2];
     }
 }
