@@ -36,7 +36,7 @@ class PascalTriangleTest {
         return Stream.of(
                 Arguments.of(1,
                         new ArrayList<>(Arrays.asList
-                                ("1"))),
+                                 ("1"))),
                 Arguments.of(2,
                         new ArrayList<>(Arrays.asList
                                 (("1"),
