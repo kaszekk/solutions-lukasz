@@ -93,7 +93,7 @@ class MultiplicationTest {
         String[] result = getFormattedOutput(getMultiplicationTableValues(size));
 
         //Then
-        assertEquals(expected, result);
+        assertArrayEquals(expected, result);
     }
 
     private static Stream<Object> paramsForMultiplicationTableFormattedOutput() {
@@ -105,7 +105,7 @@ class MultiplicationTest {
                                                 {"    "}),
                                 Arguments.of(2,
                                         new String[]
-               {"       1   2",
+                                                {"       1   2",
                                                         "   1   1   2",
                                                         "   2   2   4"}),
                                 Arguments.of(4,
