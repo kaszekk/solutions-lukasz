@@ -95,20 +95,20 @@ class MultiplicationTest {
     private static Stream<Object> paramsForMultiplicationTableFormattedOutput() {
         return Stream.of(
                 Arguments.of(0,
-                  new String[]
-                       {"    "}),
+                        new String[]
+                                {"    "}),
                 Arguments.of(2,
-                  new String[]
-                       {"       1   2",
-                        "   1   1   2",
-                        "   2   2   4"}),
+                        new String[]
+                                {"       1   2",
+           "   1   1   2",
+                                        "   2   2   4"}),
                 Arguments.of(4,
-                  new String[]
-                       {"       1   2   3   4",
-                        "   1   1   2   3   4",
-                        "   2   2   4   6   8",
-                        "   3   3   6   9  12",
-                        "   4   4   8  12  16"}));
+                        new String[]
+                                {"       1   2   3   4",
+                                        "   1   1   2   3   4",
+                                        "   2   2   4   6   8",
+                                        "   3   3   6   9  12",
+                                        "   4   4   8  12  16"}));
     }
 
     @Test
