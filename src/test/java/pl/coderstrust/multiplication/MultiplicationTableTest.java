@@ -8,10 +8,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 import static pl.coderstrust.multiplication.MultiplicationTable.getFormattedOutput;
 import static pl.coderstrust.multiplication.MultiplicationTable.getMultiplicationTableValues;
 
@@ -37,21 +34,19 @@ class MultiplicationTest {
         assertTrue(is_a_sizeCorrect);
         assertTrue(is_b_sizeCorrect);
         assertTrue(isTableSquare);
-
-
     }
 
     private static Stream<Arguments> paramsForTestMultiplicationTableDimensions() {
         return Stream.of(
-                Arguments.of(0, 4, 4, 4),
-                Arguments.of(1, 4, 4, 4),
-                Arguments.of(2, 4, 4, 4),
-                Arguments.of(3, 4, 4, 4),
-                Arguments.of(4, 0, 4, 4),
-                Arguments.of(4, 1, 4, 4),
-                Arguments.of(4, 2, 4, 4),
-                Arguments.of(4, 3, 4, 4),
-                Arguments.of(4, 4, 4, 4)
+            Arguments.of(0, 4, 4, 4),
+            Arguments.of(1, 4, 4, 4),
+            Arguments.of(2, 4, 4, 4),
+            Arguments.of(3, 4, 4, 4),
+            Arguments.of(4, 0, 4, 4),
+            Arguments.of(4, 1, 4, 4),
+            Arguments.of(4, 2, 4, 4),
+            Arguments.of(4, 3, 4, 4),
+            Arguments.of(4, 4, 4, 4)
         );
     }
 
@@ -67,21 +62,21 @@ class MultiplicationTest {
         int[][] result = getMultiplicationTableValues(size);
 
         //Then
-        assertThat(result[a][b], is(expected));
+        assertEquals(expected, result[a][b]);
     }
 
     private static Stream<Arguments> paramsForMultiplicationTableValues() {
         return Stream.of(
-                Arguments.of(0, 0, 0),
-                Arguments.of(4, 0, 0),
-                Arguments.of(1, 1, 1),
-                Arguments.of(2, 1, 2),
-                Arguments.of(3, 2, 6),
-                Arguments.of(3, 4, 12),
-                Arguments.of(4, 4, 16),
-                Arguments.of(4, 3, 12),
-                Arguments.of(2, 2, 4),
-                Arguments.of(3, 3, 9)
+            Arguments.of(0, 0, 0),
+            Arguments.of(4, 0, 0),
+            Arguments.of(1, 1, 1),
+            Arguments.of(2, 1, 2),
+            Arguments.of(3, 2, 6),
+            Arguments.of(3, 4, 12),
+            Arguments.of(4, 4, 16),
+            Arguments.of(4, 3, 12),
+            Arguments.of(2, 2, 4),
+            Arguments.of(3, 3, 9)
         );
     }
 
@@ -94,33 +89,34 @@ class MultiplicationTest {
         String[] result = getFormattedOutput(getMultiplicationTableValues(size));
 
         //Then
-        assertThat(result, is(expected));
+        assertEquals(expected, result);
     }
 
     private static Stream<Object> paramsForMultiplicationTableFormattedOutput() {
         return Stream.of(
-                Arguments.of(0,
-                        new String[]{"    "}),
-                Arguments.of(2,
-                        new String[]{
-                                "       1   2",
-                                "   1   1   2",
-                                "   2   2   4"}),
-                Arguments.of(4,
-                        new String[]{
-                                "       1   2   3   4",
-                                "   1   1   2   3   4",
-                                "   2   2   4   6   8",
-                                "   3   3   6   9  12",
-                                "   4   4   8  12  16"}));
+            Arguments.of(0,
+                new String[]
+                    {"    "}),
+            Arguments.of(2,
+                new String[]
+                    {"       1   2",
+                     "   1   1   2",
+                     "   2   2   4"}),
+            Arguments.of(4,
+                new String[]
+                    {"       1   2   3   4",
+                     "   1   1   2   3   4",
+                     "   2   2   4   6   8",
+                     "   3   3   6   9  12",
+                     "   4   4   8  12  16"}));
     }
 
     @Test
     void throwExceptionForNegativeSize() {
         assertThrows(IllegalArgumentException.class,
-                () -> {
+           () -> {
                     int size = -1;
                     getMultiplicationTableValues(size);
-                });
+                 });
     }
 }
