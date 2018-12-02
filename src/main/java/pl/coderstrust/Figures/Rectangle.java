@@ -5,6 +5,11 @@ public class Rectangle implements Figure {
     private double b;
 
     public Rectangle(double a, double b) {
+        if (a == 0 || b == 0) { //<=0
+
+        } else if (a < 0 || b < 0) {
+
+        }
         this.a = a;
         this.b = b;
     }

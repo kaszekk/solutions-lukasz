@@ -1,16 +1,10 @@
 package pl.coderstrust.Figures;
 
-public class Square extends Rectangle implements Figure {
+public class Square implements Figure {
     private double a;
 
     public Square(double a) {
-        super(a, a);
         this.a = a;
-    }
-
-    @Override
-    public double getA() {
-        return a;
     }
 
     @Override
