@@ -14,10 +14,10 @@ import static pl.coderstrust.multiplication.MultiplicationTable.getMultiplicatio
 
 @DisplayName("MultiplicationTable test ")
 class MultiplicationTest {
-    @DisplayName("Should return multiplication result as int [][] of correct dimensions ")
-    @ParameterizedTest(name = "{index} => b={1},   expected_a={2},   expected_b={2} ")
+    @DisplayName("Should return multiplication result as int [][] of correct dimensions")
+    @ParameterizedTest(name = "{index} => b={0},   expectedDimension_a={1},   expectedDimension_b={2} ")
     @MethodSource("paramsForTestMultiplicationTableDimensions")
-    void testMultiplicationTableDimensions( int b, int expected_a, int expected_b) {
+    void testMultiplicationTableDimensions( int b, int expectedDimension_a, int expectedDimension_b) {
 
         //Given
         int size = 4;
@@ -26,26 +26,26 @@ class MultiplicationTest {
         int resultDimension_b = returned[b].length - 1;
 
         //When
-        boolean is_a_sizeCorrect = resultDimension_a == expected_a;
-        boolean is_b_sizeCorrect = resultDimension_b == expected_b;
+        boolean isDimension_a_Correct = resultDimension_a == expectedDimension_a;
+        boolean isDimension_b_Correct = resultDimension_b == expectedDimension_b;
         boolean isTableSquare = resultDimension_a == resultDimension_b;
 
         //Then
-        assertTrue(is_a_sizeCorrect);
-        assertTrue(is_b_sizeCorrect);
+        assertTrue(isDimension_b_Correct);
+        assertTrue(isDimension_a_Correct);
         assertTrue(isTableSquare);
     }
 
     private static Stream<Arguments> paramsForTestMultiplicationTableDimensions() {
         return
-                Stream.of
-                        (
-                                Arguments.of(4, 4, 4),
-                                Arguments.of(3, 4, 4),
-                                Arguments.of(2, 4, 4),
-                                Arguments.of(1, 4, 4),
-                                Arguments.of(0, 4, 4)
-                        );
+           Stream.of
+              (
+                Arguments.of(4, 4, 4),
+                Arguments.of(3, 4, 4),
+                Arguments.of(2, 4, 4),
+                Arguments.of(1, 4, 4),
+                Arguments.of(0, 4, 4)
+              );
     }
 
     @DisplayName("Should calculate the correct multiplicationTable values a * b = expected")
@@ -65,19 +65,19 @@ class MultiplicationTest {
 
     private static Stream<Arguments> paramsForMultiplicationTableValues() {
         return
-                Stream.of
-                        (
-                                Arguments.of(0, 0, 0),
-                                Arguments.of(4, 0, 0),
-                                Arguments.of(1, 1, 1),
-                                Arguments.of(2, 1, 2),
-                                Arguments.of(3, 2, 6),
-                                Arguments.of(3, 4, 12),
-                                Arguments.of(4, 4, 16),
-                                Arguments.of(4, 3, 12),
-                                Arguments.of(2, 2, 4),
-                                Arguments.of(3, 3, 9)
-                        );
+           Stream.of
+              (
+                Arguments.of(0, 0, 0),
+                Arguments.of(4, 0, 0),
+                Arguments.of(1, 1, 1),
+                Arguments.of(2, 1, 2),
+                Arguments.of(3, 2, 6),
+                Arguments.of(3, 4, 12),
+                Arguments.of(4, 4, 16),
+                Arguments.of(4, 3, 12),
+                Arguments.of(2, 2, 4),
+                Arguments.of(3, 3, 9)
+              );
     }
 
     @DisplayName("Should return correctly formatted MultiplicationTable for given size")
@@ -94,32 +94,33 @@ class MultiplicationTest {
 
     private static Stream<Object> paramsForTestFormatOfMultiplicationTable() {
         return
-                Stream.of
-                        (
-                                Arguments.of(0,
-                                        new String[]
-                                                {"    "}),
-                                Arguments.of(2,
-                                        new String[]
-                                                {"       1   2",
-                                                        "   1   1   2",
-                                                        "   2   2   4"}),
-                                Arguments.of(4,
-                                        new String[]
-                                                {"       1   2   3   4",
-                                                        "   1   1   2   3   4",
-                                                        "   2   2   4   6   8",
-                                                        "   3   3   6   9  12",
-                                                        "   4   4   8  12  16"})
-                        );
+           Stream.of
+              (
+                Arguments.of
+                    (0, new String[]
+                       {"    "}),
+                Arguments.of
+                    (2, new String[]
+                       {"       1   2",
+                        "   1   1   2",
+                        "   2   2   4"}),
+                Arguments.of
+                    (4, new String[]
+                       {"       1   2   3   4",
+                        "   1   1   2   3   4",
+                        "   2   2   4   6   8",
+                        "   3   3   6   9  12",
+                        "   4   4   8  12  16"})
+              );
     }
 
     @Test
     void throwExceptionForNegativeSize() {
         assertThrows(IllegalArgumentException.class,
-                () -> {
-                    int size = -1;
-                    getMultiplicationTableValues(size);
-                });
+           () ->
+           {
+               int size = -1;
+               getMultiplicationTableValues(size);
+           });
     }
 }
