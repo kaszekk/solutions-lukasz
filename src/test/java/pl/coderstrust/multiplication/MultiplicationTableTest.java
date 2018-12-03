@@ -15,9 +15,9 @@ import static pl.coderstrust.multiplication.MultiplicationTable.getMultiplicatio
 @DisplayName("MultiplicationTable test ")
 class MultiplicationTest {
     @DisplayName("Should return multiplication result as int [][] of correct dimensions ")
-    @ParameterizedTest(name = "{index} => a={0},   b={1},   expected_a={2},     expected_b={2} ")
+    @ParameterizedTest(name = "{index} => b={1},   expected_a={2},   expected_b={2} ")
     @MethodSource("paramsForTestMultiplicationTableDimensions")
-    void testMultiplicationTableDimensions(int a, int b, int expected_a, int expected_b) {
+    void testMultiplicationTableDimensions( int b, int expected_a, int expected_b) {
 
         //Given
         int size = 4;
@@ -40,15 +40,11 @@ class MultiplicationTest {
         return
                 Stream.of
                         (
-                                Arguments.of(0, 4, 4, 4),
-                                Arguments.of(1, 4, 4, 4),
-                                Arguments.of(2, 4, 4, 4),
-                                Arguments.of(3, 4, 4, 4),
-                                Arguments.of(4, 0, 4, 4),
-                                Arguments.of(4, 1, 4, 4),
-                                Arguments.of(4, 2, 4, 4),
-                                Arguments.of(4, 3, 4, 4),
-                                Arguments.of(4, 4, 4, 4)
+                                Arguments.of(4, 4, 4),
+                                Arguments.of(3, 4, 4),
+                                Arguments.of(2, 4, 4),
+                                Arguments.of(1, 4, 4),
+                                Arguments.of(0, 4, 4)
                         );
     }
 
