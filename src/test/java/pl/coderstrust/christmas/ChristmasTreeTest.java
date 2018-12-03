@@ -6,69 +6,53 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
+@DisplayName("ChristmasTree Test")
 class ChristmasTreeTest {
-    @DisplayName("ChristmasTree Test")
-    public class ChristmasTreeTest {
 
-        @DisplayName("")
+        @DisplayName("Should return correct Christmas Tree structure for given size")
         @ParameterizedTest(name = "{index} => a={0},   b={1},   expected_a={2},     expected_b={2} ")
         @MethodSource("correctChristmasTreeArguments")
         public void shouldReturnCorrectChristmasTree(int size, List<String> expected) {
+
             // When
             List<String> input = ChristmasTree.getChristmasTree(size);
 
             // Then
-            assertArrayEquals(expected, input);
+            assertEquals(expected, input);
         }
 
-        private static Stream<Arguments> paramsForAreDimensionsCorrect() {
+        private static Stream<Object> correctChristmasTreeArguments() {
             return Stream.of(
-                    Arguments.of(0, 0, 0, 0),
-                    Arguments.of(4, 0, 4, 4),
-                    Arguments.of(1, 1, 1, 1),
-                    Arguments.of(2, 1, 2, 2),
-                    Arguments.of(3, 2, 3, 3),
-                    Arguments.of(3, 4, 4, 4),
-                    Arguments.of(4, 4, 4, 4),
-                    Arguments.of(4, 3, 4, 4),
-                    Arguments.of(2, 2, 2, 2),
-                    Arguments.of(3, 3, 3, 3)
-            );
+                    Arguments.of(0,
+                         new ArrayList<>(Arrays.asList
+                                ("**"))),
+                    Arguments.of(1,
+                         new ArrayList<>(Arrays.asList
+                                ((" *"),
+                                 ("**")))),
+                    Arguments.of(4,
+                         new ArrayList<>(Arrays.asList
+                               (("    *"),
+                                ("   ***"),
+                                ("  *****"),
+                                (" *******"),
+                                ("   **")  ))));
         }
 
-
-
-
-        private Object[] correctChristmasTreeArguments() {
-            return new Object[]{
-                    new Object[]{0, Arrays.asList("**")},
-                    new Object[]{1, Arrays.asList(
-                            " *",
-                            "**")},
-                    new Object[]{2, Arrays.asList(
-                            "  *",
-                            " ***",
-                            " **")},
-                    new Object[]{4, Arrays.asList(
-                            "    *",
-                            "   ***",
-                            "  *****",
-                            " *******",
-                            "   **")}
-            };
-        }
-
-        @Test
-        public void shouldThrowExceptionForNegativeSize() {
-            thrown.expect(IllegalArgumentException.class);
-            thrown.expectMessage("Height of tree cannot be negative");
-            ChristmasTree.getChristmasTree(-1);
-        }
+      @DisplayName("Should throw exception for negative size")
+      @Test
+      void exceptionTest() {
+          assertThrows(IllegalArgumentException.class,
+                  () -> {
+                      ChristmasTree.getChristmasTree(-1);
+                  });
+      }
     }
-}
