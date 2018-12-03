@@ -66,7 +66,7 @@ class FibonacciCheckerTest {
     }
 
     @Test
-    void shouldThrowIllegalArgumentExceptionForNegativeArgument() {
+    void shouldThrowIllegalArgumentExceptionForNegativeNumber() {
         long number = -1;
         FibonacciChecker fibCheck = new FibonacciChecker();
         assertThrows(IllegalArgumentException.class, () -> fibCheck.isFibonacciNumber(number));
