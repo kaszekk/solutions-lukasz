@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class ChristmasTreeTest {
 
         @DisplayName("Should return correct Christmas Tree structure for given size")
-        @ParameterizedTest(name = "{index} => a={0},   b={1},   expected_a={2},     expected_b={2} ")
+        @ParameterizedTest(name = "{index} => size={0},   expected={1} ")
         @MethodSource("correctChristmasTreeArguments")
         public void shouldReturnCorrectChristmasTree(int size, List<String> expected) {
 
