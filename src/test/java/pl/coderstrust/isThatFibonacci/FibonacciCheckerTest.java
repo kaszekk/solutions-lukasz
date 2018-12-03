@@ -14,6 +14,8 @@ class FibonacciCheckerTest {
     @ParameterizedTest
     @MethodSource("paramsForFibonacciNumber")
     void shouldReturnTrueForFibonacciNumber(long number) {
+
+        //Given
         FibonacciChecker fibonacciChecker = new FibonacciChecker();
 
         //When
@@ -40,6 +42,8 @@ class FibonacciCheckerTest {
     @ParameterizedTest
     @MethodSource("paramsForNonFibonacciNumber")
     void shouldReturnFalseForNonFibonacciNumber(long number) {
+
+        //Given
         FibonacciChecker fibonacciChecker = new FibonacciChecker();
 
         //When
