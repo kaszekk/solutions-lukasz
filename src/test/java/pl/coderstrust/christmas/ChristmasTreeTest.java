@@ -44,7 +44,7 @@ class ChristmasTreeTest {
                                 ("   ***"),
                                 ("  *****"),
                                 (" *******"),
-                                ("   **")  ))));
+                                ("   **")))));
         }
 
       @DisplayName("Should throw exception for negative size")
