@@ -5,7 +5,7 @@ public class Square implements Figure {
 
     public Square(double sideLength) {
         if (sideLength <= 0) {
-            throw new IllegalArgumentException("The sideLength of square must be greater than zero");
+            throw new IllegalArgumentException("The sideLength of a square must be greater than zero");
         }
         this.sideLength = sideLength;
     }

@@ -10,42 +10,42 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class RectangleTest {
+class TriangleTest {
 
-    @ParameterizedTest(name = "{index} => height={0}, width = {1}, expected = {2}")
-    @DisplayName("Should return calculated area of rectangle figure.")
-    @MethodSource("paramsForRectangleArea")
-    void calculateArea(double width, double height, double expected) {
+    @ParameterizedTest(name = "{index} => baseLength={0}, height = {1}, expected = {2}")
+    @DisplayName("Should return calculated area of triangle figure.")
+    @MethodSource("paramsForTriangleArea")
+    void calculateArea(double baseLength, double height, double expected) {
 
         //Given
 
         final double delta = 1e-15;
-        Rectangle rectangle = new Rectangle(height, width);
+        Triangle triangle = new Triangle(baseLength, height);
 
         //When
 
-        double actual = rectangle.calculateArea();
+        double actual = triangle.calculateArea();
 
         //Then
 
         assertEquals(expected, actual, delta);
     }
 
-    private static Stream<Object> paramsForRectangleArea() {
+    private static Stream<Object> paramsForTriangleArea() {
         return
-                Stream.of(Arguments.of(1, 1, 1),
-                        (Arguments.of(2.0, 4.0, 8.0)),
-                        (Arguments.of(0.01, 0.05, 0.0005)),
-                        (Arguments.of(2.6666666666666, 6.3333333333333, 16.88888888888837777777777778)));
+                Stream.of(Arguments.of(1, 1, 0.5),
+                        (Arguments.of(2.0, 4.0, 4.0)),
+                        (Arguments.of(2.02, 14.58, 14.7258)),
+                        (Arguments.of(2.6666666666666, 6.3333333333333, 8.44444444444418888888888889)));
     }
 
     @ParameterizedTest(name = "{index} => height={0}, width = {1}")
-    @DisplayName("Should throw exception if given width <=0 or height <=0")
+    @DisplayName("Should throw exception if given baseLength <=0 or height <=0")
     @MethodSource("paramsForExceptionTest")
-    void shouldThrowIllegalArgumentExceptionForIllegalCombinationOfParameters(double height, double width) {
+    void shouldThrowIllegalArgumentExceptionForIllegalCombinationOfParameters(double baseLength, double height) {
         assertThrows(IllegalArgumentException.class,
                 () -> {
-                    Rectangle rectangle = new Rectangle(height, width);
+                    Triangle triangle = new Triangle(baseLength, height);
                 });
     }
 

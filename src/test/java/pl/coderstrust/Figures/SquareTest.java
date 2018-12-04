@@ -14,7 +14,7 @@ class SquareTest {
 
     @ParameterizedTest(name = "{index} => sideLength={0}, expected = {1}")
     @DisplayName("Should return calculated area of square figure.")
-    @MethodSource("paramsForAreaOfSquare")
+    @MethodSource("paramsForSquareArea")
     void calculateArea(double sideLength, double expected) {
 
         //Given
@@ -30,7 +30,7 @@ class SquareTest {
         assertEquals(expected, actual);
     }
 
-    private static Stream<Object> paramsForAreaOfSquare() {
+    private static Stream<Object> paramsForSquareArea() {
         return
                 Stream.of(Arguments.of(1, 1),
                         (Arguments.of(2.0, 4.0)),
@@ -40,7 +40,7 @@ class SquareTest {
     @ParameterizedTest(name = "{index} => a={0}")
     @DisplayName("Should throw exception if given a <=0")
     @MethodSource("paramsForExceptionTest")
-    void shouldThrowIllegalArgumentExceptionForNegativeSize(double sideLenght) {
+    void shouldThrowIllegalArgumentExceptionForInvalidSize(double sideLenght) {
         assertThrows(IllegalArgumentException.class,
                 () -> {
                     double illegalSide = sideLenght;
