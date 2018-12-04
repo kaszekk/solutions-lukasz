@@ -1,29 +1,27 @@
 package pl.coderstrust.Figures;
 
 public class Rectangle implements Figure {
-    private double a;
-    private double b;
+    private double height;
+    private double width;
 
-    public Rectangle(double a, double b) {
-        if (a == 0 || b == 0) { //<=0
-
-        } else if (a < 0 || b < 0) {
-
+    public Rectangle(double height, double width) {
+        if (height <= 0 || width <= 0) {
+            throw new IllegalArgumentException("Length of both rectangle sides must be greater than zero");
         }
-        this.a = a;
-        this.b = b;
+        this.height = height;
+        this.width = width;
     }
 
-    public double getA() {
-        return a;
+    public double getHeight() {
+        return height;
     }
 
-    public double getB() {
-        return b;
+    public double getWidth() {
+        return width;
     }
 
     @Override
     public double calculateArea() {
-        return a * b;
+        return height * width;
     }
 }
