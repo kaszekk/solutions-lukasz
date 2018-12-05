@@ -10,10 +10,9 @@ public class FibonacciIterative {
             return fib[fibonacciNumberInOrder - 1];
         }
         for (int i = 4; i <= fibonacciNumberInOrder; i++) {
-            fib[0] = fib[2];
-            fib[2] += fib[1];
-            fib[1] = fib[0];
-            fib[0] = fib[2] - fib[1];
+            fib[0] = fib[1];
+            fib[1] = fib[2];
+            fib[2] = fib[0]+ fib[1];
         }
         return fib[2];
     }
