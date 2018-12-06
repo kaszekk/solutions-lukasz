@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class BinarySearchTest {
+class LinearSearchTest {
     int size = 2_000_000_02;
     int[] sortedArray = new int[size];
 
@@ -15,17 +15,18 @@ class BinarySearchTest {
 
         //Given
 
-        BinarySearch binarySearch = new BinarySearch();
+        LinearSearch linearSearch = new LinearSearch();
         int searchedValue = size - 2;
         int expected = searchedValue;
-        long startTime = System.nanoTime();
+        long startTime = System.currentTimeMillis();
 
         //When
 
-        int actual = binarySearch.search(sortedArray, searchedValue);
-        long stopTime = System.nanoTime();
+        int actual = linearSearch.search(sortedArray, searchedValue);
+        long stopTime = System.currentTimeMillis();
         long elapsedTime = stopTime - startTime;
-        System.out.println("Binary search implementation took " + elapsedTime / 10e6 + " ms to find " + searchedValue + " element in a array");
+        System.out.println("Linear search implementation took " + elapsedTime + " ms to find " + searchedValue + " element in a array");
+
 
         //Then
 
@@ -40,5 +41,4 @@ class BinarySearchTest {
             sortedArray[i] = i;
         }
     }
-
 }
