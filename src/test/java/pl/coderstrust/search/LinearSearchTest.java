@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class LinearSearchTest {
-    int size = 2_000_000_02;
+    int size = 200_000_002;
     int[] sortedArray = new int[size];
 
     @Test
