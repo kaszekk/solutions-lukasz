@@ -21,9 +21,9 @@ public interface Figure {
 
         double totalArea = getTotalArea(figuresList);
         System.out.println("Total area of figures is " + totalArea);
-
+/*
         boolean isInst = figure5 instanceof Square;
-        System.out.println(isInst);
+        System.out.println(isInst);*/
 
         /*double sumArea = addArea(figure1, figure2);
         System.out.println(sumArea);*/
