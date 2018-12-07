@@ -1,11 +1,13 @@
 package pl.coderstrust.search;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+class BinarySearchTest extends SearchingTestBase {
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+    public SearchingMethod getSearchingMethod() {
+        return new BinarySearch();
+    }
+}
 
-class BinarySearchTest {
+    /*
     int size = 200_000_002;
     int[] sortedArray = new int[size];
 
@@ -40,4 +42,4 @@ class BinarySearchTest {
             sortedArray[i] = i;
         }
     }
-}
+}*/
