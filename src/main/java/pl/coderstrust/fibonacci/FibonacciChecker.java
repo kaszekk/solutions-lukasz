@@ -1,4 +1,4 @@
-package pl.coderstrust.isThatFibonacci;
+package pl.coderstrust.fibonacci;
 
 import java.util.HashMap;
 import java.util.Map;
