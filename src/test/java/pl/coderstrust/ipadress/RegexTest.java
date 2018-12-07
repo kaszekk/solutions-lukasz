@@ -12,7 +12,7 @@ class RegexTest {
                 for (int k = 0; k <= 255; k++) {
                     for (int l = 0; l <= 255; l++) {
                         ipAddressTemplate = String.format("%d.%d.%d.%d", i, j, k, l);
-                        assertTrue(IpAdressValidator.isIpV4AddressValid(ipAddressTemplate));
+                        assertTrue(IpAddressValidator.isIpV4AddressValid(ipAddressTemplate));
                     }
                 }
             }
