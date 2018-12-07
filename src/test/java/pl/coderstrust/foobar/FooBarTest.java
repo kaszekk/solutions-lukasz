@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @DisplayName("FooBar test ")
-public class FooBarTest {
+class FooBarTest {
     @Test
     @DisplayName("Should return correct Foobar values in List<String>")
     void shouldReturnCorrectFooBarList() {
@@ -29,9 +29,6 @@ public class FooBarTest {
     @DisplayName("Should throw exception for negative size")
     @Test
     void shouldThrowExceptionForNegativeSize() {
-        assertThrows(IllegalArgumentException.class,
-                () -> {
-                    FooBar.getResult(-1);
-                });
+        assertThrows(IllegalArgumentException.class, () -> FooBar.getResult(-1));
     }
 }
