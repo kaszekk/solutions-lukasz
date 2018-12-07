@@ -9,6 +9,14 @@ class LinearSearchTest {
     int size = 200_000_002;
     int[] sortedArray = new int[size];
 
+    @BeforeEach
+    public void createSortedArrayForTest() {
+
+        for (int i = 0; i < sortedArray.length - 1; i++) {
+            sortedArray[i] = i;
+        }
+    }
+
     @Test
         // @DisplayName("Test should show search")
     void should() {
@@ -32,13 +40,5 @@ class LinearSearchTest {
 
         assertEquals(expected, actual);
 
-    }
-
-    @BeforeEach
-    public void createSortedArrayForTest() {
-
-        for (int i = 0; i < sortedArray.length - 1; i++) {
-            sortedArray[i] = i;
-        }
     }
 }
