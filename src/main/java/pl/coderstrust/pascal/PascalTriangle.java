@@ -5,7 +5,7 @@ import java.util.List;
 
 public class PascalTriangle {
 
-    public static List<String> getPascalTriangle(int numberOfRows) {
+    static List<String> getPascalTriangle(int numberOfRows) {
         if (numberOfRows <= 0) {
             throw new IllegalArgumentException("Number of rows must be greater than zero");
         }
