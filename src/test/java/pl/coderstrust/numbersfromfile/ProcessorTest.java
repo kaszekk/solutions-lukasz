@@ -1,4 +1,4 @@
-package pl.coderstrust.temp;
+package pl.coderstrust.numbersfromfile;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -7,9 +7,6 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import pl.coderstrust.numbersfromfile.FileProcessor;
-import pl.coderstrust.numbersfromfile.NumbersProcessor;
-import pl.coderstrust.numbersfromfile.Processor;
 
 import java.io.IOException;
 import java.util.Arrays;

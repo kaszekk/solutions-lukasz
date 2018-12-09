@@ -1,4 +1,4 @@
-package pl.coderstrust.temp;
+package pl.coderstrust.numbersfromfile;
 
 import org.junit.jupiter.api.Test;
 
