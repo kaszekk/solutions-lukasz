@@ -4,10 +4,10 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class NumbersProcessor {
-    public static final String REGEX_PATTERN_FOR_INTS_SEPARATED_BY_WHITE_CHARS = "([0-9]*\\)*\\(*\\s*)+";
+class NumbersProcessor {
+    private static final String REGEX_PATTERN_FOR_INTS_SEPARATED_BY_WHITE_CHARS = "([0-9]*\\)*\\(*\\s*)+";
 
-    public String processLine(String line) {
+    String processLine(String line) {
         Pattern pattern = Pattern.compile(REGEX_PATTERN_FOR_INTS_SEPARATED_BY_WHITE_CHARS);
         Matcher matcher = pattern.matcher(line);
         StringBuilder processedLineBuilder = new StringBuilder();
@@ -32,4 +32,3 @@ public class NumbersProcessor {
         return processedLineBuilder.toString();
     }
 }
-//////////  co jesli liczba > maxint ??
