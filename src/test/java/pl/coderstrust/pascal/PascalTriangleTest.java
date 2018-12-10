@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -20,8 +21,8 @@ class PascalTriangleTest {
 
     @DisplayName("Should return correct PascalTriangle values in List<String> for given numberOfRows")
     @ParameterizedTest(name = "{index} => numberOfRows={0}, expected={1}")
-    @MethodSource("parametersForValuesTest")
-    void valuesTest(int numberOfRows, List<String> expected) {
+    @MethodSource("correctPascalTriangleParams")
+    void shouldReturnCorrectPascalTriangleRowsInList(int numberOfRows, List<String> expected) {
 
         //When
 
@@ -29,37 +30,35 @@ class PascalTriangleTest {
 
         //Then
 
+
         assertEquals(expected, actual);
     }
 
-    private static Stream<Object> parametersForValuesTest() {
+    private static Stream<Object> correctPascalTriangleParams() {
         return Stream.of(
                 Arguments.of(1,
-                        new ArrayList<>(Arrays.asList
-                                 ("1"))),
+                        new ArrayList<>(Collections.singletonList("1"))),
                 Arguments.of(2,
-                        new ArrayList<>(Arrays.asList
-                                (("1"),
-                                 ("1 1")))),
+                        new ArrayList<>(Arrays.asList(
+                                ("1"),
+                                ("1 1")))),
                 Arguments.of(4,
-                        new ArrayList<>(Arrays.asList
-                                (("1"),
-                                 ("1 1"),
-                                 ("1 2 1"),
-                                 ("1 3 3 1")))));
+                        new ArrayList<>(Arrays.asList(
+                                ("1"),
+                                ("1 1"),
+                                ("1 2 1"),
+                                ("1 3 3 1")))));
     }
 
     @DisplayName("Should throw Exception for zero or negative numberOfRows")
     @ParameterizedTest(name = "{index} => numberOfRows={0}")
-    @MethodSource("parametersForExceptionTest")
-    void exceptionTest(int numberOfRows) {
+    @MethodSource("invalidNumberOfRowsParams")
+    void shouldThrowExceptionForInvalidNumberOfRows(int invalidNumberOfRows) {
         assertThrows(IllegalArgumentException.class,
-                () -> {
-                    getPascalTriangle(numberOfRows);
-                });
+                () -> getPascalTriangle(invalidNumberOfRows));
     }
 
-    private static Stream<Object> parametersForExceptionTest() {
+    private static Stream<Object> invalidNumberOfRowsParams() {
         return Stream.of(
                 Arguments.of(0),
                 Arguments.of(-1));
