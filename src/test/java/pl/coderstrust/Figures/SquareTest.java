@@ -16,17 +16,13 @@ class SquareTest {
     @DisplayName("Should return calculated area of square figure.")
     @MethodSource("paramsForSquareArea")
     void calculateArea(double sideLength, double expected) {
-
         //Given
-
         Square square = new Square(sideLength);
 
         //When
-
         double actual = square.calculateArea();
 
         //Then
-
         assertEquals(expected, actual);
     }
 
@@ -40,10 +36,10 @@ class SquareTest {
     @ParameterizedTest(name = "{index} => a={0}")
     @DisplayName("Should throw exception if given a <=0")
     @MethodSource("paramsForExceptionTest")
-    void shouldThrowIllegalArgumentExceptionForInvalidSize(double sideLenght) {
+    void shouldThrowIllegalArgumentExceptionForInvalidSize(double sideLength) {
         assertThrows(IllegalArgumentException.class,
                 () -> {
-                    double illegalSide = sideLenght;
+                    double illegalSide = sideLength;
                     Square square = new Square(illegalSide);
                 });
     }

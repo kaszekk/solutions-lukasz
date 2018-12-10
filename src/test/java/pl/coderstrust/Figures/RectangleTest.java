@@ -16,18 +16,14 @@ class RectangleTest {
     @DisplayName("Should return calculated area of rectangle figure.")
     @MethodSource("shouldCalculateCorrectAreaParams")
     void shouldCalculateCorrectArea(double width, double height, double expected) {
-
         //Given
-
         double delta = 1e-15;
         Rectangle rectangle = new Rectangle(height, width);
 
         //When
-
         double actual = rectangle.calculateArea();
 
         //Then
-
         assertEquals(expected, actual, delta);
     }
 
@@ -43,10 +39,7 @@ class RectangleTest {
     @DisplayName("Should throw exception if given width <=0 or height <=0")
     @MethodSource("paramsForExceptionTest")
     void shouldThrowExceptionForIllegalCombinationOfParameters(double height, double width) {
-        assertThrows(IllegalArgumentException.class,
-                () -> {
-                    Rectangle rectangle = new Rectangle(height, width);
-                });
+        assertThrows(IllegalArgumentException.class,() -> {Rectangle rectangle = new Rectangle(height, width);});
     }
 
     private static Stream<Object> paramsForExceptionTest() {

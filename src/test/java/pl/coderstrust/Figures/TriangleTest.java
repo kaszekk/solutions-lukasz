@@ -16,18 +16,14 @@ class TriangleTest {
     @DisplayName("Should return calculated area of triangle figure.")
     @MethodSource("paramsForTriangleArea")
     void calculateArea(double baseLength, double height, double expected) {
-
         //Given
-
         final double delta = 1e-15;
         Triangle triangle = new Triangle(baseLength, height);
 
         //When
-
         double actual = triangle.calculateArea();
 
         //Then
-
         assertEquals(expected, actual, delta);
     }
 
@@ -42,7 +38,7 @@ class TriangleTest {
     @ParameterizedTest(name = "{index} => height={0}, width = {1}")
     @DisplayName("Should throw exception if given baseLength <=0 or height <=0")
     @MethodSource("paramsForExceptionTest")
-    void shouldThrowIllegalArgumentExceptionForIllegalCombinationOfParameters(double baseLength, double height) {
+    void shouldThrowExceptionForInvalidParameters(double baseLength, double height) {
         assertThrows(IllegalArgumentException.class,
                 () -> {
                     Triangle triangle = new Triangle(baseLength, height);

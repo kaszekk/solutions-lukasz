@@ -16,18 +16,14 @@ class CircleTest {
     @DisplayName("Should return calculated area of circle figure.")
     @MethodSource("shouldCalculateCorrectAreaParams")
     void shouldCalculateCorrectArea(double radius, double expected) {
-
         //Given
-
         double delta = 1e-15;
         Circle circle = new Circle(radius);
 
         //When
-
         double actual = circle.calculateArea();
 
         //Then
-
         assertEquals(expected, actual, delta);
     }
 
@@ -42,10 +38,9 @@ class CircleTest {
     @DisplayName("Should throw exception if given radius <=0")
     @MethodSource("paramsForExceptionTest")
     void shouldThrowExceptionForInvalidRadius(double radius) {
-        assertThrows(IllegalArgumentException.class,
-                () -> {
-                    Circle circle = new Circle(radius);
-                });
+        assertThrows(IllegalArgumentException.class, () -> {
+            Circle circle = new Circle(radius);
+        });
     }
 
     private static Stream<Object> paramsForExceptionTest() {

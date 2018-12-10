@@ -9,7 +9,6 @@ class FigureTest {
     @Test
     @DisplayName("Should show polymorphism")
     void polymorphismTest() {
-
         //Given
         double actual;
         Figure figure = new Circle(2);
@@ -20,7 +19,6 @@ class FigureTest {
         //Then
         assertEquals(new Circle(2).calculateArea(), actual);
 
-
         //Given
         figure = new Square(3);
 
@@ -29,7 +27,6 @@ class FigureTest {
 
         //Then
         assertEquals(new Square(3).calculateArea(), actual);
-
 
         //Given
         figure = new Rectangle(2, 4);
@@ -40,7 +37,6 @@ class FigureTest {
         //Then
         assertEquals(new Rectangle(2, 4).calculateArea(), actual);
 
-
         //Given
         figure = new Triangle(2, 3);
 
@@ -49,7 +45,6 @@ class FigureTest {
 
         //Then
         assertEquals(new Triangle(2, 3).calculateArea(), actual);
-
 
         //Given
         figure = new Trapezoid(1, 3, 4);
