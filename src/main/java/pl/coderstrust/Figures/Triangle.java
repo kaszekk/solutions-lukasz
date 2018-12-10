@@ -5,12 +5,12 @@ public class Triangle implements Figure {
     private double height;
 
     public Triangle(double baseLength, double height) {
-        validateBaseLenght(baseLength);
+        validateBaseLength(baseLength);
         validateHeight(height);
     }
 
     public void setBaseLength(double baseLength) {
-        validateBaseLenght(baseLength);
+        validateBaseLength(baseLength);
     }
 
     public void setHeight(double height) {
@@ -30,7 +30,7 @@ public class Triangle implements Figure {
         }
     }
 
-    private void validateBaseLenght(double baseLength) {
+    private void validateBaseLength(double baseLength) {
         if (baseLength <= 0) {
             throw new IllegalArgumentException("Base length of trapezoid must be greater than zero");
         } else {
