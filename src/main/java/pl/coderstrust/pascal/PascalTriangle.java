@@ -24,10 +24,10 @@ public class PascalTriangle {
     }
 
     private static int factorial(int number) {
-        int fact = 1;
+        int factorial = 1;
         for (int i = 1; i <= number; i++) {
-            fact *= i;
+            factorial *= i;
         }
-        return fact;
+        return factorial;
     }
 }
