@@ -38,12 +38,12 @@ class MultiplicationTest {
 
     private static Stream<Arguments> paramsForTestMultiplicationTableDimensions() {
         return
-                Stream.of(
-                        Arguments.of(4, 4, 4),
-                        Arguments.of(3, 4, 4),
-                        Arguments.of(2, 4, 4),
-                        Arguments.of(1, 4, 4),
-                        Arguments.of(0, 4, 4));
+           Stream.of(
+              Arguments.of(4, 4, 4),
+              Arguments.of(3, 4, 4),
+              Arguments.of(2, 4, 4),
+              Arguments.of(1, 4, 4),
+              Arguments.of(0, 4, 4));
     }
 
     @DisplayName("Should calculate the correct multiplicationTable values a * b = expected")
