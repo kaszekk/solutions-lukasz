@@ -14,12 +14,12 @@ class RectangleTest {
 
     @ParameterizedTest(name = "{index} => height={0}, width = {1}, expected = {2}")
     @DisplayName("Should return calculated area of rectangle figure.")
-    @MethodSource("paramsForRectangleArea")
-    void calculateArea(double width, double height, double expected) {
+    @MethodSource("shouldCalculateCorrectAreaParams")
+    void shouldCalculateCorrectArea(double width, double height, double expected) {
 
         //Given
 
-        final double delta = 1e-15;
+        double delta = 1e-15;
         Rectangle rectangle = new Rectangle(height, width);
 
         //When
@@ -31,7 +31,7 @@ class RectangleTest {
         assertEquals(expected, actual, delta);
     }
 
-    private static Stream<Object> paramsForRectangleArea() {
+    private static Stream<Object> shouldCalculateCorrectAreaParams() {
         return
                 Stream.of(Arguments.of(1, 1, 1),
                         (Arguments.of(2.0, 4.0, 8.0)),
@@ -42,7 +42,7 @@ class RectangleTest {
     @ParameterizedTest(name = "{index} => height={0}, width = {1}")
     @DisplayName("Should throw exception if given width <=0 or height <=0")
     @MethodSource("paramsForExceptionTest")
-    void shouldThrowIllegalArgumentExceptionForIllegalCombinationOfParameters(double height, double width) {
+    void shouldThrowExceptionForIllegalCombinationOfParameters(double height, double width) {
         assertThrows(IllegalArgumentException.class,
                 () -> {
                     Rectangle rectangle = new Rectangle(height, width);
