@@ -68,7 +68,7 @@ class MultiplicationTest {
                         Arguments.of(4, 0, 0),
                         Arguments.of(1, 1, 1),
                         Arguments.of(2, 1, 2),
-                        Arguments.of(3, 2, 6),
+          Arguments.of(3, 2, 6),
                         Arguments.of(3, 4, 12),
                         Arguments.of(4, 4, 16),
                         Arguments.of(4, 3, 12),
