@@ -21,39 +21,35 @@ class PascalTriangleTest {
     @DisplayName("Should return correct PascalTriangle values in List<String> for given numberOfRows")
     @ParameterizedTest(name = "{index} => numberOfRows={0}, expected={1}")
     @MethodSource("correctPascalTriangleParams")
-    void shouldReturnCorrectPascalTriangleRowsInList(int numberOfRows, List<String> expected) {
-
+    void shouldReturnCorrectPascalTriangle(int numberOfRows, List<String> expected) {
         //When
-
         List<String> actual = getPascalTriangle(numberOfRows);
 
         //Then
-
         assertEquals(expected, actual);
     }
 
     private static Stream<Object> correctPascalTriangleParams() {
         return Stream.of(
                 Arguments.of(1,
-                        new ArrayList<>(Collections.singletonList("1"))),
+                        new ArrayList<>(Collections.singletonList("1 "))),
                 Arguments.of(2,
                         new ArrayList<>(Arrays.asList(
-                                ("1"),
-                                ("1 1")))),
+                                ("1 "),
+                                ("1 1 ")))),
                 Arguments.of(4,
                         new ArrayList<>(Arrays.asList(
-                                ("1"),
-                                ("1 1"),
-                                ("1 2 1"),
-                                ("1 3 3 1")))));
+                                ("1 "),
+                                ("1 1 "),
+                                ("1 2 1 "),
+                                ("1 3 3 1 ")))));
     }
 
     @DisplayName("Should throw Exception for zero or negative numberOfRows")
     @ParameterizedTest(name = "{index} => numberOfRows={0}")
     @MethodSource("invalidNumberOfRowsParams")
     void shouldThrowExceptionForInvalidNumberOfRows(int invalidNumberOfRows) {
-        assertThrows(IllegalArgumentException.class,
-                () -> getPascalTriangle(invalidNumberOfRows));
+        assertThrows(IllegalArgumentException.class, () -> getPascalTriangle(invalidNumberOfRows));
     }
 
     private static Stream<Object> invalidNumberOfRowsParams() {
