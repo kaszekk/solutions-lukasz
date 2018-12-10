@@ -15,7 +15,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static pl.coderstrust.pascal.PascalTriangle.getPascalTriangle;
 
-
 @DisplayName("PascalTriangle test ")
 class PascalTriangleTest {
 
@@ -29,7 +28,6 @@ class PascalTriangleTest {
         List<String> actual = getPascalTriangle(numberOfRows);
 
         //Then
-
 
         assertEquals(expected, actual);
     }
