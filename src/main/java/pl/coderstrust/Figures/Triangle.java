@@ -5,23 +5,36 @@ public class Triangle implements Figure {
     private double height;
 
     public Triangle(double baseLength, double height) {
-        if (baseLength <= 0 || height <= 0) {
-            throw new IllegalArgumentException("Length of both: triangle base and height must be greater than zero");
-        }
-        this.height = height;
-        this.baseLength = baseLength;
+        validateBaseLenght(baseLength);
+        validateHeight(height);
     }
 
-    public double getBaseLength() {
-        return baseLength;
+    public void setBaseLength(double baseLength) {
+        validateBaseLenght(baseLength);
     }
 
-    public double getHeigth() {
-        return height;
+    public void setHeight(double height) {
+        validateHeight(height);
     }
 
     @Override
     public double calculateArea() {
         return 0.5 * baseLength * height;
+    }
+
+    private void validateHeight(double height) {
+        if (height <= 0) {
+            throw new IllegalArgumentException("Height of triangle must be greater than zero");
+        } else {
+            this.height = height;
+        }
+    }
+
+    private void validateBaseLenght(double baseLength) {
+        if (baseLength <= 0) {
+            throw new IllegalArgumentException("Base length of trapezoid must be greater than zero");
+        } else {
+            this.baseLength = baseLength;
+        }
     }
 }

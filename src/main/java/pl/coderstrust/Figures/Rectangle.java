@@ -6,16 +6,16 @@ public class Rectangle implements Figure {
     private double width;
 
     public Rectangle(double height, double width) {
-        setHeightIfValid(height);
-        setWidthIfValid(width);
+        validateHeight(height);
+        validateWidth(width);
     }
 
     public void setHeight(double height) {
-        setHeightIfValid(height);
+        validateHeight(height);
     }
 
     public void setWidth(double width) {
-        setWidthIfValid(width);
+        validateWidth(width);
     }
 
     @Override
@@ -23,7 +23,7 @@ public class Rectangle implements Figure {
         return height * width;
     }
 
-    private void setHeightIfValid(double height) {
+    private void validateHeight(double height) {
         if (height <= 0) {
             throw new IllegalArgumentException("Height of rectangle must be greater than zero");
         } else {
@@ -31,7 +31,7 @@ public class Rectangle implements Figure {
         }
     }
 
-    private void setWidthIfValid(double width) {
+    private void validateWidth(double width) {
         if (width <= 0) {
             throw new IllegalArgumentException("Width of rectangle must be greater than zero");
         } else {

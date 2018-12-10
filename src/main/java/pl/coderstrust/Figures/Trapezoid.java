@@ -6,16 +6,49 @@ public class Trapezoid implements Figure {
     private double height;
 
     public Trapezoid(double lowerBase, double upperBase, double height) {
-        if (lowerBase <= 0 || upperBase <= 0 || height <= 0) {
-            throw new IllegalArgumentException("All trapezoid parameters: lowerBase, upperBase, height -  must be greater than zero");
-        }
-        this.lowerBase = lowerBase;
-        this.upperBase = upperBase;
-        this.height = height;
+        validateLowerBase(lowerBase);
+        validateUpperBase(upperBase);
+        validateHeight(height);
+    }
+
+    public void setLowerBase(double lowerBase) {
+        validateLowerBase(lowerBase);
+    }
+
+    public void setUpperBase(double upperBase) {
+        validateUpperBase(upperBase);
+    }
+
+    public void setHeight(double height) {
+        validateHeight(height);
     }
 
     @Override
     public double calculateArea() {
         return 0.5 * height * (lowerBase + upperBase);
+    }
+
+    private void validateLowerBase(double lowerBase) {
+        if (lowerBase <= 0) {
+            throw new IllegalArgumentException("Lower base of trapezoid must be greater than zero");
+        } else {
+            this.lowerBase = lowerBase;
+        }
+    }
+
+    private void validateUpperBase(double upperBase) {
+        if (upperBase <= 0) {
+            throw new IllegalArgumentException("Higher base of trapezoid must be greater than zero");
+        } else {
+            this.upperBase = upperBase;
+        }
+    }
+
+    private void validateHeight(double height) {
+        if (height <= 0) {
+            throw new IllegalArgumentException("Height of trapezoid must be greater than zero");
+        } else {
+            this.height = height;
+        }
     }
 }
