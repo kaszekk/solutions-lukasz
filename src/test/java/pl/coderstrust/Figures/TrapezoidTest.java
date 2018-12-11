@@ -17,7 +17,7 @@ class TrapezoidTest {
     @MethodSource("paramsForTrapezoidArea")
     void calculateArea(double upperBase, double lowerBase, double height, double expected) {
         //Given
-        final double delta = 1e-15;
+        double delta = 1e-15;
         Trapezoid trapezoid = new Trapezoid(lowerBase, upperBase, height);
 
         //When
@@ -39,7 +39,9 @@ class TrapezoidTest {
     @DisplayName("Should throw exception if given lowerBase <=0 or upperBase <=0 or height <=0")
     @MethodSource("paramsForExceptionTest")
     void shouldThrowIllegalArgumentExceptionForIllegalCombinationOfParameters(double lowerBase, double upperBase, double height) {
-        assertThrows(IllegalArgumentException.class,() -> {Trapezoid trapezoid = new Trapezoid(lowerBase, upperBase, height);});
+        assertThrows(IllegalArgumentException.class, () -> {
+            Trapezoid trapezoid = new Trapezoid(lowerBase, upperBase, height);
+        });
     }
 
     private static Stream<Object> paramsForExceptionTest() {

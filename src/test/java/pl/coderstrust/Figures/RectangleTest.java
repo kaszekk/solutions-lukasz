@@ -39,7 +39,9 @@ class RectangleTest {
     @DisplayName("Should throw exception if given width <=0 or height <=0")
     @MethodSource("paramsForExceptionTest")
     void shouldThrowExceptionForIllegalCombinationOfParameters(double height, double width) {
-        assertThrows(IllegalArgumentException.class,() -> {Rectangle rectangle = new Rectangle(height, width);});
+        assertThrows(IllegalArgumentException.class, () -> {
+            Rectangle rectangle = new Rectangle(height, width);
+        });
     }
 
     private static Stream<Object> paramsForExceptionTest() {

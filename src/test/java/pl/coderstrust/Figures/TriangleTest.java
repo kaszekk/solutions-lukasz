@@ -17,7 +17,7 @@ class TriangleTest {
     @MethodSource("paramsForTriangleArea")
     void calculateArea(double baseLength, double height, double expected) {
         //Given
-        final double delta = 1e-15;
+        double delta = 1e-15;
         Triangle triangle = new Triangle(baseLength, height);
 
         //When
