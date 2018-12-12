@@ -1,7 +1,11 @@
 package pl.coderstrust.search;
 
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -18,10 +22,11 @@ public abstract class SearchingTestBase {
         }
     }
 
-    @Test
-    void shouldSearchForElementInSortedArray() {
+    @ParameterizedTest(name = "{index} => searchedElementIndex={0},   descriptionOfIndex={1}")
+    @MethodSource("shouldSearchForElementInSortedArrayParams")
+    void shouldSearchForElementInSortedArray(int index, String indexName) {
         //Given
-        int searchedValue = size - 1;
+        int searchedValue = sortedArray[index];
         int expected = searchedValue;
         long startTime = System.currentTimeMillis();
 
@@ -29,9 +34,16 @@ public abstract class SearchingTestBase {
         int actual = getSearchingMethod().search(sortedArray, searchedValue);
         long stopTime = System.currentTimeMillis();
         long elapsedTime = stopTime - startTime;
-        System.out.println(getSearchingMethod().getClass().getSimpleName() + " implementation took " + elapsedTime + " ms to find element at index number " + searchedValue + " in the array");
+        System.out.println(getSearchingMethod().getClass().getSimpleName() + " implementation took " + elapsedTime + " ms to find " + indexName + " at index number " + index + " in the array");
 
         //Then
         assertEquals(expected, actual);
+    }
+
+    private static Stream<Arguments> shouldSearchForElementInSortedArrayParams() {
+        return Stream.of(
+                Arguments.of(0, "the first element"),
+                Arguments.of((sortedArray.length - 1) / 2, "the middle element"),
+                Arguments.of(sortedArray.length - 1, "the last element"));
     }
 }
