@@ -1,6 +1,6 @@
 package pl.coderstrust.search;
 
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -8,11 +8,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public abstract class SearchingTestBase {
     public abstract SearchingMethod getSearchingMethod();
 
-    private int size = 200_000_001;
-    private int[] sortedArray = new int[size];
+    private static int size = 200_000_001;
+    private static int[] sortedArray = new int[size];
 
-    @BeforeEach
-    void createSortedArrayForTest() {
+    @BeforeAll
+    static void createSortedArrayForTest() {
         for (int i = 0; i < sortedArray.length; i++) {
             sortedArray[i] = i;
         }
