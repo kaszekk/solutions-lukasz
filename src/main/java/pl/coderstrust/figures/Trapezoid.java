@@ -1,4 +1,4 @@
-package pl.coderstrust.Figures;
+package pl.coderstrust.figures;
 
 public class Trapezoid implements Figure {
     private double lowerBase;

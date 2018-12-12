@@ -1,4 +1,4 @@
-package pl.coderstrust.Figures;
+package pl.coderstrust.figures;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -35,7 +35,7 @@ class TrapezoidTest {
                         (Arguments.of(2.6666666666666, 6.3333333333333, 8.44444444444418888888888889, 37.99999999999843)));
     }
 
-    @ParameterizedTest(name = "{index} => lowerBase={0}, ipperBase = {1}, height = {2}")
+    @ParameterizedTest(name = "{index} => lowerBase={0}, upperBase = {1}, height = {2}")
     @DisplayName("Should throw exception if given lowerBase <=0 or upperBase <=0 or height <=0")
     @MethodSource("paramsForExceptionTest")
     void shouldThrowIllegalArgumentExceptionForIllegalCombinationOfParameters(double lowerBase, double upperBase, double height) {

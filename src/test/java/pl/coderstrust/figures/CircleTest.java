@@ -1,4 +1,4 @@
-package pl.coderstrust.Figures;
+package pl.coderstrust.figures;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -38,9 +38,8 @@ class CircleTest {
     @DisplayName("Should throw exception if given radius <=0")
     @MethodSource("paramsForExceptionTest")
     void shouldThrowExceptionForInvalidRadius(double radius) {
-        assertThrows(IllegalArgumentException.class, () -> {
-            Circle circle = new Circle(radius);
-        });
+        assertThrows(IllegalArgumentException.class, () -> {Circle circle = new Circle(radius);}
+        );
     }
 
     private static Stream<Object> paramsForExceptionTest() {
