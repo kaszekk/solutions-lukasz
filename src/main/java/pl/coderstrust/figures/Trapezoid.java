@@ -31,24 +31,21 @@ public class Trapezoid implements Figure {
     private void validateLowerBase(double lowerBase) {
         if (lowerBase <= 0) {
             throw new IllegalArgumentException("Lower base of trapezoid must be greater than zero");
-        } else {
-            this.lowerBase = lowerBase;
         }
+        this.lowerBase = lowerBase;
     }
 
     private void validateUpperBase(double upperBase) {
         if (upperBase <= 0) {
             throw new IllegalArgumentException("Higher base of trapezoid must be greater than zero");
-        } else {
-            this.upperBase = upperBase;
         }
+        this.upperBase = upperBase;
     }
 
     private void validateHeight(double height) {
         if (height <= 0) {
             throw new IllegalArgumentException("Height of trapezoid must be greater than zero");
-        } else {
-            this.height = height;
         }
+        this.height = height;
     }
 }

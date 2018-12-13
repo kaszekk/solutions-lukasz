@@ -1,6 +1,7 @@
 package pl.coderstrust.figures;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -11,28 +12,20 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class RectangleTest {
-
-    @ParameterizedTest(name = "{index} => height={0}, width = {1}, expected = {2}")
+    @Test
     @DisplayName("Should return calculated area of rectangle figure.")
-    @MethodSource("shouldCalculateCorrectAreaParams")
-    void shouldCalculateCorrectArea(double width, double height, double expected) {
+    void shouldCalculateCorrectArea() {
         //Given
         double delta = 1e-15;
-        Rectangle rectangle = new Rectangle(height, width);
+        Rectangle rectangle = new Rectangle(1, 2.5);
 
         //When
+        rectangle.setHeight(3);
+        rectangle.setWidth(4);
         double actual = rectangle.calculateArea();
 
         //Then
-        assertEquals(expected, actual, delta);
-    }
-
-    private static Stream<Object> shouldCalculateCorrectAreaParams() {
-        return
-                Stream.of(Arguments.of(1, 1, 1),
-                        (Arguments.of(2.0, 4.0, 8.0)),
-                        (Arguments.of(0.01, 0.05, 0.0005)),
-                        (Arguments.of(2.6666666666666, 6.3333333333333, 16.88888888888837777777777778)));
+        assertEquals(12, actual, delta);
     }
 
     @ParameterizedTest(name = "{index} => height={0}, width = {1}")

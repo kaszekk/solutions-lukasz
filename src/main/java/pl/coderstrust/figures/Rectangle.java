@@ -26,16 +26,14 @@ public class Rectangle implements Figure {
     private void validateHeight(double height) {
         if (height <= 0) {
             throw new IllegalArgumentException("Height of rectangle must be greater than zero");
-        } else {
-            this.height = height;
         }
+        this.height = height;
     }
 
     private void validateWidth(double width) {
         if (width <= 0) {
             throw new IllegalArgumentException("Width of rectangle must be greater than zero");
-        } else {
-            this.width = width;
         }
+        this.width = width;
     }
 }

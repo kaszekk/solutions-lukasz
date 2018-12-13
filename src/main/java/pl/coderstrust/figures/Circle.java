@@ -19,8 +19,7 @@ public class Circle implements Figure {
     private void validateRadius(double radius) {
         if (radius <= 0) {
             throw new IllegalArgumentException("Radius of a circle must be greater than zero");
-        } else {
-            this.radius = radius;
         }
+        this.radius = radius;
     }
 }

@@ -1,6 +1,7 @@
 package pl.coderstrust.figures;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -11,26 +12,18 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class SquareTest {
-
-    @ParameterizedTest(name = "{index} => sideLength={0}, expected = {1}")
+    @Test
     @DisplayName("Should return calculated area of square figure.")
-    @MethodSource("paramsForSquareArea")
-    void calculateArea(double sideLength, double expected) {
+    void calculateArea() {
         //Given
-        Square square = new Square(sideLength);
+        Square square = new Square(2);
 
         //When
+        square.setSideLength(3);
         double actual = square.calculateArea();
 
         //Then
-        assertEquals(expected, actual);
-    }
-
-    private static Stream<Object> paramsForSquareArea() {
-        return
-                Stream.of(Arguments.of(1, 1),
-                        (Arguments.of(2.0, 4.0)),
-                        (Arguments.of(2.5, 6.25)));
+        assertEquals(9, actual);
     }
 
     @ParameterizedTest(name = "{index} => a={0}")

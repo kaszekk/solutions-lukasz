@@ -19,8 +19,7 @@ public class Square implements Figure {
     private void validateSideLength(double sideLength) {
         if (sideLength <= 0) {
             throw new IllegalArgumentException("The sideLength of a square must be greater than zero");
-        } else {
-            this.sideLength = sideLength;
         }
+        this.sideLength = sideLength;
     }
 }

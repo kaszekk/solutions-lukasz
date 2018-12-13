@@ -25,16 +25,14 @@ public class Triangle implements Figure {
     private void validateHeight(double height) {
         if (height <= 0) {
             throw new IllegalArgumentException("Height of triangle must be greater than zero");
-        } else {
-            this.height = height;
         }
+        this.height = height;
     }
 
     private void validateBaseLength(double baseLength) {
         if (baseLength <= 0) {
             throw new IllegalArgumentException("Base length of trapezoid must be greater than zero");
-        } else {
-            this.baseLength = baseLength;
         }
+        this.baseLength = baseLength;
     }
 }
