@@ -8,6 +8,9 @@ public class IpAddressValidator {
     private static Pattern pattern = Pattern.compile(REGEX_IP_V4_PATTERN);
 
     static boolean isIpV4AddressValid(String input) {
+        if (input == null) {
+            return false;
+        }
         Matcher matcher = pattern.matcher(input);
         return matcher.matches();
     }
