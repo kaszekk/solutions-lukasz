@@ -23,10 +23,10 @@ class NumbersProcessorTest {
         assertEquals(expected, actual);
     }
 
+    // TODO: 13/12/2018 maybe test method should be renamed
     private static Stream<Arguments> shouldCorrectlyProcessLineParams() {
         return Stream.of(
-                // TODO: 12/12/2018 what if null passed as parameter???
-
+                Arguments.of(null, ""),
                 Arguments.of("3d", ""),
                 Arguments.of("`", ""),
                 Arguments.of("$", ""),
@@ -38,13 +38,14 @@ class NumbersProcessorTest {
                 Arguments.of("9.", ""),
                 Arguments.of(" 4 <", ""),
                 Arguments.of("", ""),
+                Arguments.of("3 5 6.4 6", ""),
                 Arguments.of("3 4 5 f 44", ""),
+                Arguments.of("-1 -1 ", ""),
+                Arguments.of("                 ", ""),
                 Arguments.of("3", "3=3"),
                 Arguments.of("3 5 6 7", "3+5+6+7=21"),
                 Arguments.of("2            0   ", "2+0=2"),
-                Arguments.of("00 0 000  ", "0+0+0=0"),
-                Arguments.of("                 ", ""),
-                Arguments.of("3 5 6.4 6", "")
+                Arguments.of("00 0 000  ", "0+0+0=0")
         );
     }
 }

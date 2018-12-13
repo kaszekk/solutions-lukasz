@@ -5,13 +5,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 class NumbersProcessor {
-    private static final String REGEX_PATTERN_FOR_INTS_SEPARATED_BY_WHITE_CHARS = "([0-9]*\\)*\\(*\\s*)+";
+    private final String REGEX_PATTERN_FOR_INTS_SEPARATED_BY_WHITE_CHARS = "([0-9]*\\)*\\(*\\s*)+";
 
+    // TODO: 13/12/2018 where compile pattern
     String processLine(String line) {
-        Pattern pattern = Pattern.compile(REGEX_PATTERN_FOR_INTS_SEPARATED_BY_WHITE_CHARS);
-        Matcher matcher = pattern.matcher(line);
-        StringBuilder processedLineBuilder = new StringBuilder();
-        if (matcher.matches()) {
+        if (isLineValid(line)) {
+            StringBuilder processedLineBuilder = new StringBuilder();
             Scanner scanner = new Scanner(line);
             int sum = 0;
             while (scanner.hasNextInt()) {
@@ -26,9 +25,19 @@ class NumbersProcessor {
                 }
             }
             scanner.close();
+            return processedLineBuilder.toString();
         } else {
             return "";
         }
-        return processedLineBuilder.toString();
+    }
+
+    private boolean isLineValid(String line) {
+        if (line == null || line == "") {
+            return false;
+        } else {
+            Pattern pattern = Pattern.compile(REGEX_PATTERN_FOR_INTS_SEPARATED_BY_WHITE_CHARS);
+            Matcher matcher = pattern.matcher(line);
+            return matcher.matches();
+        }
     }
 }

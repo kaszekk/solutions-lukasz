@@ -9,7 +9,7 @@ public class Processor {
     private NumbersProcessor numbersProcessor;
     private FileProcessor fileProcessor;
 
-    private Processor(NumbersProcessor numbersProcessor, FileProcessor fileProcessor) {
+    Processor(NumbersProcessor numbersProcessor, FileProcessor fileProcessor) {
         this.numbersProcessor = numbersProcessor;
         this.fileProcessor = fileProcessor;
     }
