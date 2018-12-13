@@ -3,31 +3,26 @@ package pl.coderstrust.streams;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.stream.Stream;
 
 public class DoYouLoveStreams {
 
     public static void main(String[] args) throws IOException {
         String REGEX = "([0-9]*\\)*\\(*\\s*)+";
-        Files.lines(Paths.get("dfdf"))
-                .filter()
-                .map()
-                .forEach(arrayOfnumbers -> {
-                    String number = Arrays.stream(arrayOfnumbers);
-
-                    long numbers = Arrays.stream(arrayOfnumbers);
-
-                    lines.add(String.format()
-
+        Files.lines(Paths.get("C:\\Users\\Admin\\IdeaProjects\\solutions-9-lukasz-f\\src\\main\\resources\\Input.txt"))
+                .filter(v -> v.matches(REGEX))
+                .map(Integer::valueOf)
+                .forEach((sum,val)-> {
+                    sum + val;
                 });
 
+    }
 
+/*
         Stream<String> stream = Arrays.stream("1 2 3 4  ".split("\\s+"));
         stream
                 .map(string -> Integer.valueOf(string))
                 .reduce(0, (a, b) -> a + b)
-                .map(IntValue -> String.valueOf(IntValue))
+                .map(IntValue -> String.valueOf(IntValue))*/
         // System.out.println(result);
 
 
@@ -83,7 +78,7 @@ public class DoYouLoveStreams {
 
     }
 
-}
+
 
 
 
