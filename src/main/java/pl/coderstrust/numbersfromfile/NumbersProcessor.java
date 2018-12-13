@@ -7,7 +7,6 @@ import java.util.regex.Pattern;
 class NumbersProcessor {
     private final String REGEX_PATTERN_FOR_INTS_SEPARATED_BY_WHITE_CHARS = "([0-9]*\\)*\\(*\\s*)+";
 
-    // TODO: 13/12/2018 where compile pattern
     String processLine(String line) {
         if (isLineValid(line)) {
             StringBuilder processedLineBuilder = new StringBuilder();
