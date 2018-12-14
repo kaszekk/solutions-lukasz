@@ -1,6 +1,7 @@
 package pl.coderstrust.ipaddress;
 
 import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -13,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class IpAddressValidatorTest {
     @Disabled
+    @DisplayName("This test is disabled by default, because takes over 2 hours to complete")
     @Test
     void isIpV4AddressTest() {
         IpAddressValidator ipAddressValidator = new IpAddressValidator();
