@@ -10,10 +10,14 @@ public class DoYouLoveStreams {
         String REGEX = "([0-9]*\\)*\\(*\\s*)+";
         Files.lines(Paths.get("C:\\Users\\Admin\\IdeaProjects\\solutions-9-lukasz-f\\src\\main\\resources\\Input.txt"))
                 .filter(v -> v.matches(REGEX))
-                .map(Integer::valueOf)
-                .forEach((sum,val)-> {
-                    sum + val;
-                });
+                .map(string -> Integer.valueOf(string))
+
+                //.reduce(0, (a, b) -> a + b)
+
+                // .map(Integer::valueOf)
+                .forEach(
+                        System.out::println
+                );
 
     }
 
@@ -21,6 +25,7 @@ public class DoYouLoveStreams {
         Stream<String> stream = Arrays.stream("1 2 3 4  ".split("\\s+"));
         stream
                 .map(string -> Integer.valueOf(string))
+
                 .reduce(0, (a, b) -> a + b)
                 .map(IntValue -> String.valueOf(IntValue))*/
         // System.out.println(result);
