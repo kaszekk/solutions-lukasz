@@ -37,8 +37,7 @@ class CircleTest {
     }
 
     private static Stream<Object> paramsForExceptionTest() {
-        return
-                Stream.of(Arguments.of(0),
-                        (Arguments.of(-0.01)));
+        return Stream.of(Arguments.of(0),
+                (Arguments.of(-0.01)));
     }
 }

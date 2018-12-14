@@ -31,22 +31,21 @@ class TrapezoidTest {
 
     @ParameterizedTest(name = "{index} => lowerBase={0}, upperBase = {1}, height = {2}")
     @DisplayName("Should throw exception if given lowerBase <=0 or upperBase <=0 or height <=0")
-    @MethodSource("paramsForExceptionTest")
-    void shouldThrowIllegalArgumentExceptionForIllegalCombinationOfParameters(double lowerBase, double upperBase, double height) {
+    @MethodSource("exceptionTestParams")
+    void shouldThrowExceptionForInvalidParameters(double lowerBase, double upperBase, double height) {
         assertThrows(IllegalArgumentException.class, () -> {
             Trapezoid trapezoid = new Trapezoid(lowerBase, upperBase, height);
         });
     }
 
-    private static Stream<Object> paramsForExceptionTest() {
-        return
-                Stream.of(Arguments.of(0, 0, 0),
-                        (Arguments.of(-5.03, 0, 2)),
-                        (Arguments.of(2.5, 0, 4)),
-                        (Arguments.of(3, -0.2, 4)),
-                        (Arguments.of(4, 4, 0)),
-                        (Arguments.of(2.5, 1.5, -4)),
-                        (Arguments.of(1.34, -4.45, 4)),
-                        (Arguments.of(-4.45, -7, 4)));
+    private static Stream<Object> exceptionTestParams() {
+        return Stream.of(Arguments.of(0, 0, 0),
+                (Arguments.of(-5.03, 0, 2)),
+                (Arguments.of(2.5, 0, 4)),
+                (Arguments.of(3, -0.2, 4)),
+                (Arguments.of(4, 4, 0)),
+                (Arguments.of(2.5, 1.5, -4)),
+                (Arguments.of(1.34, -4.45, 4)),
+                (Arguments.of(-4.45, -7, 4)));
     }
 }

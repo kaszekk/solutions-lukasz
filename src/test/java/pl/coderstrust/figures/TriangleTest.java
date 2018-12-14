@@ -30,23 +30,21 @@ class TriangleTest {
 
     @ParameterizedTest(name = "{index} => height={0}, width = {1}")
     @DisplayName("Should throw exception if given baseLength <=0 or height <=0")
-    @MethodSource("paramsForExceptionTest")
+    @MethodSource("exceptionTestParams")
     void shouldThrowExceptionForInvalidParameters(double baseLength, double height) {
-        assertThrows(IllegalArgumentException.class,
-                () -> {
-                    Triangle triangle = new Triangle(baseLength, height);
-                });
+        assertThrows(IllegalArgumentException.class, () -> {
+            Triangle triangle = new Triangle(baseLength, height);
+        });
     }
 
-    private static Stream<Object> paramsForExceptionTest() {
-        return
-                Stream.of(Arguments.of(0, 0),
-                        (Arguments.of(-5.03, 0)),
-                        (Arguments.of(0, -7)),
-                        (Arguments.of(0, 0.2)),
-                        (Arguments.of(4, 0)),
-                        (Arguments.of(-4, 1.5)),
-                        (Arguments.of(1.34, -4.45)),
-                        (Arguments.of(-4.45, -7)));
+    private static Stream<Object> exceptionTestParams() {
+        return Stream.of(Arguments.of(0, 0),
+                (Arguments.of(-5.03, 0)),
+                (Arguments.of(0, -7)),
+                (Arguments.of(0, 0.2)),
+                (Arguments.of(4, 0)),
+                (Arguments.of(-4, 1.5)),
+                (Arguments.of(1.34, -4.45)),
+                (Arguments.of(-4.45, -7)));
     }
 }

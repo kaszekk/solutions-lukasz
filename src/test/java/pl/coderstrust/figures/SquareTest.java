@@ -27,18 +27,16 @@ class SquareTest {
     }
 
     @ParameterizedTest(name = "{index} => a={0}")
-    @DisplayName("Should throw exception if given a <=0")
-    @MethodSource("paramsForExceptionTest")
-    void shouldThrowIllegalArgumentExceptionForInvalidSize(double sideLength) {
-        assertThrows(IllegalArgumentException.class,
-                () -> {
-                    Square square = new Square(sideLength);
-                });
+    @DisplayName("Should throw exception if sideLength <=0")
+    @MethodSource("exceptionTestParams")
+    void shouldThrowExceptionForInvalidParameter(double sideLength) {
+        assertThrows(IllegalArgumentException.class, () -> {
+            Square square = new Square(sideLength);
+        });
     }
 
-    private static Stream<Object> paramsForExceptionTest() {
-        return
-                Stream.of(Arguments.of(0),
-                        (Arguments.of(-0.01)));
+    private static Stream<Object> exceptionTestParams() {
+        return Stream.of(Arguments.of(0),
+                (Arguments.of(-0.01)));
     }
 }
