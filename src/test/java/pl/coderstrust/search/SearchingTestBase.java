@@ -22,7 +22,7 @@ public abstract class SearchingTestBase {
         }
     }
 
-    @ParameterizedTest(name = "{index} => expected={0},descriptionOfIndex={1}")
+    @ParameterizedTest(name = "{index} => expected={0},description of index = {1}")
     @MethodSource("shouldReturnIndexOfFoundElementParams")
     void shouldReturnIndexOfFoundElement(int expected, String indexName) {
         //Given
