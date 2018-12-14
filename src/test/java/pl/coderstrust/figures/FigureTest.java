@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class FigureTest {
     @Test
-    @DisplayName("Should show polymorphism")
+    @DisplayName("Polymorphism example")
     void polymorphismTest() {
         double actual;
         Figure figure = new Circle(2);

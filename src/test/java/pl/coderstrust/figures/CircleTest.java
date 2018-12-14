@@ -27,15 +27,13 @@ class CircleTest {
         assertEquals(12.566370614359172, actual, delta);
     }
 
-
     @ParameterizedTest(name = "{index} => a={0}")
     @DisplayName("Should throw exception if given radius <=0")
     @MethodSource("paramsForExceptionTest")
     void shouldThrowExceptionForInvalidRadius(double radius) {
         assertThrows(IllegalArgumentException.class, () -> {
-                    Circle circle = new Circle(radius);
-                }
-        );
+            Circle circle = new Circle(radius);
+        });
     }
 
     private static Stream<Object> paramsForExceptionTest() {

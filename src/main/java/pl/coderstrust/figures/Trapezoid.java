@@ -5,21 +5,21 @@ public class Trapezoid implements Figure {
     private double upperBase;
     private double height;
 
-    public Trapezoid(double lowerBase, double upperBase, double height) {
+    Trapezoid(double lowerBase, double upperBase, double height) {
         validateLowerBase(lowerBase);
         validateUpperBase(upperBase);
         validateHeight(height);
     }
 
-    public void setLowerBase(double lowerBase) {
+    void setLowerBase(double lowerBase) {
         validateLowerBase(lowerBase);
     }
 
-    public void setUpperBase(double upperBase) {
+    void setUpperBase(double upperBase) {
         validateUpperBase(upperBase);
     }
 
-    public void setHeight(double height) {
+    void setHeight(double height) {
         validateHeight(height);
     }
 

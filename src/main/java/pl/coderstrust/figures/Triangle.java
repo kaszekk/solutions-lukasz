@@ -4,16 +4,16 @@ public class Triangle implements Figure {
     private double baseLength;
     private double height;
 
-    public Triangle(double baseLength, double height) {
+    Triangle(double baseLength, double height) {
         validateBaseLength(baseLength);
         validateHeight(height);
     }
 
-    public void setBaseLength(double baseLength) {
+    void setBaseLength(double baseLength) {
         validateBaseLength(baseLength);
     }
 
-    public void setHeight(double height) {
+    void setHeight(double height) {
         validateHeight(height);
     }
 

@@ -32,8 +32,7 @@ class SquareTest {
     void shouldThrowIllegalArgumentExceptionForInvalidSize(double sideLength) {
         assertThrows(IllegalArgumentException.class,
                 () -> {
-                    double illegalSide = sideLength;
-                    Square square = new Square(illegalSide);
+                    Square square = new Square(sideLength);
                 });
     }
 

@@ -3,11 +3,11 @@ package pl.coderstrust.figures;
 public class Circle implements Figure {
     private double radius;
 
-    public Circle(double radius) {
+    Circle(double radius) {
         validateRadius(radius);
     }
 
-    public void setRadius(double radius) {
+    void setRadius(double radius) {
         validateRadius(radius);
     }
 

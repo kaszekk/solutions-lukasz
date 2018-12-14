@@ -3,11 +3,11 @@ package pl.coderstrust.figures;
 public class Square implements Figure {
     private double sideLength;
 
-    public Square(double sideLength) {
+    Square(double sideLength) {
         validateSideLength(sideLength);
     }
 
-    public void setSideLength(double sideLength) {
+    void setSideLength(double sideLength) {
         validateSideLength(sideLength);
     }
 

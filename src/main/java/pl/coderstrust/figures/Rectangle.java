@@ -5,16 +5,16 @@ public class Rectangle implements Figure {
     private double height;
     private double width;
 
-    public Rectangle(double height, double width) {
+    Rectangle(double height, double width) {
         validateHeight(height);
         validateWidth(width);
     }
 
-    public void setHeight(double height) {
+    void setHeight(double height) {
         validateHeight(height);
     }
 
-    public void setWidth(double width) {
+    void setWidth(double width) {
         validateWidth(width);
     }
 
