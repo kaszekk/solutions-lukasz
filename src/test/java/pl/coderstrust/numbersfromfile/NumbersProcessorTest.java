@@ -23,7 +23,6 @@ class NumbersProcessorTest {
         assertEquals(expected, actual);
     }
 
-    // TODO: 13/12/2018 maybe test method should be renamed
     private static Stream<Arguments> shouldCorrectlyProcessLineParams() {
         return Stream.of(
                 Arguments.of(null, ""),

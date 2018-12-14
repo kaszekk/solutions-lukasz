@@ -4,9 +4,9 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FileProcessor {
+class FileProcessor {
 
-    public List<String> readLinesFromFile(String fileName) throws IOException {
+    List<String> readLinesFromFile(String fileName) throws IOException {
         List<String> linesFromFile = new ArrayList<>();
         Reader fileReader = new FileReader(fileName);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
@@ -21,7 +21,7 @@ public class FileProcessor {
         return linesFromFile;
     }
 
-    public void writeLinesToFile(String fileName, List<String> linesToWrite) throws IOException {
+    void writeLinesToFile(String fileName, List<String> linesToWrite) throws IOException {
         Writer fileWriter = new FileWriter(fileName);
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
         for (String line : linesToWrite) {

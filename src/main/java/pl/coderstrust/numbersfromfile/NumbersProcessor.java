@@ -5,7 +5,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 class NumbersProcessor {
-    private final String REGEX_PATTERN_FOR_INTS_SEPARATED_BY_WHITE_CHARS = "([0-9]*\\)*\\(*\\s*)+";
+    private Pattern pattern = Pattern.compile("([0-9]*\\)*\\(*\\s*)+");
 
     String processLine(String line) {
         if (isLineValid(line)) {
@@ -31,10 +31,9 @@ class NumbersProcessor {
     }
 
     private boolean isLineValid(String line) {
-        if (line == null || line == "") {
+        if (line == null || line.equals("")) {
             return false;
         } else {
-            Pattern pattern = Pattern.compile(REGEX_PATTERN_FOR_INTS_SEPARATED_BY_WHITE_CHARS);
             Matcher matcher = pattern.matcher(line);
             return matcher.matches();
         }
