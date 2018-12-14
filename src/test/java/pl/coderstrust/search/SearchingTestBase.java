@@ -22,25 +22,25 @@ public abstract class SearchingTestBase {
         }
     }
 
-    @ParameterizedTest(name = "{index} => searchedElementIndex={0},   descriptionOfIndex={1}")
-    @MethodSource("shouldSearchForElementInSortedArrayParams")
-    void shouldSearchForElementInSortedArray(int index, String indexName) {
+    @ParameterizedTest(name = "{index} => expected={0},descriptionOfIndex={1}")
+    @MethodSource("shouldReturnIndexOfFoundElementParams")
+    void shouldReturnIndexOfFoundElement(int expected, String indexName) {
         //Given
-        int searchedValue = sortedArray[index];
-        int expected = searchedValue;
+        int element = sortedArray[expected];
         long startTime = System.currentTimeMillis();
 
         //When
-        int actual = getSearchingMethod().search(sortedArray, searchedValue);
+        int actual = getSearchingMethod().search(sortedArray, element);
         long stopTime = System.currentTimeMillis();
-        long elapsedTime = stopTime - startTime;
-        System.out.println(getSearchingMethod().getClass().getSimpleName() + " implementation took " + elapsedTime + " ms to find " + indexName + " at index number " + index + " in the array");
+        long durationOfTest = stopTime - startTime;
+        System.out.println(getSearchingMethod().getClass().getSimpleName() + " implementation took " + durationOfTest + " ms to find " + indexName + " at index number " + expected + " in the array");
 
         //Then
         assertEquals(expected, actual);
     }
 
-    private static Stream<Arguments> shouldSearchForElementInSortedArrayParams() {
+    private static Stream<Arguments> shouldReturnIndexOfFoundElementParams
+            () {
         return Stream.of(
                 Arguments.of(0, "the first element"),
                 Arguments.of((sortedArray.length - 1) / 2, "the middle element"),
