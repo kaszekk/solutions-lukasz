@@ -3,21 +3,48 @@ package pl.coderstrust.streams;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.stream.Stream;
 
 public class DoYouLoveStreams {
 
     public static void main(String[] args) throws IOException {
         String REGEX = "([0-9]*\\)*\\(*\\s*)+";
-        Files.lines(Paths.get("C:\\Users\\Admin\\IdeaProjects\\solutions-9-lukasz-f\\src\\main\\resources\\Input.txt"))
-                .filter(v -> v.matches(REGEX))
-                .map(string -> Integer.valueOf(string))
 
-                //.reduce(0, (a, b) -> a + b)
+        Stream<String> stream = Files.lines(Paths.get("src\\main\\resources\\Input.txt"));
+        int result = stream
+                .filter(v -> v.matches(REGEX))
+                .flatMap(line -> Arrays.stream(line.split("\\s+")))
+                .map(string -> Integer.valueOf(string))
+                .reduce(0, (value1, value2) -> value1 + value2);
+        System.out.println(result);
+
+
+//================================ liczy sume wszystkich linii==============
+//        String REGEX = "([0-9]*\\)*\\(*\\s*)+";
+//
+//        Stream<String> stream = Files.lines(Paths.get("src\\main\\resources\\Input.txt"));
+//        int result = stream
+//                .filter(v -> v.matches(REGEX))
+//                .flatMap(line -> Arrays.stream(line.split("\\s+")))   // splituje po bialych znakach
+//                .map(string -> Integer.valueOf(string))
+//                .reduce(0, (value1, value2) -> value1 + value2);
+//        System.out.println(result);
+//=================================================================================
+
+
+        // .peek(element -> System.out.println(element));
+
+        //   .map(s -> s.split("\\s+"));
+
+
+        //   .forEach(System.out::println);
+
+
+        //   .map(string -> Integer.valueOf(string))
+        //.reduce(0, (a, b) -> a + b)
 
                 // .map(Integer::valueOf)
-                .forEach(
-                        System.out::println
-                );
 
     }
 
