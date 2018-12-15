@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ProcessorIT {
     @Test
-    void shouldTest() throws IOException {
+    void shouldCorrectlyProcessDataFromInputFileAndSaveResultToResultFile() throws IOException {
         //Given
         String inputFile = "src\\test\\resources\\inputIT.txt";
         String resultFile = "src\\test\\resources\\resultIT.txt";

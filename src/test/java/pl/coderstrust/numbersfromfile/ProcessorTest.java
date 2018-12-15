@@ -35,6 +35,8 @@ public class ProcessorTest {
         verify(fileProcessor).readLinesFromFile("src/main/resources/Input.txt");
         verify(numbersProcessor).processLine("1 2 3");
         verify(numbersProcessor).processLine("4 5 6");
+
         verify(fileProcessor).writeLinesToFile("src/main/resources/Output.txt", Arrays.asList("1+2+3=6", "4+5+6=15"));
+
     }
 }
