@@ -26,26 +26,19 @@ public class DoYouLoveStreams {
 
 
     }
-}
 
-/*
-                .map(string -> {
+//=========================================
 
-                    lines.add(string);
-                    return Integer.valueOf(string);
-                })
+       /*     .filter()
+            . map()
+            .forEach(arrayOfNumbers -> {
+            String number = Arrays.stream(arrayOfNumbers);
 
-                .reduce(0, (value1, value2) -> value1 + value2);*/
-/*
-        System.out.println("lines result "+lines);
-                System.out.println("sum "+result);*/
+            long numbers = Arrays.stream(arrayOfNumbers);
 
-
-/*
-            .map(s -> {
-        System.out.println("map: " + s);
-        return s.toUpperCase();
-    })*/
+            lines.add(String.format())
+            });*/
+//==========================================
 
 
 //  .reduce(0, (value1, value2) -> value1 + value2);
