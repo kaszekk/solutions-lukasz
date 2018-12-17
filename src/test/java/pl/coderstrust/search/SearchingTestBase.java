@@ -1,6 +1,8 @@
 package pl.coderstrust.search;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -8,6 +10,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public abstract class SearchingTestBase {
     public abstract SearchingMethod getSearchingMethod();
@@ -27,13 +30,13 @@ public abstract class SearchingTestBase {
     void shouldReturnIndexOfFoundElement(int expected, String indexName) {
         //Given
         int element = sortedArray[expected];
-        long startTime = System.currentTimeMillis();
 
         //When
+        long startTime = System.currentTimeMillis();
         int actual = getSearchingMethod().search(sortedArray, element);
         long stopTime = System.currentTimeMillis();
         long durationOfTest = stopTime - startTime;
-        System.out.println(getSearchingMethod().getClass().getSimpleName() + " implementation took " + durationOfTest + " ms to find " + indexName + " at index number " + expected + " in the array");
+        System.out.println(getSearchingMethod().getSortingMethodName() + " implementation took " + durationOfTest + " ms to find " + indexName + " at index number " + expected + " in the array");
 
         //Then
         assertEquals(expected, actual);
@@ -45,5 +48,37 @@ public abstract class SearchingTestBase {
                 Arguments.of(0, "the first element"),
                 Arguments.of((sortedArray.length - 1) / 2, "the middle element"),
                 Arguments.of(sortedArray.length - 1, "the last element"));
+    }
+
+    @Test
+    void shouldSearchNotExistingElement() {
+        //Given
+        int element = -100;
+
+        //When
+        int actual = getSearchingMethod().search(sortedArray, element);
+
+        //Then
+        assertEquals(-1, actual);
+    }
+
+    @DisplayName("Should throw exception when attempt to search for an element in an empty array is made")
+    @Test
+    void shouldThrowExceptionForSearchInEmptyArray() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            int[] emptyArray = new int[0];
+            int element = 100;
+            getSearchingMethod().search(emptyArray, element);
+        });
+    }
+
+    @DisplayName("Should throw exception when null passed as array reference")
+    @Test
+    void shouldThrowExceptionIfArrayIsNull() {
+        assertThrows(NullPointerException.class, () -> {
+            int[] nullArray = null;
+            int element = 100;
+            getSearchingMethod().search(nullArray, element);
+        });
     }
 }

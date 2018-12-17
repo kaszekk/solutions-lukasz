@@ -2,15 +2,23 @@ package pl.coderstrust.search;
 
 public class LinearSearch implements SearchingMethod {
     @Override
-    public int search(int[] sortedArray, int element) {
-        if (sortedArray == null) {
-            return -1;
+    public int search(int[] array, int element) {
+        if (array == null) {
+            throw new NullPointerException("Null reference to array passed");
         }
-        for (int i = 0; i < sortedArray.length; i++) {
-            if (sortedArray[i] == element) {
+        if (array.length == 0) {
+            throw new IllegalArgumentException("Cannot perform search on an empty array");
+        }
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == element) {
                 return i;
             }
         }
         return -1;
+    }
+
+    @Override
+    public String getSortingMethodName() {
+        return getClass().getSimpleName();
     }
 }
