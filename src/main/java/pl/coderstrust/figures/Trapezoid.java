@@ -7,10 +7,10 @@ class Trapezoid implements Figure {
 
     Trapezoid(double lowerBase, double upperBase, double height) {
         validateLowerBase(lowerBase);
-        this.lowerBase = lowerBase;
         validateUpperBase(upperBase);
-        this.upperBase = upperBase;
         validateHeight(height);
+        this.lowerBase = lowerBase;
+        this.upperBase = upperBase;
         this.height = height;
     }
 

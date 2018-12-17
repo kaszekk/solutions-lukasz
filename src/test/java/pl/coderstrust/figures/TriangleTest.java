@@ -47,17 +47,15 @@ class TriangleTest {
     @DisplayName("Should throw exception if given baseLength <=0 or height passed to constructor <=0")
     @MethodSource("invalidParameters")
     void shouldThrowExceptionForInvalidParametersPassedToConstructor(double baseLength, double height) {
-        assertThrows(IllegalArgumentException.class, () -> {
-            Triangle triangle = new Triangle(baseLength, height);
-        });
+        assertThrows(IllegalArgumentException.class, () -> new Triangle(baseLength, height));
     }
 
     @ParameterizedTest(name = "{index} => height={0}, width = {1}")
     @DisplayName("Should throw exception if given baseLength <=0 or height passed to setter <=0")
     @MethodSource("invalidParameters")
     void shouldThrowExceptionForInvalidParametersPassedToSetter(double baseLength, double height) {
+        Triangle triangle = new Triangle(2, 3);
         assertThrows(IllegalArgumentException.class, () -> {
-            Triangle triangle = new Triangle(2, 3);
             triangle.setBaseLength(baseLength);
             triangle.setHeight(height);
         });

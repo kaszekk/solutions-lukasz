@@ -7,22 +7,19 @@ class Rectangle implements Figure {
 
     Rectangle(double height, double width) {
         validateHeight(height);
-        this.height = height;
         validateWidth(width);
+        this.height = height;
         this.width = width;
-
     }
 
     void setHeight(double height) {
         validateHeight(height);
         this.height = height;
-
     }
 
     void setWidth(double width) {
         validateWidth(width);
         this.width = width;
-
     }
 
     @Override

@@ -2,11 +2,6 @@ package pl.coderstrust.figures;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
-
-import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -41,27 +36,16 @@ class CircleTest {
         assertEquals(12.566370614359172, actual, delta);
     }
 
-    @ParameterizedTest(name = "{index} => a={0}")
+    @Test
     @DisplayName("Should throw exception if given radius set in constructor <=0")
-    @MethodSource("invalidRadius")
-    void shouldThrowExceptionForInvalidRadiusPassedToConstructor(double radius) {
-        assertThrows(IllegalArgumentException.class, () -> {
-            Circle circle = new Circle(radius);
-        });
+    void shouldThrowExceptionForInvalidRadiusPassedToConstructor() {
+        assertThrows(IllegalArgumentException.class, () -> new Circle(-1));
     }
 
-    @ParameterizedTest(name = "{index} => a={0}")
+    @Test
     @DisplayName("Should throw exception if given radius passed to setter <=0")
-    @MethodSource("invalidRadius")
-    void shouldThrowExceptionForInvalidRadiusPassedToSetter(double radius) {
-        assertThrows(IllegalArgumentException.class, () -> {
-            Circle circle = new Circle(1);
-            circle.setRadius(-1);
-        });
-    }
-
-    private static Stream<Object> invalidRadius() {
-        return Stream.of(Arguments.of(0),
-                (Arguments.of(-0.01)));
+    void shouldThrowExceptionForInvalidRadiusPassedToSetter() {
+        Circle circle = new Circle(1);
+        assertThrows(IllegalArgumentException.class, () -> circle.setRadius(-1));
     }
 }

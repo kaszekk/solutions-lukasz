@@ -6,8 +6,8 @@ class Triangle implements Figure {
 
     Triangle(double baseLength, double height) {
         validateBaseLength(baseLength);
-        this.baseLength = baseLength;
         validateHeight(height);
+        this.baseLength = baseLength;
         this.height = height;
     }
 

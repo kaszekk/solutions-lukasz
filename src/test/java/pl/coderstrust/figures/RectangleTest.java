@@ -45,17 +45,15 @@ class RectangleTest {
     @DisplayName("Should throw exception if given width <=0 or height, passed to constructor <=0")
     @MethodSource("invalidParameters")
     void shouldThrowExceptionForInvalidParametersPassedToConstructor(double height, double width) {
-        assertThrows(IllegalArgumentException.class, () -> {
-            Rectangle rectangle = new Rectangle(height, width);
-        });
+        assertThrows(IllegalArgumentException.class, () -> new Rectangle(height, width));
     }
 
     @ParameterizedTest(name = "{index} => height={0}, width = {1}")
     @DisplayName("Should throw exception if given width <=0 or height, passed to setter <=0")
     @MethodSource("invalidParameters")
     void shouldThrowExceptionForInvalidParametersPassedToSetter(double height, double width) {
+        Rectangle rectangle = new Rectangle(2, 2);
         assertThrows(IllegalArgumentException.class, () -> {
-            Rectangle rectangle = new Rectangle(2, 2);
             rectangle.setHeight(height);
             rectangle.setWidth(width);
         });

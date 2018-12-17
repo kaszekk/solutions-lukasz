@@ -47,17 +47,15 @@ class TrapezoidTest {
     @DisplayName("Should throw exception if given lowerBase <=0 or upperBase <=0 or height passed to constructor <=0")
     @MethodSource("invalidParameters")
     void shouldThrowExceptionForInvalidParametersPassedToConstructor(double lowerBase, double upperBase, double height) {
-        assertThrows(IllegalArgumentException.class, () -> {
-            Trapezoid trapezoid = new Trapezoid(lowerBase, upperBase, height);
-        });
+        assertThrows(IllegalArgumentException.class, () -> new Trapezoid(lowerBase, upperBase, height));
     }
 
     @ParameterizedTest(name = "{index} => lowerBase={0}, upperBase = {1}, height = {2}")
     @DisplayName("Should throw exception if given lowerBase <=0 or upperBase <=0 or height passed to setter <=0")
     @MethodSource("invalidParameters")
     void shouldThrowExceptionForInvalidParametersPassedToSetter(double lowerBase, double upperBase, double height) {
+        Trapezoid trapezoid = new Trapezoid(5, 3, 2);
         assertThrows(IllegalArgumentException.class, () -> {
-            Trapezoid trapezoid = new Trapezoid(5, 3, 2);
             trapezoid.setLowerBase(lowerBase);
             trapezoid.setUpperBase(upperBase);
             trapezoid.setHeight(height);
