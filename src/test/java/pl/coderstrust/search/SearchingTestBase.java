@@ -42,8 +42,7 @@ public abstract class SearchingTestBase {
         assertEquals(expected, actual);
     }
 
-    private static Stream<Arguments> shouldReturnIndexOfFoundElementParams
-            () {
+    private static Stream<Arguments> shouldReturnIndexOfFoundElementParams() {
         return Stream.of(
                 Arguments.of(0, "the first element"),
                 Arguments.of((sortedArray.length - 1) / 2, "the middle element"),
@@ -65,20 +64,15 @@ public abstract class SearchingTestBase {
     @DisplayName("Should throw exception when attempt to search for an element in an empty array is made")
     @Test
     void shouldThrowExceptionForSearchInEmptyArray() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            int[] emptyArray = new int[0];
-            int element = 100;
-            getSearchingMethod().search(emptyArray, element);
-        });
+        int[] emptyArray = new int[0];
+        int element = 100;
+        assertThrows(IllegalArgumentException.class, () -> getSearchingMethod().search(emptyArray, element));
     }
 
     @DisplayName("Should throw exception when null passed as array reference")
     @Test
     void shouldThrowExceptionIfArrayIsNull() {
-        assertThrows(NullPointerException.class, () -> {
-            int[] nullArray = null;
-            int element = 100;
-            getSearchingMethod().search(nullArray, element);
-        });
+        int element = 100;
+        assertThrows(IllegalArgumentException.class, () -> getSearchingMethod().search(null, element));
     }
 }
