@@ -3,21 +3,53 @@ package pl.coderstrust.streams;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Stream;
 
 public class DoYouLoveStreams {
 
     public static void main(String[] args) throws IOException {
         String REGEX = "([0-9]*\\)*\\(*\\s*)+";
-
+        List<String> lines = new ArrayList<>();
         Stream<String> stream = Files.lines(Paths.get("src\\main\\resources\\Input.txt"));
-        int result = stream
+        stream
                 .filter(v -> v.matches(REGEX))
-                .flatMap(line -> Arrays.stream(line.split("\\s+")))
-                .map(string -> Integer.valueOf(string))
-                .reduce(0, (value1, value2) -> value1 + value2);
-        System.out.println(result);
+                // .forEach(strNumber -> Integer.valueOf(strNumber))
+                .map(line -> line.split("\\s+") // line -> stream of Strings
+                );
+        //  .forEach(strArr -> Arrays.stream(strArr));
+        //     .map(el -> Integer.valueOf(el))
+        // .peek(System.out::println)
+        //  .forEach(el -> System.out.println(el.getClass()));
+        //.reduce("", (s1, s2) -> s1 + s2);
+
+
+    }
+}
+
+/*
+                .map(string -> {
+
+                    lines.add(string);
+                    return Integer.valueOf(string);
+                })
+
+                .reduce(0, (value1, value2) -> value1 + value2);*/
+/*
+        System.out.println("lines result "+lines);
+                System.out.println("sum "+result);*/
+
+
+/*
+            .map(s -> {
+        System.out.println("map: " + s);
+        return s.toUpperCase();
+    })*/
+
+
+//  .reduce(0, (value1, value2) -> value1 + value2);
+//    System.out.println(result);
 
 
 //================================ liczy sume wszystkich linii==============
@@ -31,31 +63,6 @@ public class DoYouLoveStreams {
 //                .reduce(0, (value1, value2) -> value1 + value2);
 //        System.out.println(result);
 //=================================================================================
-
-
-        // .peek(element -> System.out.println(element));
-
-        //   .map(s -> s.split("\\s+"));
-
-
-        //   .forEach(System.out::println);
-
-
-        //   .map(string -> Integer.valueOf(string))
-        //.reduce(0, (a, b) -> a + b)
-
-                // .map(Integer::valueOf)
-
-    }
-
-/*
-        Stream<String> stream = Arrays.stream("1 2 3 4  ".split("\\s+"));
-        stream
-                .map(string -> Integer.valueOf(string))
-
-                .reduce(0, (a, b) -> a + b)
-                .map(IntValue -> String.valueOf(IntValue))*/
-        // System.out.println(result);
 
 
 /// sumuje
@@ -108,7 +115,7 @@ public class DoYouLoveStreams {
                 .forEach(System.out::println);
 */
 
-    }
+
 
 
 
