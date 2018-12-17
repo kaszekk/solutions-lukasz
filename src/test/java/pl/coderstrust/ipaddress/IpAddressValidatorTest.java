@@ -16,7 +16,7 @@ class IpAddressValidatorTest {
     @Disabled
     @DisplayName("This test is disabled by default, because takes over 2 hours to complete")
     @Test
-    void isIpV4AddressTest() {
+    void shouldReturnTrueForAllCombinationsOfIpAddress() {
         IpAddressValidator ipAddressValidator = new IpAddressValidator();
 
         String ipAddressTemplate;
@@ -32,17 +32,15 @@ class IpAddressValidatorTest {
         }
     }
 
-    @ParameterizedTest(name = "{index} => ipTemplate={0}")
-    @MethodSource("isIpV4AddressSmartTestParams")
-    void isIpV4AddressSmartTest(String ipTemplate) {
-        String ipAddressTemplate;
+    @ParameterizedTest(name = "{index} => ipAddressTemplate={0}")
+    @MethodSource("smartTestForValidIpAddressParams")
+    void isIpV4AddressSmartTest(String ipAddressTemplate) {
         for (int i = 0; i <= 255; i++) {
-            ipAddressTemplate = String.format(ipTemplate, i);
-            assertTrue(IpAddressValidator.isIpV4AddressValid(ipAddressTemplate));
+            assertTrue(IpAddressValidator.isIpV4AddressValid(String.format(ipAddressTemplate, i)));
         }
     }
 
-    private static Stream<Object> isIpV4AddressSmartTestParams() {
+    private static Stream<Object> smartTestForValidIpAddressParams() {
         return Stream.of(
                 Arguments.of("1.1.1.%d"),
                 Arguments.of("1.1.%d.1"),
@@ -51,12 +49,12 @@ class IpAddressValidatorTest {
     }
 
     @ParameterizedTest(name = "{index} => ipAddress={0}")
-    @MethodSource("negativeCasesParams")
-    void negativeCasesTest(String ipAddress) {
+    @MethodSource("shouldReturnFalseForInvalidIpAddressesParams")
+    void shouldReturnFalseForInvalidIpAddresses(String ipAddress) {
         assertFalse(IpAddressValidator.isIpV4AddressValid(ipAddress));
     }
 
-    private static Stream<Object> negativeCasesParams() {
+    private static Stream<Object> shouldReturnFalseForInvalidIpAddressesParams() {
         return Stream.of(
                 Arguments.of("0000.0.0.0"),
                 Arguments.of("-0.0.0.0"),
@@ -67,5 +65,22 @@ class IpAddressValidatorTest {
                 Arguments.of("256.1.1.1"),
                 Arguments.of("1.0.-1.1"),
                 Arguments.of("%d.1.1.1"));
+    }
+
+    @ParameterizedTest(name = "{index} => ipAddress={0}")
+    @MethodSource("shouldReturnTrueForValidIpAddressesParams")
+    void shouldReturnTrueForValidIpAddresses(String ipAddress) {
+        assertTrue(IpAddressValidator.isIpV4AddressValid(ipAddress));
+    }
+
+    private static Stream<Object> shouldReturnTrueForValidIpAddressesParams() {
+        return Stream.of(
+                Arguments.of("000.0.0.0"),
+                Arguments.of("0.1.2.3"),
+                Arguments.of("1.2.3.255"),
+                Arguments.of("255.255.255.255"),
+                Arguments.of("255.0.0.0"),
+                Arguments.of("192.168.0.1"),
+                Arguments.of("255.1.1.1"));
     }
 }
