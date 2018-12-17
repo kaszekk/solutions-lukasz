@@ -13,8 +13,22 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class CircleTest {
     @Test
-    @DisplayName("Should return calculated area of circle figure.")
-    void shouldCalculateCorrectArea() {
+    @DisplayName("Should return calculated area of circle using constructor parameters.")
+    void shouldCalculateCorrectAreaBasedOnConstructor() {
+        //Given
+        double delta = 1e-15;
+        Circle circle = new Circle(2);
+
+        //When
+        double actual = circle.calculateArea();
+
+        //Then
+        assertEquals(12.566370614359172, actual, delta);
+    }
+
+    @Test
+    @DisplayName("Should return calculated area of circle ,based on parameter passed to setter.")
+    void shouldCalculateCorrectAreaBasedOnSetter() {
         //Given
         double delta = 1e-15;
         Circle circle = new Circle(1);
@@ -28,15 +42,25 @@ class CircleTest {
     }
 
     @ParameterizedTest(name = "{index} => a={0}")
-    @DisplayName("Should throw exception if given radius <=0")
-    @MethodSource("paramsForExceptionTest")
-    void shouldThrowExceptionForInvalidRadius(double radius) {
+    @DisplayName("Should throw exception if given radius set in constructor <=0")
+    @MethodSource("invalidRadius")
+    void shouldThrowExceptionForInvalidRadiusPassedToConstructor(double radius) {
         assertThrows(IllegalArgumentException.class, () -> {
             Circle circle = new Circle(radius);
         });
     }
 
-    private static Stream<Object> paramsForExceptionTest() {
+    @ParameterizedTest(name = "{index} => a={0}")
+    @DisplayName("Should throw exception if given radius passed to setter <=0")
+    @MethodSource("invalidRadius")
+    void shouldThrowExceptionForInvalidRadiusPassedToSetter(double radius) {
+        assertThrows(IllegalArgumentException.class, () -> {
+            Circle circle = new Circle(1);
+            circle.setRadius(-1);
+        });
+    }
+
+    private static Stream<Object> invalidRadius() {
         return Stream.of(Arguments.of(0),
                 (Arguments.of(-0.01)));
     }

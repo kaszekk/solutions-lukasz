@@ -1,21 +1,28 @@
 package pl.coderstrust.figures;
 
-public class Rectangle implements Figure {
+class Rectangle implements Figure {
 
     private double height;
     private double width;
 
     Rectangle(double height, double width) {
         validateHeight(height);
+        this.height = height;
         validateWidth(width);
+        this.width = width;
+
     }
 
     void setHeight(double height) {
         validateHeight(height);
+        this.height = height;
+
     }
 
     void setWidth(double width) {
         validateWidth(width);
+        this.width = width;
+
     }
 
     @Override
@@ -27,13 +34,11 @@ public class Rectangle implements Figure {
         if (height <= 0) {
             throw new IllegalArgumentException("Height of rectangle must be greater than zero");
         }
-        this.height = height;
     }
 
     private void validateWidth(double width) {
         if (width <= 0) {
             throw new IllegalArgumentException("Width of rectangle must be greater than zero");
         }
-        this.width = width;
     }
 }

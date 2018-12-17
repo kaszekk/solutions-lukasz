@@ -13,8 +13,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class TrapezoidTest {
     @Test
-    @DisplayName("Should return calculated area of trapezoid figure.")
-    void calculateArea() {
+    @DisplayName("Should return calculated area of trapezoid, based on setters parameters.")
+    void shouldCalculateAreaBasedOnSetters() {
         //Given
         double delta = 1e-15;
         Trapezoid trapezoid = new Trapezoid(3, 4, 5);
@@ -29,16 +29,42 @@ class TrapezoidTest {
         assertEquals(8, actual, delta);
     }
 
+    @Test
+    @DisplayName("Should return calculated area of trapezoid based on constructor parameters.")
+    void shouldCalculateAreaBasedOnConstructor() {
+        //Given
+        double delta = 1e-15;
+        Trapezoid trapezoid = new Trapezoid(1, 3, 4);
+
+        //When
+        double actual = trapezoid.calculateArea();
+
+        //Then
+        assertEquals(8, actual, delta);
+    }
+
     @ParameterizedTest(name = "{index} => lowerBase={0}, upperBase = {1}, height = {2}")
-    @DisplayName("Should throw exception if given lowerBase <=0 or upperBase <=0 or height <=0")
-    @MethodSource("exceptionTestParams")
-    void shouldThrowExceptionForInvalidParameters(double lowerBase, double upperBase, double height) {
+    @DisplayName("Should throw exception if given lowerBase <=0 or upperBase <=0 or height passed to constructor <=0")
+    @MethodSource("invalidParameters")
+    void shouldThrowExceptionForInvalidParametersPassedToConstructor(double lowerBase, double upperBase, double height) {
         assertThrows(IllegalArgumentException.class, () -> {
             Trapezoid trapezoid = new Trapezoid(lowerBase, upperBase, height);
         });
     }
 
-    private static Stream<Object> exceptionTestParams() {
+    @ParameterizedTest(name = "{index} => lowerBase={0}, upperBase = {1}, height = {2}")
+    @DisplayName("Should throw exception if given lowerBase <=0 or upperBase <=0 or height passed to setter <=0")
+    @MethodSource("invalidParameters")
+    void shouldThrowExceptionForInvalidParametersPassedToSetter(double lowerBase, double upperBase, double height) {
+        assertThrows(IllegalArgumentException.class, () -> {
+            Trapezoid trapezoid = new Trapezoid(5, 3, 2);
+            trapezoid.setLowerBase(lowerBase);
+            trapezoid.setUpperBase(upperBase);
+            trapezoid.setHeight(height);
+        });
+    }
+
+    private static Stream<Object> invalidParameters() {
         return Stream.of(Arguments.of(0, 0, 0),
                 (Arguments.of(-5.03, 0, 2)),
                 (Arguments.of(2.5, 0, 4)),

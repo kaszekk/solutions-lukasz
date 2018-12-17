@@ -1,20 +1,24 @@
 package pl.coderstrust.figures;
 
-public class Triangle implements Figure {
+class Triangle implements Figure {
     private double baseLength;
     private double height;
 
     Triangle(double baseLength, double height) {
         validateBaseLength(baseLength);
+        this.baseLength = baseLength;
         validateHeight(height);
+        this.height = height;
     }
 
     void setBaseLength(double baseLength) {
         validateBaseLength(baseLength);
+        this.baseLength = baseLength;
     }
 
     void setHeight(double height) {
         validateHeight(height);
+        this.height = height;
     }
 
     @Override
@@ -26,13 +30,11 @@ public class Triangle implements Figure {
         if (height <= 0) {
             throw new IllegalArgumentException("Height of triangle must be greater than zero");
         }
-        this.height = height;
     }
 
     private void validateBaseLength(double baseLength) {
         if (baseLength <= 0) {
             throw new IllegalArgumentException("Base length of trapezoid must be greater than zero");
         }
-        this.baseLength = baseLength;
     }
 }

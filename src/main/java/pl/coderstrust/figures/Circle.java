@@ -1,14 +1,16 @@
 package pl.coderstrust.figures;
 
-public class Circle implements Figure {
+class Circle implements Figure {
     private double radius;
 
     Circle(double radius) {
         validateRadius(radius);
+        this.radius = radius;
     }
 
     void setRadius(double radius) {
         validateRadius(radius);
+        this.radius = radius;
     }
 
     @Override
@@ -20,6 +22,5 @@ public class Circle implements Figure {
         if (radius <= 0) {
             throw new IllegalArgumentException("Radius of a circle must be greater than zero");
         }
-        this.radius = radius;
     }
 }

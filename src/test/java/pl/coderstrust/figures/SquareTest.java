@@ -13,8 +13,21 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class SquareTest {
     @Test
-    @DisplayName("Should return calculated area of square figure.")
-    void calculateArea() {
+    @DisplayName("Should return calculated area of square, based on constructor parameter.")
+    void shouldCalculateAreaBasedOnConstructor() {
+        //Given
+        Square square = new Square(3);
+
+        //When
+        double actual = square.calculateArea();
+
+        //Then
+        assertEquals(9, actual);
+    }
+
+    @Test
+    @DisplayName("Should return calculated area of square, based on setter parameter.")
+    void shouldCalculateAreaBasedOnSetter() {
         //Given
         Square square = new Square(2);
 
@@ -27,15 +40,25 @@ class SquareTest {
     }
 
     @ParameterizedTest(name = "{index} => a={0}")
-    @DisplayName("Should throw exception if sideLength <=0")
-    @MethodSource("exceptionTestParams")
-    void shouldThrowExceptionForInvalidParameter(double sideLength) {
+    @DisplayName("Should throw exception if sideLength passed to constructor <=0")
+    @MethodSource("invalidSideLength")
+    void shouldThrowExceptionForInvalidParameterPassedToConstructor(double sideLength) {
         assertThrows(IllegalArgumentException.class, () -> {
             Square square = new Square(sideLength);
         });
     }
 
-    private static Stream<Object> exceptionTestParams() {
+    @ParameterizedTest(name = "{index} => a={0}")
+    @DisplayName("Should throw exception if sideLength passed to setter <=0")
+    @MethodSource("invalidSideLength")
+    void shouldThrowExceptionForInvalidParameterPassedToSetter(double sideLength) {
+        assertThrows(IllegalArgumentException.class, () -> {
+            Square square = new Square(1);
+            square.setSideLength(-1);
+        });
+    }
+
+    private static Stream<Object> invalidSideLength() {
         return Stream.of(Arguments.of(0),
                 (Arguments.of(-0.01)));
     }
