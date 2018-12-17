@@ -4,20 +4,23 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class DoYouLoveStreams {
 
     public static void main(String[] args) throws IOException {
         String REGEX = "([0-9]*\\)*\\(*\\s*)+";
         List<String> lines = new ArrayList<>();
-        Stream<String> stream = Files.lines(Paths.get("src\\main\\resources\\Input.txt"));
-        stream
+        Files.lines(Paths.get("src\\main\\resources\\Input.txt"))
                 .filter(v -> v.matches(REGEX))
-                // .forEach(strNumber -> Integer.valueOf(strNumber))
-                .map(line -> line.split("\\s+") // line -> stream of Strings
-                );
+                .map(line -> line.trim().split("\\s+"))
+                .forEach(arrayOfNumbers -> {
+                    System.out.println(Arrays.toString(arrayOfNumbers));
+
+                    Arrays.stream(arrayOfNumbers)
+                            .forEach(number -> System.out.println(number));
+                });
         //  .forEach(strArr -> Arrays.stream(strArr));
         //     .map(el -> Integer.valueOf(el))
         // .peek(System.out::println)
@@ -26,6 +29,7 @@ public class DoYouLoveStreams {
 
 
     }
+}
 
 //=========================================
 
