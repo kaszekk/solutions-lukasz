@@ -29,7 +29,11 @@ public class StreamFileProcessor{
             stream.filter(line -> line.matches("^[\\d\\s]+"))
                     .map(line -> line.trim().split("\\s+"))
                     .forEach(arrayOfNumbers -> {
-                        String processedLine = Arrays.stream(stringArrayOfNumbers)
+                        String numbers = Arrays.stream(arrayOfNumbers)
+                            .reduce((num1, num2) -> {
+                                return String.format("%s + %s", num1, num2);
+                            })
+                            .get();
                                 .reduce("", (stringNumber1, stringNumber2) -> String.format("%s+%s", stringNumber1, stringNumber2))
                                 .substring(1);
                         long sumOfNumbers = Arrays.stream(stringArrayOfNumbers)
