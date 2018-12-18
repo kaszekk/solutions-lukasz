@@ -4,7 +4,7 @@ public class LinearSearch implements SearchingMethod {
     @Override
     public int search(int[] array, int element) {
         if (array == null) {
-            throw new IllegalArgumentException("Null reference to array passed");
+            throw new IllegalArgumentException("Array reference cannot be null");
         }
         if (array.length == 0) {
             throw new IllegalArgumentException("Cannot perform search on an empty array");
