@@ -21,16 +21,22 @@ public class Processor {
 
     Processor(NumbersProcessor numbersProcessor, FileProcessor fileProcessor) {
         if (numbersProcessor == null) {
-            throw new NullPointerException("numberProcessor instance passed to Processor cannot be null");
+            throw new IllegalArgumentException("numberProcessor instance passed to Processor constructor cannot be null");
         }
         if (fileProcessor == null) {
-            throw new NullPointerException(("fileProcessor instance passed to Processor cannot be null"));
+            throw new IllegalArgumentException("fileProcessor instance passed to Processor constructor cannot be null");
         }
         this.numbersProcessor = numbersProcessor;
         this.fileProcessor = fileProcessor;
     }
 
     void process(String inputFileName, String resultFileName) throws IOException {
+        if (inputFileName == null) {
+            throw new IllegalArgumentException("inputFileName instance cannot be null");
+        }
+        if (resultFileName == null) {
+            throw new IllegalArgumentException("resultFileName instance cannot be null");
+        }
         List<String> linesFromFile = fileProcessor.readLinesFromFile(inputFileName);
         List<String> resultLines = new ArrayList<>();
         for (String line : linesFromFile) {

@@ -8,7 +8,11 @@ class NumbersProcessor {
     private Pattern pattern = Pattern.compile("([0-9]*\\)*\\(*\\s*)+");
 
     String processLine(String line) {
-        if (isLineValid(line)) {
+        if (line == null) {
+            throw new IllegalArgumentException("Line argument cannot be null");
+        }
+        Matcher matcher = pattern.matcher(line);
+        if (matcher.matches()) {
             StringBuilder processedLineBuilder = new StringBuilder();
             Scanner scanner = new Scanner(line);
             int sum = 0;
@@ -27,15 +31,6 @@ class NumbersProcessor {
             return processedLineBuilder.toString();
         } else {
             return "";
-        }
-    }
-
-    private boolean isLineValid(String line) {
-        if (line == null || line.equals("")) {
-            return false;
-        } else {
-            Matcher matcher = pattern.matcher(line);
-            return matcher.matches();
         }
     }
 }
