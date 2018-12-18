@@ -18,10 +18,10 @@ public class NumbersFromFileUsingStreams {
 
     public void process(String inputFile, String outputFile) throws IOException {
         if (inputFile == null) {
-            throw new IllegalArgumentException("Input file cannot be null");
+            throw new IllegalArgumentException("Input file reference cannot be null");
         }
         if (outputFile == null) {
-            throw new IllegalArgumentException("Output file cannot be null");
+            throw new IllegalArgumentException("Output file reference cannot be null");
         }
         String validLine = "([0-9]*\\)*\\(*\\s*)+";
         List<String> lines = new ArrayList<>();
