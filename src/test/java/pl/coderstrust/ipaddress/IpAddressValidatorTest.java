@@ -33,14 +33,14 @@ class IpAddressValidatorTest {
     }
 
     @ParameterizedTest(name = "{index} => ipAddressTemplate={0}")
-    @MethodSource("smartTestForValidIpAddressParams")
-    void isIpV4AddressSmartTest(String ipAddressTemplate) {
+    @MethodSource("smartTestForValidIpAddressesParams")
+    void smartTestForValidIpAddresses(String ipAddressTemplate) {
         for (int i = 0; i <= 255; i++) {
             assertTrue(IpAddressValidator.isIpV4AddressValid(String.format(ipAddressTemplate, i)));
         }
     }
 
-    private static Stream<Object> smartTestForValidIpAddressParams() {
+    private static Stream<Object> smartTestForValidIpAddressesParams() {
         return Stream.of(
                 Arguments.of("1.1.1.%d"),
                 Arguments.of("1.1.%d.1"),
