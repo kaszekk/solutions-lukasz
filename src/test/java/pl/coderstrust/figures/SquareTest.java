@@ -2,6 +2,11 @@ package pl.coderstrust.figures;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -34,16 +39,23 @@ class SquareTest {
         assertEquals(9, actual);
     }
 
-    @Test
+    @ParameterizedTest
+    @MethodSource("invalidSideLength")
     @DisplayName("Should throw exception if sideLength passed to constructor <=0")
-    void shouldThrowExceptionForInvalidParameterPassedToConstructor() {
-        assertThrows(IllegalArgumentException.class, () -> new Square(-1));
+    void shouldThrowExceptionForInvalidParameterPassedToConstructor(double sideLength) {
+        assertThrows(IllegalArgumentException.class, () -> new Square(sideLength));
     }
 
-    @Test
+    @ParameterizedTest
+    @MethodSource("invalidSideLength")
     @DisplayName("Should throw exception if sideLength passed to setter <=0")
-    void shouldThrowExceptionForInvalidParameterPassedToSetter() {
+    void shouldThrowExceptionForInvalidParameterPassedToSetter(double sideLength) {
         Square square = new Square(1);
-        assertThrows(IllegalArgumentException.class, () -> square.setSideLength(-1));
+        assertThrows(IllegalArgumentException.class, () -> square.setSideLength(sideLength));
+    }
+
+    private static Stream<Object> invalidSideLength() {
+        return Stream.of(Arguments.of(0),
+                (Arguments.of(-5.03)));
     }
 }

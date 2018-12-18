@@ -1,23 +1,23 @@
 package pl.coderstrust.figures;
 
-class Rectangle implements Figure {
+public class Rectangle implements Figure {
 
     private double height;
     private double width;
 
-    Rectangle(double height, double width) {
+    public Rectangle(double height, double width) {
         validateHeight(height);
         validateWidth(width);
         this.height = height;
         this.width = width;
     }
 
-    void setHeight(double height) {
+    public void setHeight(double height) {
         validateHeight(height);
         this.height = height;
     }
 
-    void setWidth(double width) {
+    public void setWidth(double width) {
         validateWidth(width);
         this.width = width;
     }

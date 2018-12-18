@@ -1,14 +1,14 @@
 package pl.coderstrust.figures;
 
-class Circle implements Figure {
+public class Circle implements Figure {
     private double radius;
 
-    Circle(double radius) {
+    public Circle(double radius) {
         validateRadius(radius);
         this.radius = radius;
     }
 
-    void setRadius(double radius) {
+    public void setRadius(double radius) {
         validateRadius(radius);
         this.radius = radius;
     }

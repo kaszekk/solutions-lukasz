@@ -1,14 +1,14 @@
 package pl.coderstrust.figures;
 
-class Square implements Figure {
+public class Square implements Figure {
     private double sideLength;
 
-    Square(double sideLength) {
+    public Square(double sideLength) {
         validateSideLength(sideLength);
         this.sideLength = sideLength;
     }
 
-    void setSideLength(double sideLength) {
+    public void setSideLength(double sideLength) {
         validateSideLength(sideLength);
         this.sideLength = sideLength;
     }

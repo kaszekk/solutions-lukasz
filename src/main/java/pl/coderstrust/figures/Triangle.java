@@ -1,22 +1,22 @@
 package pl.coderstrust.figures;
 
-class Triangle implements Figure {
+public class Triangle implements Figure {
     private double baseLength;
     private double height;
 
-    Triangle(double baseLength, double height) {
+    public Triangle(double baseLength, double height) {
         validateBaseLength(baseLength);
         validateHeight(height);
         this.baseLength = baseLength;
         this.height = height;
     }
 
-    void setBaseLength(double baseLength) {
+    public void setBaseLength(double baseLength) {
         validateBaseLength(baseLength);
         this.baseLength = baseLength;
     }
 
-    void setHeight(double height) {
+    public void setHeight(double height) {
         validateHeight(height);
         this.height = height;
     }

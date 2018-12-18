@@ -1,11 +1,11 @@
 package pl.coderstrust.figures;
 
-class Trapezoid implements Figure {
+public class Trapezoid implements Figure {
     private double lowerBase;
     private double upperBase;
     private double height;
 
-    Trapezoid(double lowerBase, double upperBase, double height) {
+    public Trapezoid(double lowerBase, double upperBase, double height) {
         validateLowerBase(lowerBase);
         validateUpperBase(upperBase);
         validateHeight(height);
@@ -14,17 +14,17 @@ class Trapezoid implements Figure {
         this.height = height;
     }
 
-    void setLowerBase(double lowerBase) {
+    public void setLowerBase(double lowerBase) {
         validateLowerBase(lowerBase);
         this.lowerBase = lowerBase;
     }
 
-    void setUpperBase(double upperBase) {
+    public void setUpperBase(double upperBase) {
         validateUpperBase(upperBase);
         this.upperBase = upperBase;
     }
 
-    void setHeight(double height) {
+    public void setHeight(double height) {
         validateHeight(height);
         this.height = height;
     }
