@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class NumbersFromFileUsingStreams {
+public class StreamFileProcessor{
     public static void main(String[] args) throws IOException {
         String inputFilePath = "src/main/resources/Input.txt";
         String outputFilePath = "src/main/resources/OutputFromStream.txt";
