@@ -21,7 +21,7 @@ public class StreamFileProcessor{
             throw new IllegalArgumentException("Input file cannot be null");
         }
         if (outputFile == null) {
-            throw new IllegalArgumentException("Output file reference cannot be null");
+            throw new IllegalArgumentException("Output file cannot be null");
         }
         String validLine = "([0-9]*\\)*\\(*\\s*)+";
         List<String> lines = new ArrayList<>();
