@@ -14,6 +14,39 @@ public class DoYouLoveStreams {
         List<String> lines = new ArrayList<>();
         Files.lines(Paths.get("src\\main\\resources\\Input.txt"))
                 .filter(v -> v.matches(REGEX))
+                .map(line -> line.split("\\s+"))
+                .forEach(arrayOfNumbers -> {
+                    String processedLine = Arrays.stream(arrayOfNumbers)
+                            .reduce("", (number1, number2) -> number1 + "+" + number2);
+                    processedLine = processedLine.substring(1);
+                    long sumOfLineNumbers = Arrays.stream(arrayOfNumbers)
+                            .map(number -> Integer.valueOf(number))
+                            .reduce(0, (number1, number2) -> number1 + number2);
+                    lines.add(String.format(processedLine + "=%d", sumOfLineNumbers));
+
+                });
+        for (String line : lines) {
+            System.out.println(line);
+        }
+    }
+    //  .forEach(strArr -> Arrays.stream(strArr));
+    //     .map(el -> Integer.valueOf(el))
+    // .peek(System.out::println)
+    //  .forEach(el -> System.out.println(el.getClass()));
+    //.reduce("", (s1, s2) -> s1 + s2);
+
+    // ipAddressTemplate = String.format("%d.%d.%d.%d", i, j, k, l);
+
+}
+
+
+///===================================working piece
+
+ /*   public static void main(String[] args) throws IOException {
+        String REGEX = "([0-9]*\\)*\\(*\\s*)+";
+        List<String> lines = new ArrayList<>();
+        Files.lines(Paths.get("src\\main\\resources\\Input.txt"))
+                .filter(v -> v.matches(REGEX))
                 .map(line -> line.trim().split("\\s+"))
                 .forEach(arrayOfNumbers -> {
                     System.out.println(Arrays.toString(arrayOfNumbers));
@@ -26,10 +59,8 @@ public class DoYouLoveStreams {
         // .peek(System.out::println)
         //  .forEach(el -> System.out.println(el.getClass()));
         //.reduce("", (s1, s2) -> s1 + s2);
-
-
     }
-}
+}*/
 
 //=========================================
 
