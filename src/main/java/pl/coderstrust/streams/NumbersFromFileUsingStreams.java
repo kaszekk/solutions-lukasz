@@ -27,7 +27,7 @@ public class StreamFileProcessor{
         List<String> lines = new ArrayList<>();
         try (Stream<String> stream = Files.lines(Paths.get(inputFile))) {
             stream.filter(line -> line.matches("^[\\d\\s]+"))
-                    .map(validatedLine -> validatedLine.split("\\s+"))
+                    .map(line -> line.trim().split("\\s+"))
                     .forEach((String[] stringArrayOfNumbers) -> {
                         String processedLine = Arrays.stream(stringArrayOfNumbers)
                                 .reduce("", (stringNumber1, stringNumber2) -> String.format("%s+%s", stringNumber1, stringNumber2))
