@@ -26,7 +26,7 @@ public class StreamFileProcessor{
         String validLine = "([0-9]*\\)*\\(*\\s*)+";
         List<String> lines = new ArrayList<>();
         try (Stream<String> stream = Files.lines(Paths.get(inputFile))) {
-            stream.filter(inputLine -> inputLine.matches(validLine))
+            stream.filter(line -> line.matches("^[\\d\\s]+"))
                     .map(validatedLine -> validatedLine.split("\\s+"))
                     .forEach((String[] stringArrayOfNumbers) -> {
                         String processedLine = Arrays.stream(stringArrayOfNumbers)
