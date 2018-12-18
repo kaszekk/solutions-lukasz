@@ -18,7 +18,7 @@ public class StreamFileProcessor{
 
     public void process(String inputFile, String outputFile) throws IOException {
         if (inputFile == null) {
-            throw new IllegalArgumentException("Input file reference cannot be null");
+            throw new IllegalArgumentException("Input file cannot be null");
         }
         if (outputFile == null) {
             throw new IllegalArgumentException("Output file reference cannot be null");
