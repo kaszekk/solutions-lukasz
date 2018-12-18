@@ -9,7 +9,7 @@ public class IpAddressValidator {
 
     static boolean isIpV4AddressValid(String input) {
         if (input == null) {
-            throw new IllegalArgumentException("Input string cannot be null");
+            throw new IllegalArgumentException("Ip address cannot be null");
         }
         Matcher matcher = pattern.matcher(input);
         return matcher.matches();
