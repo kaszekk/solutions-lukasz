@@ -13,16 +13,16 @@ public class DoYouLoveStreams {
         String REGEX = "([0-9]*\\)*\\(*\\s*)+";
         List<String> lines = new ArrayList<>();
         Files.lines(Paths.get("src\\main\\resources\\Input.txt"))
-                .filter(v -> v.matches(REGEX))
-                .map(line -> line.split("\\s+"))
-                .forEach(arrayOfNumbers -> {
-                    String processedLine = Arrays.stream(arrayOfNumbers)
-                            .reduce("", (number1, number2) -> number1 + "+" + number2);
-                    processedLine = processedLine.substring(1);
-                    long sumOfLineNumbers = Arrays.stream(arrayOfNumbers)
+                .filter(inputLine -> inputLine.matches(REGEX))
+                .map(validatedLine -> validatedLine.split("\\s+"))
+                .forEach(StringArrayOfNumbers -> {
+                    String processedLine = Arrays.stream(StringArrayOfNumbers)
+                            .reduce("", (stringNumber1, stringNumber2) -> stringNumber1 + "+" + stringNumber2)
+                            .substring(1);
+                    long sumOfNumbersInLine = Arrays.stream(StringArrayOfNumbers)
                             .map(Integer::valueOf)
                             .reduce(0, (number1, number2) -> number1 + number2);
-                    lines.add(String.format("%s=%d", processedLine, sumOfLineNumbers));
+                    lines.add(String.format("%s=%d", processedLine, sumOfNumbersInLine));
 
                 });
         for (String line : lines) {
