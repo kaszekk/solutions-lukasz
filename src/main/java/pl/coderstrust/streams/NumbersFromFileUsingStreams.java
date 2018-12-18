@@ -33,7 +33,7 @@ public class StreamFileProcessor{
                                 .reduce("", (stringNumber1, stringNumber2) -> String.format("%s+%s", stringNumber1, stringNumber2))
                                 .substring(1);
                         long sumOfNumbers = Arrays.stream(stringArrayOfNumbers)
-                                .map(Integer::valueOf)
+                                .mapToLong(Long::parseLong)
                                 .reduce(0, (number1, number2) -> number1 + number2);
                         lines.add(String.format("%s=%d", processedLine, sumOfNumbersInLine));
                     });
