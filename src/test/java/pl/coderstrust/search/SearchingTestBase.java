@@ -63,7 +63,7 @@ public abstract class SearchingTestBase {
 
     @DisplayName("Should throw exception when attempt to search for an element in an empty array is made")
     @Test
-    void shouldThrowExceptionForSearchInEmptyArray() {
+    void shouldThrowExceptionIfArrayIsEmpty() {
         int[] emptyArray = new int[0];
         int element = 100;
         assertThrows(IllegalArgumentException.class, () -> getSearchingMethod().search(emptyArray, element));
