@@ -27,7 +27,6 @@ class NumbersProcessorTest {
 
     private static Stream<Arguments> shouldReturnCorrectResultForLinesThatPassRegExTestParams() {
         return Stream.of(
-
                 Arguments.of("3", "3=3"),
                 Arguments.of("3 5 6 7", "3+5+6+7=21"),
                 Arguments.of("3 5 6 346 65 23 0 35 0 125478 345456 34 7", "3+5+6+346+65+23+0+35+0+125478+345456+34+7=471458"),

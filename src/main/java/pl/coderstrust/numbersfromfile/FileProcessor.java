@@ -35,9 +35,12 @@ class FileProcessor {
         }
     }
 
-    private void validateFileNameArgument(String file) {
-        if (file == null) {
-            throw new IllegalArgumentException("File reference argument cannot be null");
+    private void validateFileNameArgument(String fileName) {
+        if (fileName == null) {
+            throw new IllegalArgumentException("fileName argument cannot be null");
+        }
+        if (fileName.length() == 0) {
+            throw new IllegalArgumentException("fileName cannot be empty");
         }
     }
 }

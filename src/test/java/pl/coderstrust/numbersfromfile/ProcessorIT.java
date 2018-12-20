@@ -44,7 +44,6 @@ class ProcessorIT {
         NumbersProcessor numbersProcessor = new NumbersProcessor();
         Processor processor = new Processor(numbersProcessor, fileProcessor);
         assertThrows(IllegalArgumentException.class, () -> processor.process(inputFile, resultFile));
-
     }
 
     private static Stream<Arguments> shouldThrowExceptionForInvalidArgumentParams() {
