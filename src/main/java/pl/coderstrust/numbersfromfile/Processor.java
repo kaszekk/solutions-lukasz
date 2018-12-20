@@ -32,10 +32,10 @@ public class Processor {
 
     void process(String inputFileName, String resultFileName) throws IOException {
         if (inputFileName == null) {
-            throw new IllegalArgumentException("inputFileName reference argument cannot be null");
+            throw new IllegalArgumentException("inputFileName argument cannot be null");
         }
         if (resultFileName == null) {
-            throw new IllegalArgumentException("resultFileName reference argument cannot be null");
+            throw new IllegalArgumentException("resultFileName argument cannot be null");
         }
         List<String> linesFromFile = fileProcessor.readLinesFromFile(inputFileName);
         List<String> resultLines = new ArrayList<>();
