@@ -29,9 +29,9 @@ public class StreamFileProcessor {
                     .map(line -> line.trim().split("\\s+"))
                     .forEach(arrayOfNumbers -> {
                         String numbers = Arrays.stream(arrayOfNumbers)
-                                .reduce("", (num1, num2) ->
+                                .reduce((num1, num2) ->
                                         String.format("%s+%s", num1, num2))
-                                .substring(1);
+                                .get();
                         long sumOfNumbers = Arrays.stream(arrayOfNumbers)
                                 .mapToLong(Long::parseLong)
                                 .sum();
