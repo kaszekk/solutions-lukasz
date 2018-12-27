@@ -17,7 +17,6 @@ class HoarePartition {
         int[] partitionedTable = tableForPartition.clone();
         int leftCursor = 1;
         int rightCursor = partitionedTable.length - 1;
-
         swapElementsInArray(partitionedTable, 0, pivotIndex);
         while (leftCursor < rightCursor) {
             while (partitionedTable[leftCursor] <= partitionedTable[0] && leftCursor != partitionedTable.length - 1) {
@@ -30,7 +29,6 @@ class HoarePartition {
                 swapElementsInArray(partitionedTable, leftCursor, rightCursor);
             }
         }
-
         swapElementsInArray(partitionedTable, 0, rightCursor);
         return partitionedTable;
     }

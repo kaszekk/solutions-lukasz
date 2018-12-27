@@ -12,7 +12,6 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-
 class HoarePartitionTest {
     @DisplayName("Should partition entry array according to given Pivot")
     @ParameterizedTest
