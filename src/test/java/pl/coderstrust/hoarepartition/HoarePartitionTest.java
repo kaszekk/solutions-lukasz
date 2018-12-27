@@ -100,6 +100,26 @@ class HoarePartitionTest {
         );
     }
 
+    @DisplayName("Should partition one element array to given Pivot")
+    @ParameterizedTest
+    @MethodSource("oneElementParams")
+    void shouldReturnPartitionedArrayForOneElementArray(int pivotIndex, int[] expected) {
+        //Given
+        int[] oneElementArray = {2};
+
+        //When
+        int[] actual = HoarePartition.applyHoare(oneElementArray, pivotIndex);
+
+        //Then
+        assertArrayEquals(expected, actual);
+    }
+
+    private static Stream<Arguments> oneElementParams() {
+        return Stream.of(
+                Arguments.of(0, new int[]{2})
+        );
+    }
+
     @DisplayName("Should throw exception when null passed as array reference")
     @Test
     void shouldThrowExceptionIfArrayIsNull() {
