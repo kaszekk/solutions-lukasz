@@ -1,11 +1,23 @@
 package pl.coderstrust.hoarepartition;
 
-public class HoarePartition {
+class HoarePartition {
     static int[] applyHoare(int[] tableForPartition, int pivotIndex) {
-        //                          validateArray();
+        if (tableForPartition == null) {
+            throw new IllegalArgumentException("array for partition cannot be null");
+        }
+        if (tableForPartition.length == 0) {
+            throw new IllegalArgumentException("array for partition length must be greater than zero");
+        }
+        if (pivotIndex < 0) {
+            throw new IllegalArgumentException("pivotIndex cannot be negative");
+        }
+        if (pivotIndex >= tableForPartition.length) {
+            throw new IllegalArgumentException("pivotIndex out of bound");
+        }
         int[] partitionedTable = tableForPartition.clone();
         int leftCursor = 1;
         int rightCursor = partitionedTable.length - 1;
+
         swapElementsInArray(partitionedTable, 0, pivotIndex);
         while (leftCursor < rightCursor) {
             while (partitionedTable[leftCursor] <= partitionedTable[0] && leftCursor != partitionedTable.length - 1) {
@@ -18,6 +30,7 @@ public class HoarePartition {
                 swapElementsInArray(partitionedTable, leftCursor, rightCursor);
             }
         }
+
         swapElementsInArray(partitionedTable, 0, rightCursor);
         return partitionedTable;
     }
