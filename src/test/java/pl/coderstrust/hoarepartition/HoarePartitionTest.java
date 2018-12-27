@@ -6,22 +6,21 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.Arrays;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class HoarePartitionTest {
-    @DisplayName("Should partition entry array according to given Pivot")
+    @DisplayName("Should partition array according to given Pivot")
     @ParameterizedTest
     @MethodSource("oneDuplicatedElementParams")
-    void shouldReturnPartitionedArrayAccordingToGivenPivotIndex(int pivotIndex, int[] expected) {
+    void shouldCorrectlyPartitionOneDuplicatedElementArray(int pivotIndex, int[] expected) {
         //Given
-        int[] arrayWithOneDuplicatedElement = {1, 7, 15, 11, 3, 10, 6, 4, 2, 1, 8};
+        int[] oneDuplicatedElementArray = {1, 7, 15, 11, 3, 10, 6, 4, 2, 1, 8};
 
         //When
-        int[] actual = HoarePartition.applyHoare(arrayWithOneDuplicatedElement, pivotIndex);
+        int[] actual = HoarePartition.applyHoare(oneDuplicatedElementArray, pivotIndex);
 
         //Then
         assertArrayEquals(expected, actual);
@@ -43,16 +42,15 @@ class HoarePartitionTest {
         );
     }
 
-    @DisplayName("Should partition entry array according to given Pivot")
+    @DisplayName("Should partition array according to given Pivot")
     @ParameterizedTest
     @MethodSource("uniqueElementsParams")
-    void shouldReturnPartitionedArrayAccordingToGivenPivotInde(int pivotIndex, int[] expected) {
+    void shouldCorrectlyPartitionUniqueElementsArray(int pivotIndex, int[] expected) {
         //Given
         int[] uniqueElementsArray = {6, 9, 5, 0, 4, 2, 1, 3, 10, 8, 7};
 
         //When
         int[] actual = HoarePartition.applyHoare(uniqueElementsArray, pivotIndex);
-        System.out.println(Arrays.toString(actual));
 
         //Then
         assertArrayEquals(expected, actual);
@@ -77,7 +75,7 @@ class HoarePartitionTest {
     @DisplayName("Should partition entry array according to given Pivot")
     @ParameterizedTest
     @MethodSource("monoArrayParams")
-    void shouldReturnPartitionedArrayAccordingToGivenPivotI(int pivotIndex, int[] expected) {
+    void shouldCorrectlyPartitionMonoValueArray(int pivotIndex, int[] expected) {
         //Given
         int[] monoValueArray = {2, 2, 2, 2, 2, 2};
 
@@ -102,7 +100,7 @@ class HoarePartitionTest {
     @DisplayName("Should partition one element array to given Pivot")
     @ParameterizedTest
     @MethodSource("oneElementParams")
-    void shouldReturnPartitionedArrayForOneElementArray(int pivotIndex, int[] expected) {
+    void shouldPartitionOneElementArray(int pivotIndex, int[] expected) {
         //Given
         int[] oneElementArray = {2};
 
