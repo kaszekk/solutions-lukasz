@@ -8,7 +8,6 @@ public class IntroducedInJava8 {
     public static void main(String[] args) {
         streamExample();
     }
-
     static void streamExample() {
         List<String> ourJavaTasks = new ArrayList<>();
         ourJavaTasks.add("FooBar");
@@ -23,7 +22,6 @@ public class IntroducedInJava8 {
         ourJavaTasks.stream().sorted()
                 .map(String::toLowerCase)
                 .forEach(System.out::println);
-
         Optional<String> reduced = ourJavaTasks.stream()
                 .map(String::toUpperCase)
                 .reduce((s1, s2) -> s1 + "\t" + s2);
