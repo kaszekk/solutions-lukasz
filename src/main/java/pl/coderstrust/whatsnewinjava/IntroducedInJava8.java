@@ -6,9 +6,10 @@ import java.util.Optional;
 
 public class IntroducedInJava8 {
     public static void main(String[] args) {
-        streamExample();
+        showStreamExample();
     }
-    static void streamExample() {
+
+    static void showStreamExample() {
         List<String> ourJavaTasks = new ArrayList<>();
         ourJavaTasks.add("FooBar");
         ourJavaTasks.add("ChristmasTree");
