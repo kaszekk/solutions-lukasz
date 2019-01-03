@@ -1,10 +1,9 @@
 package pl.coderstrust.whatsnewinjava;
 
-public class IntroducedInJava10 {
+class IntroducedInJava10 {
     public static void main(String[] args) {
         showLocalVariableTypeInferenceExample();
     }
-
     private static void showLocalVariableTypeInferenceExample() {
         var number1 = 1;
         var number2 = 2.5;

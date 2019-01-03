@@ -2,7 +2,7 @@ package pl.coderstrust.whatsnewinjava;
 
 import java.io.*;
 
-public class IntroducedInJava7 {
+class IntroducedInJava7 {
     long underscoreInNumericLiterals = 1_234_567_890_123_456L;
     private static final String JAVA7 = "\nJava 7 new features: Strings in switch statement, try with resources, multiple exception handling, underscore in literals...";
     private static final String JAVA8 = "\nJava 8 new features: forEach() method in Iterable interface, default and static methods in interfaces, functional interfaces, lambda expressions";
@@ -30,7 +30,7 @@ public class IntroducedInJava7 {
         }
     }
 
-    static void copyFileUsingTryWithResources() {
+    private static void copyFileUsingTryWithResources() {
         final String sourceFile = "src/main/resources/Input.txt";
         final String targetFile = "src/main/resources/InputCopy.txt";
         System.out.println("...now copying file " + sourceFile + " to " + targetFile);

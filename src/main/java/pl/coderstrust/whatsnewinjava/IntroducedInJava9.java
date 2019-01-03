@@ -16,12 +16,12 @@ interface PrivateMethodsInInterfaces {
     }
 }
 
-public class IntroducedInJava9 implements PrivateMethodsInInterfaces {
+class IntroducedInJava9 implements PrivateMethodsInInterfaces {
     public static void main(String[] args) {
         printInfo();
     }
 
-    static void printInfo() {
+    private static void printInfo() {
         IntroducedInJava9 introducedInJava9 = new IntroducedInJava9();
         introducedInJava9.defaultInterfaceMethod();
     }
