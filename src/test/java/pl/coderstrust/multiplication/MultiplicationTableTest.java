@@ -13,7 +13,7 @@ import static pl.coderstrust.multiplication.MultiplicationTable.getFormattedOutp
 import static pl.coderstrust.multiplication.MultiplicationTable.getMultiplicationTableValues;
 
 @DisplayName("MultiplicationTable test ")
-class MultiplicationTest {
+class MultiplicationTableTest {
     @DisplayName("Should return multiplication result as int [][] of correct dimensions")
     @ParameterizedTest(name = "{index} => b={0},   expectedDimension_a={1},   expectedDimension_b={2} ")
     @MethodSource("paramsForTestMultiplicationTableDimensions")
@@ -21,19 +21,17 @@ class MultiplicationTest {
 
         //Given
         int size = 4;
-        int[][] returned = getMultiplicationTableValues(size);
-        int resultDimension_a = returned.length - 1;
-        int resultDimension_b = returned[b].length - 1;
+        //int resultDimension_a = returned.length - 1;
+        //int resultDimension_b = returned[b].length - 1;
 
         //When
-        boolean isDimension_a_Correct = resultDimension_a == expectedDimension_a;
-        boolean isDimension_b_Correct = resultDimension_b == expectedDimension_b;
-        boolean isTableSquare = resultDimension_a == resultDimension_b;
 
+        int[][] returned = getMultiplicationTableValues(size);
+// TODO: 11/01/2019 is size checked correctly 
         //Then
-        assertTrue(isDimension_b_Correct);
-        assertTrue(isDimension_a_Correct);
-        assertTrue(isTableSquare);
+        for (int row = 0; row < size; row++) {
+            assertEquals(size, returned[row].length - 1); //////////////////
+        }
     }
 
     private static Stream<Arguments> paramsForTestMultiplicationTableDimensions() {
