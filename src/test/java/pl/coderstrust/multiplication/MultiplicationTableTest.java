@@ -27,7 +27,7 @@ class MultiplicationTableTest {
         //When
 
         int[][] returned = getMultiplicationTableValues(size);
-// TODO: 11/01/2019 is size checked correctly 
+        // FIXME: 11/01/2019 fix checkong size
         //Then
         for (int row = 0; row < size; row++) {
             assertEquals(size, returned[row].length - 1); //////////////////
