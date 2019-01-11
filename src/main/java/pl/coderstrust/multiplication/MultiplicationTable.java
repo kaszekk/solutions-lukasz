@@ -8,7 +8,7 @@ public class MultiplicationTable {
 
     static int[][] getMultiplicationTableValues(int size) {
         if (size < 0) {
-            throw new IllegalArgumentException("Argument cannot be negative");
+            throw new IllegalArgumentException("Argument cannot be negative.");
         }
         int[][] multiplicationTable = new int[size + 1][size + 1];
         for (int row = 1; row <= size; row++) {
@@ -29,13 +29,11 @@ public class MultiplicationTable {
         }
         formattedTableRow[0] = tableRowBuilder.toString();
         for (int row = 1; row < table.length; row++) {
-            {
                 tableRowBuilder.delete(0, tableRowBuilder.length());
                 for (int col = 0; col < table.length; col++) {
                     tableRowBuilder.append(String.format("%4s", +table[row][col]));
                 }
                 formattedTableRow[row] = tableRowBuilder.toString();
-            }
         }
         return formattedTableRow;
     }

@@ -8,77 +8,38 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static pl.coderstrust.multiplication.MultiplicationTable.getFormattedOutput;
 import static pl.coderstrust.multiplication.MultiplicationTable.getMultiplicationTableValues;
 
 @DisplayName("MultiplicationTable test ")
 class MultiplicationTableTest {
-    @DisplayName("Should return multiplication result as int [][] of correct dimensions")
-    @ParameterizedTest(name = "{index} => b={0},   expectedDimension_a={1},   expectedDimension_b={2} ")
-    @MethodSource("paramsForTestMultiplicationTableDimensions")
-    void testMultiplicationTableDimensions(int b, int expectedDimension_a, int expectedDimension_b) {
-
+    @DisplayName("Should calculate the correct multiplicationTable values a * b = expected")
+    @Test
+    void shouldReturnCorrectMultiplicationResult() {
         //Given
         int size = 4;
-        //int resultDimension_a = returned.length - 1;
-        //int resultDimension_b = returned[b].length - 1;
-
-        //When
-
-        int[][] returned = getMultiplicationTableValues(size);
-        // FIXME: 11/01/2019 fix checkong size
-        //Then
-        for (int row = 0; row < size; row++) {
-            assertEquals(size, returned[row].length - 1); //////////////////
-        }
-    }
-
-    private static Stream<Arguments> paramsForTestMultiplicationTableDimensions() {
-        return
-                Stream.of(
-                        Arguments.of(4, 4, 4),
-                        Arguments.of(3, 4, 4),
-                        Arguments.of(2, 4, 4),
-                        Arguments.of(1, 4, 4),
-                        Arguments.of(0, 4, 4));
-    }
-
-    @DisplayName("Should calculate the correct multiplicationTable values a * b = expected")
-    @ParameterizedTest(name = "{index} => a={0},   b={1},   expected={2}")
-    @MethodSource("paramsForMultiplicationTableValues")
-    void shouldReturnCorrectMultiplicationResult(int a, int b, int expected) {
-
-        //Given
-        int size = 12;
+        int[][] expected = {
+                new int[]{0, 0, 0, 0, 0},
+                new int[]{0, 1, 2, 3, 4},
+                new int[]{0, 2, 4, 6, 8},
+                new int[]{0, 3, 6, 9, 12},
+                new int[]{0, 4, 8, 12, 16}};
 
         //When
         int[][] result = getMultiplicationTableValues(size);
 
         //Then
-        assertEquals(expected, result[a][b]);
-    }
-
-    private static Stream<Arguments> paramsForMultiplicationTableValues() {
-        return
-                Stream.of(
-                        Arguments.of(0, 0, 0),
-                        Arguments.of(4, 0, 0),
-                        Arguments.of(1, 1, 1),
-                        Arguments.of(2, 1, 2),
-                        Arguments.of(3, 2, 6),
-                        Arguments.of(3, 4, 12),
-                        Arguments.of(4, 4, 16),
-                        Arguments.of(4, 3, 12),
-                        Arguments.of(2, 2, 4),
-                        Arguments.of(3, 3, 9));
+        for (int i = 0; i <= size; i++) {
+            assertArrayEquals(expected[i], result[i]);
+        }
     }
 
     @DisplayName("Should return correctly formatted MultiplicationTable for given size")
     @ParameterizedTest(name = "{index} => size={0},   expected={1}")
     @MethodSource("paramsForTestFormatOfMultiplicationTable")
     void testFormatOfMultiplicationTable(int size, String[] expected) {
-
         //When
         String[] result = getFormattedOutput(getMultiplicationTableValues(size));
 
