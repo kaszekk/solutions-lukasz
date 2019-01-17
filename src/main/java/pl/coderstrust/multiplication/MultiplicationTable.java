@@ -6,7 +6,7 @@ public class MultiplicationTable {
         printMultiplicationTable(formatMultiplicationTable(getMultiplicationTableValues(size)));
     }
 
-    public static int[][] getMultiplicationTableValues(int size) {
+     static int[][] getMultiplicationTableValues(int size) {
         if (size < 0) {
             throw new IllegalArgumentException("Argument cannot be negative.");
         }
