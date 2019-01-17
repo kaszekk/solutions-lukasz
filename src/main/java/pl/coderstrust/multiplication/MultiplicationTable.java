@@ -3,10 +3,10 @@ package pl.coderstrust.multiplication;
 public class MultiplicationTable {
     public static void main(String[] args) {
         int size = 4;
-        printMultiplicationTable(getFormattedOutput(getMultiplicationTableValues(size)));
+        printMultiplicationTable(formatMultiplicationTable(getMultiplicationTableValues(size)));
     }
 
-    static int[][] getMultiplicationTableValues(int size) {
+    public static int[][] getMultiplicationTableValues(int size) {
         if (size < 0) {
             throw new IllegalArgumentException("Argument cannot be negative.");
         }
@@ -19,7 +19,7 @@ public class MultiplicationTable {
         return multiplicationTable;
     }
 
-    static String[] getFormattedOutput(int[][] table) {
+    static String[] formatMultiplicationTable(int[][] table) {
         String[] formattedTableRow = new String[table.length];
         StringBuilder tableRowBuilder = new StringBuilder();
         addTopAndLeftBorders(table);
